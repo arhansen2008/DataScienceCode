@@ -132,4 +132,19 @@ w_results = lr(Phi_train,trainY)
 print("Weight Vector:")
 print(w_results) #should have a value for each feature
 
-#set up MSE code
+#RMSE code
+
+#calc predicted values dot of features matrix with weight vector
+pred_train = np.dot(Phi_train, w_results) #dot product of phi(trainX) and w vector
+pred_test = np.dot(Phi_test, w_results) #dot of phi(testX) and w vector
+
+#calculate MSE: average of results minus predicted squared
+mse_train = np.mean((trainY - pred_train) ** 2)
+mse_test = np.mean((testY - pred_test) ** 2)
+
+#calculate RMSE: square root of MSE
+rmse_train = np.sqrt(mse_train)
+rmse_test = np.sqrt(mse_test)
+
+print("RMSE of Training Data:", rmse_train)
+print("RMSE of Test Data:", rmse_test)
