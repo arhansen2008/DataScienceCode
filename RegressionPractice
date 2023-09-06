@@ -148,3 +148,44 @@ rmse_test = np.sqrt(mse_test)
 
 print("RMSE of Training Data:", rmse_train)
 print("RMSE of Test Data:", rmse_test)
+
+
+#Plotting codes...
+
+#calc yhat for x∈(−5,5) at increments of 0.1
+x_plt = np.arange(-5,5,0.1)
+Phi_plt = phi(x_plt)
+y_hat = np.dot(Phi_plt,w_results)
+
+# Create the first plot
+plt.scatter(trainX, trainY, c='b', label='Training Data', marker='o')
+plt.scatter(testX, testY, c='g', label='Testing Data', marker='x')
+plt.plot(x_plt, y_hat, c='r', label='Learned Function')
+plt.xlabel('X')
+plt.ylabel('Y')
+plt.title('Linear Regression')
+plt.legend()
+plt.grid(True) #I like grid lines
+plt.show()
+
+
+#Create the second plot, scatter of residuals
+
+resd_train = trainY-pred_train #calc residuals
+
+#plot
+plt.scatter(trainX, resd_train, c='m', marker='o')
+plt.xlabel('Training X Values')
+plt.ylabel('Residuals')
+plt.title('Residuals on Training Data')
+plt.grid(True) 
+plt.show()
+
+# Create third plot a histogram of residuals
+
+plt.hist(resd_train, bins=5, color='c', edgecolor= "k")
+plt.xlabel('Residuals')
+plt.ylabel('Frequency')
+plt.title('Histogram of Residuals on Training Data')
+plt.show()
+
