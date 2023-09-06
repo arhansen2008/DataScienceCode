@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 def f(X):
     return 1/(1 + np.exp(-X))
 
+#generate a random set of data for our training and testing
 n = 50
 np.random.seed(12345)
 trainX = np.random.random(n) * 10 - 5
