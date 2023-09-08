@@ -1,0 +1,81 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/omml/2004/12/core" xmlns:ve="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o12="http://schemas.microsoft.com/office/2004/7/core" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/3/wordprocessingDrawing" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/3/main" xmlns="http://www.w3.org/TR/REC-html40">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <head>
+    <style>style</style>
+  </head>
+  <body>
+    <div class="Section1">
+      <p>
+        <b>
+          <u>
+            <span style="font-size:20.0pt">CSCI303 | Machine Learning Beginnings Part 2</span>
+          </u>
+        </b>
+      </p>
+      <p>
+      </p>
+      <p>
+Today we're going to continue our discussion for an introduction to machine learning and revisit our linear regression example. By the end of the slides you'll be able to understand and produce the information in this plot, commonly termed a "bathtub plot." What we're going to talk about today is we're going to talk about error measures, the difference between training and test data, concepts like underfitting and overfitting, then tie it all together exploring the trade-off between minimizing bias and variance.       </p>
+      <p>
+As a review, I will walk through quickly the example from last time using this function to simulate our problem. Speaking of functions, let's take a side and look at the pieces of Python code that are used to develop your own custom function. Programmatically, functions are handy when you have a single-purpose activity that you want to use multiple times.       </p>
+      <p>
+I'm going to highlight here with my mouse the actual implementation details that we used in our last slides for that 3 plus 0.5 n minus n squared plus 0.15 n cubed. What we'd like to do is use that in a function. Functions in Python begin with this keyword, def, D-E-F, or telling it, hey, I'm going to define something, followed by the name of the function.       </p>
+      <p>
+Here we've conveniently named our function f, because we're using it in a mathematical way and we want to get f of x. It just makes sense to us. But you can name your function anything that makes sense and it's readable. There are certain parameters, and you can look that up in your Python documentation, such as, you can't use reserved words or things that start with a number, et cetera.       </p>
+      <p>
+The items inside of the parentheses are incoming sets of information. In Python, remember, we don't have to say what type those are. We simply have a placeholder for it. So here we have x. So we're going to send in our x data, or our vector or matrix, to do the operations with. In this example, we're going to send in the number of observations times 1, so a vector of information. And then it's going to calculate this formula and return the result.       </p>
+      <p>
+OK. So now once we've defined that function, we can continue the steps for our simulated problem. So let's calculate and then plot that true line now. This should look familiar. What we want to do, though, is we also want many sample points. And we want to add in that true noise to make it more realistic. We're going to wrap that in a new function call called sample. And I've highlighted that with my mouse. So let's execute that cell and see what happens.       </p>
+      <p>
+Well, here we are. We have our simulated noisy data in the black dots and then our true line and fit in the blue line. And again, we call this function here a sample. So now we have two functions defined. We're using f of x And that's used as a function here. And then also, we are using our function called sample that we're going to send in some information. And it's going to generate that random noise.       </p>
+      <p>
+Notice that we're returning two different items, and I'm going to highlight that here with my mouse. We're returning x and y. And in Python, you can do this. You can return multiple items from a function call. This next line of code that I'm going to highlight is an example of calling that function. And then we know that it's returning x and y so we can conveniently call that train x and train y.       </p>
+      <p>
+As a reminder of our approximation model that we're going to implement, in our estimated line of fit, f of x has a result of phi w. That's denoted here a dot product of phi and w, where phi is a vector of our features, or the input. And then we expand that out to get our design matrix. If you recall, we used powers of the incoming data in x to simulate multidimensional feature space.       </p>
+      <p>
+We've created another function called phi that I'm going to highlight here with my mouse-- again, with the reserved word def. We're saying, Python, we're defining something. We're calling this function phi. And then we're going to return that calculation that expands x into our design matrix, or our phi. This following line of code here is a sample of calling that phi function to then calculate capital phi, or our design matrix.       </p>
+      <p>
+So once we can execute that cell, we can see that the shape of that is now 20 samples or observations [INAUDIBLE] by six features. So again, it's always going to be in a row column format when we do our phi.shape. The next step is that we want to find y hat or f of x using linear regression. We used ordinary least squares to find the best possible coefficients and store them in our weight vector called w.       </p>
+      <p>
+So this will be our last new function called LSQ for Ordinary Least Squares. So this is our fourth function. I'm going to execute that cell. And it's going to calculate in return, then, w from our call to least squares, LSQ, sending it phi for our design matrix and then y. If we want to look at that, remember, we can simply print w, or we can have it is the last executed line in our cell, in our Jupyter notebook, and it will pop it to the screen.       </p>
+      <p>
+An example of printing that is you can just wrap it in a print and you'll get something very similar-- a little different format on the display, but it's the same data. Finally, let's plot our results and get back to where we finished last time. That should look familiar. So we have our noisy data and then we have our two lines. So again, in blue, we have our true line of fit for our x and our y. We have our training data-- with the noise added, of course-- in black dots.       </p>
+      <p>
+And then we are plotting in red our estimated line with x. And then they calculated y hat. That quick review is necessary with all the new terminology, notation, and concepts. So let's go ahead and introduce a mathematical way to evaluate the performance of our trained model. The visualization is nice, but we have to ask ourselves, what is it really telling us about the approximation, or how well does our model generalize to new, unseen data?       </p>
+      <p>
+We have ways to calculate these error measures and we will walk through some examples of using the means squared error and root means squared error, the average square distance between the estimated line of fit and the actual line. In other words, the difference between y and y hat. So doing the math and plugging in all of our values from above, we calculate this formula in pieces so that you can see what's going on.       </p>
+      <p>
+First, we calculate the difference between our actual y-- let me highlight that line of code there-- and our y hat. Again, that's phi w-- our design matrix and our weight vector with those best possible coefficients. And then we calculate the square of the differences. We take the sum and then we divide by n to get the mean squared error.       </p>
+      <p>
+The next thing we need to do is calculate the square root of that to get the root mean squared error. So I'm going to calculate that, execute that cell. And we can see this value is the one we want to look at. And with the root mean squared error, a lower value is better. Well, now that we have that value, we need to figure out what it's telling us. This number represents the error that we expect to have on any training point. Again, the lower this number is, the better, so let's think about how we could possibly improve our model.       </p>
+      <p>
+You might be thinking, hey, more features could help the problem. So let's go through an example to see if that does, in fact, help. This example will increase-- it will increase the model from 5 powers of 5 to all the way up to 10. So let me execute that cell and let's look at that. So the comparison of the order of 5 model with the order 10 model we do see that the root mean squared error does, in fact, go down. But let's go ahead and visualize this clearly improved approximation.       </p>
+      <p>
+Is this truly better? One thing you may have noticed is that in the above example, we use the training data to calculate our error measure. Let me show you that. So we're calculating using train x all throughout. And is that truly what we want to do? Is that what we're trying to measure? Let's discuss the difference between a training set and a testing set, and then why we want to use one of them in particular to evaluate our model.       </p>
+      <p>
+When we use the training data to calculate the error, it does tell us about the approximation power, not necessarily how well our model generalizes and makes predictions. We need a way to test that performance on data it hasn't seen before. So typically what we do is split our data and hold out some of it. We call it our test set. You will see different percentages of the data held out. Typically you'll see a bigger chunk of the data used for training-- for example, 80% of the training data and then 20% held out for testing.       </p>
+      <p>
+Also, you will hear about ways to split the data into training, validation, and a test set. But we'll start with these two for now. Let's go ahead and execute this cell, recalculating those root means squared errors for order 5 and order 10 using our test set. This did provide some insights. Once we recalculate our error measure using the test sets, we do see that more is not necessarily better. When we went in from order 5 to order 10, our root mean squared error actually went up from 3.2 to 4.8.       </p>
+      <p>
+This example naturally leads us into the next topic. There's terms called overfitting and underfitting. When we add more features, we risk overfitting our model, or fitting to the noise. This does not allow our machine learning algorithm to generalize well on data it hasn't seen before. This next example will go through a range of orders. This loop will go through orders 1 through 12, recalculate the linear regression using ordinary least squares, and calculate a new root mean squared error for each of those.       </p>
+      <p>
+Let's go ahead and execute that cell to get that information and then plot the results. So when we visualize these examples, what we're seeing here is as our model increases, as we add more features, the blue line, which is the RMSE on the test data at about order 3 meets it's lowers point, and that's here. And you see that there's this natural tendency or this natural trend upward, which means our root means squared error is getting worse as we increase our orders.       </p>
+      <p>
+So more is not necessarily better when we're measuring the generalization or the predictive power of our trained model. We can also visualize each of the fits that are going on behind the scenes that created that above bathtub plot. Let's execute that cell and look at each individual. And as you can see, order 1 is not a very good fit line. And then all the way down here when we start getting into these higher orders, then we're-- again, we're fitting to the noise. We're fitting too true to each individual data observation and don't have a model that can work well with data it hasn't seen before.       </p>
+      <p>
+We'll continue discussing more techniques for evaluating our model. Let's wrap up today's discussion with bias and variance. Ultimately, to minimize the error measure, we want to, at the same time, minimize the bias and the variance. There's this trade-off, however. So we should find that sweet spot that best represents our problem. Let me go ahead and execute this cell.       </p>
+      <p>
+First I'd like to mention that variance is the error from the sensitivity of fluctuations in the training set. In other words, it's the variation of our estimated f of x over different training sets. So this next example is to visualize a difference in variance as we increase the number of features. Let's execute those cells and look at these. What we have here is two different sets of training examples-- one set in black dots and one set in green dots.       </p>
+      <p>
+We've performed our linear regression on both of those data sets and see that the first plot, the variance of the order one model, is much smaller than the variance of the order six model. These lines are very closely related. And the line here in our higher order model is not quite a good match. So as we increased and added more features, we actually reduced the quality of our model and increased that variance.       </p>
+      <p>
+Bias is the perceived or one-sided error from erroneous assumptions or measures-- the error that's introduced by the model itself. In other words, it's the difference between the absolute best fit your model can do and the true f of x. Wrapping this all together, we're going to create another plot, which is the result that you saw at the very beginning of these slides. Let me execute this cell and get that plot up here so we can look.       </p>
+      <p>
+So what we'll find is that as the model complexity increases and we add features, we do reduce that bias. However, we increase the variance and risk overfitting our model. So when we talk about that sweet spot, we want to make sure that our model can generalize well on new, unseen data. We'll continue from here next time.       </p>
+      <p>
+[MUSIC PLAYING]       </p>
+      <p>
+      </p>
+    </div>
+  </body>
+</html>

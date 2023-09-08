@@ -1,0 +1,97 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/omml/2004/12/core" xmlns:ve="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o12="http://schemas.microsoft.com/office/2004/7/core" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/3/wordprocessingDrawing" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/3/main" xmlns="http://www.w3.org/TR/REC-html40">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <head>
+    <style>style</style>
+  </head>
+  <body>
+    <div class="Section1">
+      <p>
+        <b>
+          <u>
+            <span style="font-size:20.0pt">CSCI303 | Data Acquisition</span>
+          </u>
+        </b>
+      </p>
+      <p>
+      </p>
+      <p>
+We have, so far, seen examples using synthetic data. And our first data acquisition experiment was using the Boston housing data set that we were able to load in using a simple command in the scikit-learn library. What we want to do today is go through the examples of acquiring data from various sources, more like what you would see in the real world.       </p>
+      <p>
+This includes importing text files, CSV files, also JSON files. We will continue using pandas, and you'll see how we can load data in manually or straight into a data frame. So let's get started.       </p>
+      <p>
+As you can see, we have our libraries included for what we need. So first, let's look at some raw Python text files and how easy it is to read those in. When you downloaded the materials for this set discussion slides, there were several sample data files also provided. Make sure those files are located in the same directory as this Jupyter Notebook file and called as described here. I'm going to highlight that with my mouse so you can see that.       </p>
+      <p>
+The directory should be called 11 dash acquisition dash files. If you call this directory something else, it's no problem. You'll just have to change the code a little bit down below, because we hard code those file names. The first thing we're going to do here is we're going to use a system command called cat just to take a peek at what's included in the text file. One thing to highlight is this exclamation mark here right before the cat command. And that tells this Python Jupyter Notebook cell that we want to go out and use a system-level command.       </p>
+      <p>
+This is one way to read the text file. Let's go ahead and show you an example of that. I'm going to highlight that. And we can say, f equals open and give the path of the name of the file, as I've highlighted here with my mouse. And then once we've done that, we can loop through and read it one line at a time. When we print it, we can tell it, n equals space. And all that's telling Python and Jupyter Notebook, is to ignore that end of line character.       </p>
+      <p>
+And if you want to see what it's really doing, let me take that out and re-execute that cell. See, we have all these unnecessary extra spaces. That's all that means. Go ahead and put that back in. Python has a lot of tools that let us easily parse the files. For example, using the string split command is very handy. Let me execute this cell. We could use this same command, f equals open, and give it the path and file name. We can still loop through it one line at a time.       </p>
+      <p>
+But using the line dot split, it'll take a string that has been read in from the file and split it into a list of items. And you will see the result down below. You can do things that are more complicated. However, we want to keep moving forward with the power of pandas.       </p>
+      <p>
+So this next example is doing the same manual open and using the split command, but then we can turn around and put that data into a data frame. As you can see, it turned out quite nice. But we did have to specify that we wanted to use the data in our data frame and tell it what columns to use.       </p>
+      <p>
+I'm sure you're thinking that there must be an easy way to do it that's a little bit more Python-ic than reading it one line at a time and then looping through all of that. I'm glad you said that. Let's look at some additional examples.       </p>
+      <p>
+We have a panda's command called read table. It works for many, many file formats. And if you want more information, remember, you can use the help command. You could use this question mark, if you execute that, and it's going to give you all of this support information down below. Or you can simply look at your Python documentation online.       </p>
+      <p>
+We don't need to do much for this. What we can do, when they execute this cell, you can see in one line of code, no looping necessary, you can tell it the path and the name of our sample file. And then we can say, read table. And it will go in there and read the columns into our data frame very nicely.       </p>
+      <p>
+Now, this worked really well, because if you remember when we did the cat command on this text file, we saw that it does have headers. And I can scroll up to show you that. There. So we have name, age, salary, and hired. So this is a very nicely formatted-- it has tabs in between it. And so it makes it very easy to go ahead and use that panda's read table to bring in that data.       </p>
+      <p>
+Well, what if our table or our text file doesn't have a header file? Well, that's OK. We can just specify what pandas is looking for. Take note that this is a different file that we're looking at. But it has no headers. And we can say, headers equals none. And what that does, is it tells the read table command that the first row of data is actual data. They're not headers, and not to skip those.       </p>
+      <p>
+And then what we can do with the names equal, is we can go ahead and provide those header names. So that's another way that you can accomplish the same task if your file does not have headers. No need to go in and manually massage your raw text file. There's other ways to manipulate the data when you're reading it.       </p>
+      <p>
+For example, what if you want to make the first column of data the actual indexes or the labels? You can specify that in two different ways. Index column equals zero, so you can specify the index of that column. Or you can actually tell it what column name you want to use for that. So that was two different ways to do the same thing. There's further parameters and customizations that you can make.       </p>
+      <p>
+So for example, if you want to go out and look at your data, and maybe it's not separated by tabs, you can specify what it is separated by using the sep equals. I'm going to highlight that with my mouse. And tell it what separator it's looking for. And then this command it's using some kind of arbitrary length for whitespace separation. Suppose you have commas as separators or some other special character, you can specify that here. And then we have this nice output.       </p>
+      <p>
+Maybe you don't want the whole thing. There's a couple of commands that you can use to specify what rows of data to read in. Or possibly, you want to skip certain rows of data. So there's two commands there as samples of how to do that.       </p>
+      <p>
+On thing that is commonly experienced when pandas reads this information in, is it has to make some assumptions about the type of data that is included. For example, when I execute this cell, and we read in our text file, it's going to show the type. Object-- for object object is what we're looking at here. And it has to make some inference or some assumptions about the type of data that it's looking at.       </p>
+      <p>
+It did a good job on name, that it thinks it's a string, and also an age, that it knows it's an int 64, a numeric. But it made some mistakes in salary, because there was a comma included. And it didn't think it was an actual number. It thought it was a string. And then a date hired is another problem. It thinks it's a string.       </p>
+      <p>
+If you want to do any kind of mathematical operations or comparisons with these items, it's best to get it into the proper format. So let's show you a couple of examples. And hopefully, you're not thinking you have to go change your raw text file. We can tell Python exactly what to do. And so this thousands equals, and then a comma, tells the Python, or the pandas read table command, that when it sees a comma in our data that it actually is a numeric or a dollar amount.       </p>
+      <p>
+The next thing you could do is you could tell it what to do with your dates. So this example says, parse dates equals hired. What this is telling the read table command is that there is a column called hired, and that's an actual date. So then when we look at the info again using this df 11 dot info, we can see that it now understands that hired is a date, salary is an integer as well as age. And then name is still a string, of course.       </p>
+      <p>
+So now, our display might look a little different. But it's great, because we can now do mathematical operations and comparisons with our dates and our salaries as well as our age. There's a lot of data files out there that are going to be in a CSV or a comma separated values format. And this is no problem at all.       </p>
+      <p>
+There's two ways that you can handle it. So let's first take a little peek using that system level cat command again. And we see that our data is formatted nicely. It's all common separated. One thing that you might notice is that the salary data no longer has that comma in it, because it's comma separated values. It would think it was two different values. But it means that when we read that in, we won't have to say that thousands equal comma. So it knows to handle that as a numeric, it will already understand that that's a number.       </p>
+      <p>
+But as you will see in a minute, we still have to handle that date. So we still specify parse dates equals hired as highlighted here with my mouse. And then we get our same data read in in a very nice format.       </p>
+      <p>
+The last data format that I wanted to discuss today and wrap up our discussion is this JSON file. This is a popular format and can be thought of a little bit like a dictionary where it has keys and values. There is a Python library that can handle these types of files. So I'm going to show you an example.       </p>
+      <p>
+First, we're going to create a JSON file and play with how we can put that into a data frame. We might get unexpected behavior, but there's some things we can do. Then we'll go through a couple of examples of how to properly create that dictionary into a panda's data frame. And then we'll wrap up with some examples of reading in our JSON file.       </p>
+      <p>
+So first, let's pull in that import important JSON. We're going to import a library that can handle these JSON objects. We're going to create a string, s, and put some information in there and then call our loads. So if we look at this obj, or this object file, again, it's going to print out kind of looking like a dictionary. But there's going to be some strange result when we go to look at this with the value at the key pets is actually a list of dictionaries.       </p>
+      <p>
+And so we're not really sure how panda's data frame is going to work with that. So let's look at that example. So what we've done here, if we take that JSON object, OBJ, and just stick it into a data frame. So let's see what it looks like. Well, it matches what the JSON file looked like, or the JSON object. But it's not exactly in a format that is useful when we want to do our machine learning or use it for our data science experiments.       </p>
+      <p>
+So what we want to do, is we want to handle this a little differently. Python and Pandas and dictionaries, they all play nice if they're formatted properly. So let's show you two different ways to properly format and populate that dictionary so it goes nicely into a data frame. So we're going to switch gears for just a second.       </p>
+      <p>
+So this is one way to where we have our keys are going to be the column names of our dictionary. And then the values is that list of items that are going to populate those columns. We put that into a dictionary and printed that out. It looks very nice.       </p>
+      <p>
+The second way is we can actually manually specify for each key and each value how we want the dictionary to be formatted and then put that into a data frame. That also looks quite nice. One thing you might notice is, see how we have age, hired, name, and salary? Actually, it alphabetized our columns. And that's no problem, for one of two reasons.       </p>
+      <p>
+One is we don't have to actually index and access these columns by number. We don't need to know where they exist. We can access them by name. Or if we do want to reorder that, there's a command for that. We want it to visualize or print out how we want it to be expected. So we can reorder them by telling it what we want the columns to be named. And it will restore or keep that order.       </p>
+      <p>
+So this is another way that you could do it. So let's go ahead and tell it we want age, salary, and hired to be our column names. And then inside of that we can specify, in dictionary notation, what we want those values to be for each row.       </p>
+      <p>
+Back to how this relates to the JSON file. We'll wrap up with an example of how to read directly from a JSON file into a panda's data frame. We may still have to do that reordering once it's in, but that's easy enough. So here's an example of how to do that.       </p>
+      <p>
+Remember, using our system-level cat command, we can take a peek at that. We can load that in using read JSON. Remember, we had read table, read CSV, and now we have read JSON. We tell it that we have a sample JSON file that we've provided, JSON dot JSON. And this is what it's going to look like once we put it into a panda's data frame.       </p>
+      <p>
+Here's another example when we can actually specify how to handle that date. It turned out really nice. But we do notice that there's a strange ordering. And we can very easily redo that ordering. So it's no problem at all. And here's the example where age, hired, name, and salary, we actually wanted to reorder that.       </p>
+      <p>
+So remember, no matter how your data is stored, there is most likely a way to read it in conveniently using one of these Python read commands. So whether it's read table, read CSV, or even this read JSON. Next time, we'll learn some basic SQL and how to use select statements to get data from a database.       </p>
+      <p>
+And if you don't know what that means, it's no problem. No experience necessary. We're going to start from ground zero, give you a sample database, and guess what? Store the results into a panda's data frame.       </p>
+      <p>
+      </p>
+    </div>
+  </body>
+</html>

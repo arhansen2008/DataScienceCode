@@ -1,0 +1,85 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/omml/2004/12/core" xmlns:ve="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o12="http://schemas.microsoft.com/office/2004/7/core" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/3/wordprocessingDrawing" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/3/main" xmlns="http://www.w3.org/TR/REC-html40">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <head>
+    <style>style</style>
+  </head>
+  <body>
+    <div class="Section1">
+      <p>
+        <b>
+          <u>
+            <span style="font-size:20.0pt">CSCI303 | Scikit Learn Basics</span>
+          </u>
+        </b>
+      </p>
+      <p>
+      </p>
+      <p>
+The scikit-learn tool kit is a free online machine learning library based in the Python programming language. We will utilize this tool box heavily this semester. So we will go through an overview today. Recall, we've discussed and implemented a linear regression algorithm previous to this discussion. This time, we will run through a workflow and a practical example of performing linear regression again. But this time, we'll utilize the library functions from scikit-learn.       </p>
+      <p>
+This will give you the opportunity to compare and contrast and, hopefully, gain an appreciation for what's going on under the hood when you program the solution manually versus just using a black box library call. We will go over the basic usage of this package. You can access and get information on the library by going to scikit-learn.org as I have done.       </p>
+      <p>
+As you can see, the site is vast and has all these different categories for you to dig through. For today though, we're going to focus on the library for linear regression. To get to where we're going to work, there are links provided throughout the lecture slides. But for now, I wanted to show you that if you wanted to supervised learning for regression, and clicked on ordinary least squares, there's a lot of information about how that compares and contrasts to using the gradient descent.       </p>
+      <p>
+And then if you click here, and it says linear regression, then it's going to bring up all of the parameters that are available through the linear regression model object. For now, I just wanted to show you how to find it on scikit-learn. Let's go ahead and get back to our slides so that we can get through the information one step at a time.       </p>
+      <p>
+As you can see, we've imported some libraries, the NumPy library and the plotting library as we've done before. We've introduced another library for the sk learn on this line of code here. And we've used our aliasing to call that sk. So when we access those libraries down below, we will simply need that sk. We're going to run through our example using the example problem from before when we did our linear regression. So it should look familiar.       </p>
+      <p>
+So let's get going with our example problem. We have our functions to find f of x like we've utilized before. And also, the other functions that we're going to utilize in this example, is we have one called sample. And that's just a convenience function for generating our samples for our synthetic data. We also have our phi function that I've highlighted here with my mouse, as we've used before, to generate powers of x to build our design matrix. I'll reference that again in a little bit.       </p>
+      <p>
+An outline for today's discussion follows this regression workflow. All of these items will walk you through from gathering your samples to doing some preprocessing, training your model, evaluating its predictive power, as well as visualizing the results. So first, let's get those training samples, or data observations.       </p>
+      <p>
+Throughout the rest of this week, we will practice different ways of obtaining samples that are more like real world data sets. That could be through survey data, data that you may have collected in the field. Maybe it's data that's already been collected and stored in a text file or a database. Today, we will continue our examples using synthetic data.       </p>
+      <p>
+So the first thing that we're going to do is create that data. We're going to utilize the sample function that we wrote above to create our data, or our x values, and our targets, or our y values from the sample function. And what this will do, is it will return some random data samples within a certain interval. Let's go ahead and execute these cells so that we're ready to go. Let's go back up. I got so excited talking I forgot to execute that cell. So we'll execute these cells with our functions. There.       </p>
+      <p>
+So now we have 40 data observations. As you can see, we have n equals 40. We caught our sample function. So we've populated data, and we populated target. So now, we're ready to keep going and create that initial visualization. Remember, in our visualization practice, we looked at a scatter plot that was used as a popular way of showing a correlation between two pairs of inputs. And we have data rx, which is currently a one column or a vector. We have our targets, which will stay a one column vector.       </p>
+      <p>
+And we can see that there really is nonlinearity here. So possibly, we need more features to represent our data set. So if you recall how we expanded x to have multiple features last time, we wanted to call that phi function. So let's look at how that works. So we have our phi function that takes in x and then expands it into the number of features that's represented by the second parameter.       </p>
+      <p>
+Here, we've sent in a five. And as you can see, when we use our shape command, we have 40 rows and five columns. That represents 40 data observations and five features. Now that we have x setup, and we have our targets in y, we can begin using a scikit-learn tool box. The first thing we do there is called initializing a model object. This object will be used throughout the rest of the steps.       </p>
+      <p>
+The first thing we're going to do is pull in the proper library for linear regression. In this line here, it says lr equals-- highlight that for you-- linear regression. And what that's doing, is it's going to create an object called lr that is ready to learn and hold the information moving forward. As a reminder, we're setting this fit intercept equals false, because we've already handled that in our phi function.       </p>
+      <p>
+If you're not familiar with what default parameters or default settings are, you can look that up in the documentation. We've provided links on the slides. And we've visited it once before, so I'm going to go ahead and click on that link as a reminder. At the very top here, you'll see all of the parameters that you can pass into the function. And I'm going to highlight the piece that says fit intercept equals true.       </p>
+      <p>
+And what that tells Python is that, if no value is provided, it will set that parameter called fit intercept to be true. In our code, we would like to go ahead and override that default by setting it to false. OK. So the next thing that we're going to do is split our data into a training set and a test set. There's a nice function in the library for this. So again, we'll have to pull in the proper library here. Go ahead and execute that so I don't forget       </p>
+      <p>
+And also, one thing I wanted to notice is that it is returning values for different sets of data. It has training and test data for rx and training and test sets for our targets or our y. The parameters that we're sending into the function, I'm going to go ahead and highlight those since there's a lot of code on the screen, is we're going to to send in our phi or our design matrix. We also have referenced this as x. Also target, and that's our y vector.       </p>
+      <p>
+The last parameter you'll see there says test size equals 0.5. And that's specifying the amount of data that we'd like to hold out for testing. Typically, you'll see this as 0.5 or less. And you can adjust that parameter as you tune your model. The default for test size is set to 0.25. Let's keep going here.       </p>
+      <p>
+So what we're going to do, is we're going to execute that. Let's use that shape command to print out the dimensions of the four sets of data now to make sure they're the size that we expect it to be. Remember, we started with 40 data observations and told it to hold out 0.5 or basically split it in half. So this looks right.       </p>
+      <p>
+We can also plot the data. This diagram shows our training data in black dots and our test data in red dots. Notice that we're using slicing to grab all of the rows in just column one, highlighted here. How slicing works is that colon says, I want all of, and then the comma one says what column that you're looking for.       </p>
+      <p>
+The next thing we're going to do is we're going to train our model. We use that same model object called lr to train, using this dot fit command. That method wants us to send in our training data. And remember, since we are doing supervised machine learning, we send in both x and y.       </p>
+      <p>
+Once our model is trained, and it knows what our world looks like, we can utilize that trained model to make predictions. We create that y hat. Recall, that is the estimated line of fit. And it's working with observations it has not seen before. Let's go ahead and execute that and look at that. This line that we've plotted is y hat through our actual data values here in black dots. It looks like we have a decent fit.       </p>
+      <p>
+Since we know our ground truth or actual line of fit, why don't we utilize that information and display that on the same plot so we can do a comparison. This new plot has the true line in blue, the predicted line in red, and just our training samples in black dots. It looks like we're not too far off, visually. But let's go ahead and evaluate the mean squared error and the root mean squared error to compare that with our visual results.       </p>
+      <p>
+Looking at the rmse, this is the difference between the actual and the predicted line. We see a 5.49. Now, knowing that the lower this error value is, the better, it's possible that there's room for improvement. So let's look at some different strategies to refine that model. Now, sometimes we think more is better. And sometimes it is. But we don't want it to add so much that we avoid over fitting our model.       </p>
+      <p>
+So let's go ahead and do some experiments and run through some different examples of different orders. Possibly, we need a higher order model to represent this problem. The last time we used order five equation. So we're going to repeat this experiment and go all the way up to powers of 12.       </p>
+      <p>
+As you can see, now that we've utilized our phi function in this line of code and told it that we wanted 12 features, we had to repeat our train test split. And now, when we print out our phi.shape and look at that on the screen, we do have a 40 by 12. 40 data observations, and we have 12 features. And then what we can do in this line of code, it's just an example of showing you the power of slicing can be used to not only specify what rows and columns you want, but we can use the for loop to go through. In one iterative nature, we can go through all the different orders and rerun our experiment. So I'll show you how we do that in the code below.       </p>
+      <p>
+So if you see the loop that we've created here, it's going to go through all of the orders and the range from two stopping when we get to 13, so from 2 to 12. And it's going to-- for p in orders. It's going to go through this range. The first iteration of this loop, and I'll highlight this set of code that is repeated, p will take on the value within that range. So first, it will be order two, order three, and then, again, all the way up to 12.       </p>
+      <p>
+And if you see, we are doing lr dot fit in the first line. So we're training our model with that order. We're going to calculate the mean squared error using our dot predict and then the root mean squared error. And then the dot append is, we are going to append that into a list that we're calling rmse's. That's information we're going to utilize to plot a comparative diagram.       </p>
+      <p>
+As you can see in this diagram, we plot in the x-axis across the bottom are different orders from 2 to 12. And we're going to compare that against the y-axis that is our root mean squared error values. We've also highlighted in red where the root mean squared error is the lowest. And it looks like on this diagram it would be at order 3.       </p>
+      <p>
+There's another way that you could evaluate your model. The below last four cells is going to show a quick experiment of repeating this. So when we look at the scikit-learn library, there's a function called dot score. Now, this metric is different depending on which algorithm that you're using. For linear regression, the dot square returns the coefficient of determination or r squared.       </p>
+      <p>
+If you're ever not sure, you can always return to the documentation to find out what metric is returned from the dot score function. These experiments will repeat. We'll do a dot fit using slicing to get just those first five features from our data set so we can compare the results appropriately. We can do the dot score on that and see that we have a 0.87. And again, that is the r squared term.       </p>
+      <p>
+What we know, is that for this metric, the best possible score is a 1.0. Although you can have negative values, we do look at those positive values or those values closer to 1 as a great result. This one looks quite good at 0.87. We can also loop through again-- let me show this to you. And go through all of those orders from 2 to 12 again and repeat this experiment. But this time, on the y-axis, we're going to output that coefficient of determination, or that r squared that is returned from the lr dot score.       </p>
+      <p>
+In this experiment, we can see that we've got 0.88 returned at order four. That's not too bad. That was a really good walkthrough of using the powerful free online machine learning tool box called scikit-learn. We also repeated our linear regression using the steps in our workflow and got pretty good results at order three and order four. One experiment that you could conduct after we are done talking today is recall.       </p>
+      <p>
+We used the train test split of 0.5. What if we wanted to change that maybe to 0.3, or use that default value of 0.25? You could change that and rerun our experiments. Do you think we'd get a better result? I'll be curious to find out. And we'll talk to you next time.       </p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/omml/2004/12/core" xmlns:ve="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o12="http://schemas.microsoft.com/office/2004/7/core" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/3/wordprocessingDrawing" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/3/main" xmlns="http://www.w3.org/TR/REC-html40">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <head>
+    <style>style</style>
+  </head>
+  <body>
+    <div class="Section1">
+      <p>
+        <b>
+          <u>
+            <span style="font-size:20.0pt">CSCI303 | Course Overview</span>
+          </u>
+        </b>
+      </p>
+      <p>
+      </p>
+      <p>
+Hi. And welcome to Introduction to Data Science. What we're going to do today is, we're going to walk through and make a quick introduction to the course so you know how to navigate the site and what's expected. For the next eight weeks, we're going to work together to learn and practice the skills you need to launch you into your Data Science journey.       </p>
+      <p>
+We have broken it down into eight weeks, or a modular design, for you. Here on the Home page, you'll see that we have the first four weeks shown. And on the bottom here, we have the second four weeks mapped out.       </p>
+      <p>
+What we're going to do is, the first week is, we're going to start with an introduction to data science and learning the Python programming language. Then in week two, we go into visualization techniques. And we keep moving forward into week three, where we explore different sources of data and practice the several types of data acquisition tools. We then wrap up the first half of the course with several preprocessing techniques.       </p>
+      <p>
+Weeks five, six, seven, and eight, we begin our series of mapping the appropriate machine learning algorithm to the problem at hand and performing evaluation to determine how well our model generalizes. The last week will focus on tightening up that semester project. This project allows you to practice the techniques we have learned in class, possibly explore new algorithms that you'd like to research, all while using domain-specific data in your field of study where, of course, using one of the sample data sets that we provide. And we'll work with you individually to get that going.       </p>
+      <p>
+At the very bottom of the Home page, you'll see my contact information. There's a few ways to contact me. You can email me through Canvas if you look at the left here, and you can click on your inbox. Or you can email me directly through my Mines email address. There's also a link to my Zoom Room here on the bottom, where we'll be holding all office hours throughout the semester.       </p>
+      <p>
+The other part of the website I'd like you to get very familiar with is the Modules section. We'll also explore the items in the modules for at least week one today so that you know what's expected. Let's go ahead and dig into this a little bit more.       </p>
+      <p>
+The first thing I'd like to do is to click the Start Here. The Start Here is going to navigate you to an overview of the materials and what's expected, including a welcome to the course, information about the learning outcomes, as well as a link to the syllabus. You'll see here, I'm circling with my mouse, that there's a link to the PDF version of the syllabus and information here online on Canvas.       </p>
+      <p>
+I've highlighted here on Modules again, just to say that we will use Modules quite heavily throughout this course, because it's a really nice way to organize our information so you can stay on task. There's also information about how to notify us, how to add a profile picture and set up your Canvas page, if you don't already know how to do that, and then information about our general question and answer board.       </p>
+      <p>
+And then also it mentions Piazza that we'll be using for questions and answers. That's a really good site to not only utilize to contact myself and ask questions as a group, but also your peers can help answer questions as well. It's a very nice interactive approach to build community in an online course.       </p>
+      <p>
+I'm going to press the Next button. You'll go over this information-- course basics, how the assignments are structured. Also in center here, you'll see that we're using a free open source textbook called Python Data Science Handbook that's available here as a PDF file as well as an online GitHub repo.       </p>
+      <p>
+Jupiter Notebooks is an interactive programming environment that we'll be utilizing for the course. This is really handy so you can follow along on the slides during our discussion, as well as do programming and experiment with the code snippets that are provided. All your projects will also be in Jupiter Notebook. So take some time to click on these links and learn more about Jupiter Notebooks, because one of your assignments is going to be setting up Jupiter Notebooks so you can follow along. And here's a link to that information here on the bottom of the page.       </p>
+      <p>
+Now let's go ahead and hit that Next button another time. This is communication policies, where to find announcements, and again, discussion forums, which I mentioned are a great way to have that sense of community in an online course. And netiquette, dos and don'ts of doing an online course.       </p>
+      <p>
+The last page here I hit the Next button one more time. And we have our grading policy-- so I don't do pluses and minuses in my courses. So you'll see that an A is a 90 to 100 scale, B is 80 to 89, et cetera-- how late submissions are handled, absentee policy, and academic integrity, which is very important. When you're all done with that information-- again, please review that very carefully-- you'll be asked to do a simple participation quiz and orientation. And it's going to ask you questions about what you just reviewed.       </p>
+      <p>
+And then, this is one of my favorite parts. This is introduce yourself. This is a way for us to get to know each other and also for you to give me information about your expectations of the course.       </p>
+      <p>
+Back to the Modules button. So let's press that link and look at what we have. So the first set of information that you're going to be looking at is the student resources. And this is where we have some information that you will want to utilize throughout the course. We have the PDF version of the textbook. We have the online link to the GitHub repo for the textbook, as well as some working files.       </p>
+      <p>
+And what you'll find is setting up Jupiter Notebooks is a very important resource. We have a link here to domain-specific data sets that will be available as we start looking at your semester project, as well as another link to my Zoom Room and instructions if you're new to using Zoom. The Getting Started information here is what you will find when you hit that Start Here button on the main Home page-- and we walked through this information just a few minutes ago-- as well as the quiz and the introduce yourself discussion.       </p>
+      <p>
+One thing I want to highlight is how the modules are going to be set up. This information will be available as soon as you finish the introduce yourself stuff in the Getting Started section. So week one is set up. And you're going to have an overview each week as well as readings and a discussion about the reading, instructional videos and materials, and then also an activity or an in-class type of assignment. I think I mentioned that earlier. These are smaller assignments that we'll be practicing the information that we covered in the instructional materials.       </p>
+      <p>
+You will also have modulars. So we have Intro to Data Science. And then we do our Intro to Python. The assignments or the larger assessments are going to be located at the bottom of the modules. And if we have a quiz that week, it'll be located here as well, along with your project. So that's a way to find all the information and a quick introduction of what we expect when you come to our online course.       </p>
+      <p>
+So again, welcome to Introduction to Data Science. And I look forward to taking this journey along with you. Please contact me as much as you need because we're going to do this together for your data science learning experience. Thank you so much. And I'll talk to you soon.       </p>
+      <p>
+[MUSIC PLAYING]       </p>
+      <p>
+      </p>
+    </div>
+  </body>
+</html>

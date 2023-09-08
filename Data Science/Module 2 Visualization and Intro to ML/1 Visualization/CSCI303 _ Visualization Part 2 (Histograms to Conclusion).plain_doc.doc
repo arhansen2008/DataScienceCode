@@ -1,0 +1,97 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/omml/2004/12/core" xmlns:ve="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o12="http://schemas.microsoft.com/office/2004/7/core" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/3/wordprocessingDrawing" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/3/main" xmlns="http://www.w3.org/TR/REC-html40">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <head>
+    <style>style</style>
+  </head>
+  <body>
+    <div class="Section1">
+      <p>
+        <b>
+          <u>
+            <span style="font-size:20.0pt">CSCI303 | Visualization Part 2 (Histograms to Conclusion)</span>
+          </u>
+        </b>
+      </p>
+      <p>
+      </p>
+      <p>
+So now what we want to do is we want to look at the histogram. The histogram is used when we're looking at a distribution of a particular data set. And the histograms are very simple to plot. And then there's some common things that you can change, like the number of bins to determine the granularity of your data to be plotted. So let's go ahead and show you an example of that.       </p>
+      <p>
+So what do we do in here? Well, this data doesn't look very exciting. Well, it looks kind of random. Doesn't it? Well, there is a reason, because we seeded on random number generator at the very top of the code. And then I said, import NumPy as np. And we're using that aliasing. So what we're doing here is we're using the NumPy library. We're accessing the random sublibrary. And then we're calling that rand function to give us random variables. And we're going to go and get 1,000 of them.       </p>
+      <p>
+So lots of data, random, and then we're just saying plt.hist. And those are the data points that we've grabbed. It's that easy. So the histogram, boom, one line of code. And you just tell it the data. And then you can set the title, and then you can show it.       </p>
+      <p>
+So let's go ahead and do another data set. So this one here was just general random data. This next one is-- maybe we want to get data that's going to be a little bit more normally distributed. So instead of accessing the NumPy, just the random library, we want to grab some normal data. And we want the same number of data points. And then, again, we still do plt.hist. And then we set a title.       </p>
+      <p>
+So the data looks a little bit more normal, because it is. And then what we can do, is we can-- There we go. So what we can do is we can change the number of bins. So this last parameter here will change the number of bins from the default to 100. And so we get just a nicer granularity here of our data, although it's the same data.       </p>
+      <p>
+So here's another example here, there, to where we can normalize this data. So let's keep going on our samples. So we can get another one here. There, let's put it all together. There we go. So we're plotting our data in our histogram. We have still our normal data. We've specified that we want 100 bins.       </p>
+      <p>
+And then also what we want to do, is we want to plot that line on there and get our normal distribution line. And it looks really nice on this normalized data, and then, again, using 100 bins. So that's a quick lesson on histograms and changing the number of bins and then adding that line of fit.       </p>
+      <p>
+So the next few examples are just-- I would say these are extra things, if you want to do these probability plots, to just dig a little bit deeper in looking at some analysis. So you have the probability plots. So here's an example of doing that with that same uniform data that we've generated. Let's go ahead and execute this next cell. So we'll get through some of these so we can get to the all-mighty line graph.       </p>
+      <p>
+All right. So here's another example there. And I'm going to execute this one. There. So we've just provided three different examples. So you can look at this probability plot. So you have one, two, and three. OK. So then we also have some box plots. So if you want to compare different distributions, you can do box plots. And let's use those same four-- fruit data that we generated above.       </p>
+      <p>
+And what we've done here is this ax dot set y lim. What we want to do is we want to set and have a comparable y-axis. So we want to set those limits to keep everything visually equal. So here's just one more example-- there-- to where we're setting that x limit. So like I said, there's all kinds of things you can do once you plot your data. You can set titles. You can work with the x and y labels.       </p>
+      <p>
+And then I just showed a couple of examples while we were looking at these box plots is that you can-- here, let me scroll that up-- is that you can also set the y limit. And then you can set the x limit. So there's a lot of things you can do. I call those fine tuning your graphs.       </p>
+      <p>
+OK. So the last big chart that I wanted to talk about is the line chart. The line chart is utilized a lot, almost as much as the scatter plot. And the line chart is used when you want to compare data over time, or continuous data. So let's go ahead and execute a couple of cells that's just setting up some random data for us.       </p>
+      <p>
+So the first plot that we're going to show here is if you do plt.plot and just give it some data. So let me highlight that line of code. So all we're doing here is we're plotting our data. It's over time. We want to change the x ticks. And so the x ticks are these lines across the bottom. And so instead of letting Python decide where to put the ticks and where to put the tick labels-- we can also change those-- we want to tell it what those ticks should be.       </p>
+      <p>
+This next one is just an example of setting the title. The x label and the y label. And then, also, we're setting that y limit again. So we limit the values on the y-axis. So here's another example for a line chart. Say you want to plot a lot of different lines on one plot. Sometimes, it's hard to follow what's going on. But we can do a nice comparison here of putting all of the lines on one graph.       </p>
+      <p>
+Also, in project number two, one of your tasks is to take a chart such as this, and then divide it into four subgraphs. So you can stack four charts on top of each other, and then plot the data separately. And it provides a very clear representation for comparison. Sometimes, it's better than putting them all on one plot like this.       </p>
+      <p>
+But since we did, let's explain it. So remember, I said that once you do the plot.show it'll send it to the screen. Well, this is a great example. So we're going to plot year one. We're going to plot year two. We're going to plot year three. We're going to set some information, some titles, some labels. We're going to mess with the y limits. And then we're going to do a plt.show and push that to the screen. And so all of those lines will then show up on the same graph. And we have a legend. OK.       </p>
+      <p>
+So what we want to do is let's show you another example. Isn't this nice? We can look at this graph and talk about it. Hopefully, you're like, hey, that's a pie chart. And this is just a little example-- a little teaser of what you're going to do in the project. So you can use multiple panels or these subplots to plot this for those different lines, and then you can do it an average. But it gives, again, a good visual scale.       </p>
+      <p>
+OK. So let's move on. I executed this cell. I wanted to make sure to mention that last little piece about the line charts. And then this is the good old pie chart. And I hesitate. What is this telling us? Well, not a whole lot. The pie chart is really handy when we're looking at parts of a hole. But without good descriptors, labels, and comparison, sometimes the pie chart will not give you the kind of representation that you're looking for.       </p>
+      <p>
+But it is handy when you are trying to just share parts of a whole or simple shares of a total, kind of idea. So we'll show you some examples in a minute of good charts and bad charts and where you might go astray trying to use a pie chart for you for something that's not parts of a whole. OK. So that is a quick little aside so I didn't forget to mention the good old pie chart.       </p>
+      <p>
+Choosing a good visualization. So this cell here has a link on it that will link you to this chart. This is a great representation of what you can do when you have certain data to display. So if you remember, we mentioned the scatter chart. So the scatter chart is over here in the land of the relationship charts. We also talked about-- what'd we talk about? Comparison charts. We talked about the bar chart horizontally, the column chart or the bar chart vertically, same idea.       </p>
+      <p>
+Also, we talked about the line chart. So looking at data over time or continuous data. Over here in the distribution area is you'll find the histograms. And that's what we're looking at. You'll see the scatter chart shows up again over there, but typically, it's used to look at a relationship. But all of these different charts have their time and place. And I provided this just as a reference for you so you can come back if you're really not sure what chart to use when you're trying to paint a certain picture or make a certain display.       </p>
+      <p>
+So I'll go ahead and close that out. Let me show you. It's linked from the slides here, and it's also linked from the instructional videos and materials page where you got this Jupyter Notebook. All right. Bad visualizations. Hmm. Sometimes, it's nice to know what other examples are and what not to do versus what to do. So let's just take one side here, and let's look at a couple of examples. And I'll leave the links for you so you can look at those on your own. But let's go ahead and look at a couple of examples.       </p>
+      <p>
+Now, the 27 worst charts of all time. That sounds pretty bad. Let's go ahead and look at-- I mean, the first one here, it says there's some pretty awful charts out there. But what you want to do when you look at a chart is you want to ask yourself, what story are we trying to tell? How are we trying to prove our conclusions? And also, you want to think about, what is your audience?       </p>
+      <p>
+So just for fun, I'm going to scroll through a couple. And we want to look at these. And you want to ask yourself, what do these colors? What is this chart trying to tell me? And if you have to look at it and try to figure that out, if it doesn't make sense quickly, then the visual is inappropriate for the message that you're trying to portray.       </p>
+      <p>
+This one is great. I think, when I say great, I mean it's a great example of-- it is attractive. The icons jump out at you. A lot of people know what these restaurants are. But what is it really trying to tell us? So it's kind of a little misleading. And so, although it's cute, they're using the logos, it's not painting an accurate picture of the story they're trying to tell.       </p>
+      <p>
+Yeah, I'll scroll through these. What is this even? It makes me hungry. But other than that, it's not really telling us a whole lot. Wow. Yeah. So scroll through these when time permits if you're looking for different examples. But I want to use our time wisely. And I'm going to go back to the slides. I really enjoy some of these.       </p>
+      <p>
+But it's kind of like, wow, what are we looking at? And you want to figure out-- I've said it a couple of times. But what are you trying to do? What is the story you're trying to tell? And then try to match your visual to that. And then I would say, as a final piece, is you want to just step back and think, wow, what is my boss, my advisor, or maybe my professor going to think when they look at this? Are they going to get, in a quick glance, the story that I'm trying to tell?       </p>
+      <p>
+The rest of these slides-- ah, let's take a breath. That was fun. The rest of these slides, or the cells, are going to show some improvements. And so I'll go through them pretty quickly so that you can see some different styles. These are the different styles that are available to use. And I'm going to say, OK, let's set that style. HTML has some of the cells kind of squashed, but all these are doing is set in different styles. So let's get to the exciting stuff. OK.       </p>
+      <p>
+So this is going to show us a custom style. So this custom style-- let me show you the line of code that's doing it. These are just kind of fun. Hopefully you've heard of xkcd. So I call them nerd comics. I really like them. But this is going to give you that xkcd style. And it's just going to give you different fonts, different line styles. So if that's the type of style that you need to paint your picture, that's an example of how to do that.       </p>
+      <p>
+Here's another one. Claims of supernatural powers. Yes, we have to entertain ourselves sometimes. But back to the serious is we want to just, in conclusion, reiterate we're telling a story. So we have the exploratory analysis. And a lot of that we did above is looking at in the preprocessing stage, how can we explore the data? How can we get some more insights about how well it's distributed or how well a couple of variables are correlated? And do that analysis.       </p>
+      <p>
+And then we also have the explanatory analysis. And this is what I keep mentioning is, remember who your audience is. And so if you can create that storyboard or that outline and make sure it flows nice and tells an accurate picture. Here's some notes if you want to create a storyboard, but you're not really sure where to go with it.       </p>
+      <p>
+Here's five steps that you can use. Establish contacts. What kind of visualization type are we looking for? How can we utilize that chart that we went through, or those different types, to be able to say, what kind of data do I have? And then how should I visualize this or display this? Remove the clutter and add focus. So what that's going to do is just tell you where to highlight things. Maybe you want bigger fonts for the titles, etc. You want to simplify it. You want to add some whitespace. And then just make sure it flows.       </p>
+      <p>
+So going through each of those individually is understanding your audience. Who are the stakeholders, the decision makers, etc. How are you proving those conclusions? That's really, really important. Again, selecting the appropriate visualizations, we've talked about this quite a lot. And those are the four main charts that we covered. Scatter, we did bar charts, and then histograms, and then line charts. That the order that we did them in.       </p>
+      <p>
+Remove clutter and add focus. So we want a chart title, but we don't need it to be the only thing people see. We don't need borders. We don't need any grid lines unless, for some reason, it's a critical piece. And then axis labels, they should be there. They should be descriptive. But they could be small enough that they don't detract from the story you're trying to tell.       </p>
+      <p>
+Simplifying the design. That is just-- we want to be very concise. We don't want like, you know, all capital letters or anything strange. But any kind of nice, clean improvement that you can use will simplify that design. And then, of course, make sure it flows. Make sure you're telling your story.       </p>
+      <p>
+I wanted to list a couple big takeaways. So you want to know the difference between exploratory and explanatory analysis and visualization. You want to use the appropriate style. And there's several examples of how to do that. And this says, do not use pie charts. I would say, do not use pie charts unless you're comparing parts of a whole. If it's appropriate, and you have certain percentages of a total, and you want to use a pie chart, absolutely go for it. But in general, it's very hard to get a clear picture using a pie chart on the data that we use in data science.       </p>
+      <p>
+The rest of these things are just other links, if you want to look at these different kinds of graphs and different kind of articles on subtleties of color and how you can utilize that to paint a different picture. Some different references, things that we've utilized throughout these slides, if you want different information. And then also, if you want interactivity, here's some examples on how to do that.       </p>
+      <p>
+You can use this mpld3 library. There's Bokeh, I believe it's spelled. That's another interactive library you can use. Here's some examples. And then also Tableau. So you can use it. It's a very complex tool. But there's a simple version of it that you can use for visualization, and it's free. So it's all public, though, so be careful. So if you want to use that, you can certainly do it.       </p>
+      <p>
+I wanted to provide examples here. We will not be utilizing that in class. So here are some tutorials, of course, and tools. In class, we're going to stick to using Matplotlib, because it's simple, it's easy, and the library's already built in. So that's it for visualization. Have fun with it. And remember, we're all storytellers.       </p>
+    </div>
+  </body>
+</html>

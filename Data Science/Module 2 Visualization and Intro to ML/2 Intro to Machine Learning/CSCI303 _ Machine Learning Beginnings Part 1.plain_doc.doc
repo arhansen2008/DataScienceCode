@@ -1,0 +1,101 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/omml/2004/12/core" xmlns:ve="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o12="http://schemas.microsoft.com/office/2004/7/core" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/3/wordprocessingDrawing" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/3/main" xmlns="http://www.w3.org/TR/REC-html40">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <head>
+    <style>style</style>
+  </head>
+  <body>
+    <div class="Section1">
+      <p>
+        <b>
+          <u>
+            <span style="font-size:20.0pt">CSCI303 | Machine Learning Beginnings Part 1</span>
+          </u>
+        </b>
+      </p>
+      <p>
+      </p>
+      <p>
+As a reminder, we're looking at the role of data as a lens through which to see the world. We're learning tools and new ideas and going to figure out how to determine which models would be best for each specific problem. For the next several weeks, we will go over different problems to solve. Since machine learning is not just a magical mystery box, we want to understand what's going on behind the hood. As we go through the learning materials, I'll be adding in new functionalities of Python to build on the basics that we just discovered.       </p>
+      <p>
+We left out a lot, though. So for example, we'll be learning how to define your own functions, more about the NumPy library, and also pandas. I've mentioned that before. We'll have an entire lecture on that one. The next task is to start learning a little bit more about what this machine learning is. So we'll go through an introduction to provide those basic concepts and terminology. We will utilize those through this course. We'll define the difference between supervised and unsupervised machine learning, explore linear regression concepts, and then tie it all together showing how to solve a sample linear regression model using mat plot library to visualize our results.       </p>
+      <p>
+Machine learning is building models of data. And from the reading in our book, we explored how this involves building mathematical models to help us understand that data. Once we have fit or trained our model on previously seen data, they can be used to predict and understand aspects of new, unseen data. With supervised learning, we can make predictions on our outputs based on our inputs-- in other words, find some function that maps x onto y.       </p>
+      <p>
+We achieve this due to the fact that we have label data, or known targets. Some sample supervised techniques that we will explore is regression, which we'll do today, and also classification. You might have heard of algorithms such as k nearest neighbors, logistic regression, and support vector machines. Unsupervised learning is different, in that it does not have labeled data or known targets. These models work by revealing hidden structure or finding patterns in data.       </p>
+      <p>
+A common technique we will investigate is called clustering, and a sample algorithm would be k means clustering. We start with linear regression. It's a common starting point, since it's a relatively simple and efficient algorithm, yet it's powerful, and the results of fitting a straight line to data are easy to interpret. The first time we introduce this, we'll be programming ourselves using the NumPy library. And we will visit this again when we introduce the scikit-learn tool box.       </p>
+      <p>
+Coding it ourselves will give us that appreciation for what's going on under the hood, and give us that finer granularity of tuning our model. We have a sample problem that we're going to solve just to wrap our brains around it. So our sample problem that we're going to walk through is, say you're working for a company and you have data that represents how much money they're spending in advertising-- whether it be TV, radio, newspaper-- and they want to figure out what their return on investment is so they can determine where to put more advertising dollars.       </p>
+      <p>
+We've been given label data of their total sales dollars, so we can model this problem using supervised machine learning. And since we have continuous outputs, we can say this problem can be solved using regression. This is versus classification that we'll learn later that has discrete valued output. So the terminology that we're going to cover and utilize throughout this semester, you also will find this similar terminology in literature.       </p>
+      <p>
+Inputs are represented or annotated using the x. This is a two-dimensional matrix of data. You'll also hear it called predictors, independent variables, or even features, where each column of data represents a feature and each row is a data observation or sample. Outputs are represented or annotated with a y and are in the form of a function for linear regression and a vector of discrete values for classification.       </p>
+      <p>
+You also will hear the terms response or dependent variables, and also targets. As we're training our model and using regression, we have this hidden function, where y equals f of x, plus some small amount of noise or random error. And once we have that, we can then make a prediction. We can do this prediction on previously unseen inputs or observations. And we call this result y hat.       </p>
+      <p>
+Notice the hat on y and f of x. And these indicate that they are approximated values. An approximation can be handled in various ways. Today we're going to talk about parametric approximation, where the approximated line of fit, or f of x hat, is found by choosing or estimating the values of theta so that f of x is close to y for our training examples.       </p>
+      <p>
+Breaking down this notation, we're going to rewrite it so that phi represents the vector of our x values and the theta vector is representing using a w, or we'll call that our weight vector. So expanding that out to n examples or data observations, we can build what we call our design matrix, or our capital phi. We also want to manipulate or build y so that it has a matching number of outputs for our target vector.       </p>
+      <p>
+So we've organized our inputs and our outputs. What we're interested in is a method for estimating the unknown parameters in our linear regression model. What we'll use for this example are the ordinary least squares-- in other words, finding a line with the optimal values or coefficients that best fits our historical data by reducing the error, thus minimizing the difference between f of x, which is our true line, and f of x hat.       </p>
+      <p>
+Since x and y are known, the variables we can optimize are these coefficients, and they are stored in our weight vector, w. Now that we have a overview of the linear regression, the terminology, and all the pieces and parts that make it work, I'm going to go through some of the Python code and step through a simulated problem. The first thing I wanted to discuss is the NumPy library. So it provides these different wrappers so you can use special linear algebra in a very easy manner.       </p>
+      <p>
+You can also work with multi-dimensional arrays of data. And that's what we have, especially when we're looking at that design matrix, or capital x. It's very flexible and it's very efficient. It has special mathematical operations that you can do directly on the columns and rows of data. In fact, it also has annotation and power to do matrix operations-- similar to Matlab, if you've used that in the past.       </p>
+      <p>
+The only con is that you want to be careful, because it does impose this container typing. What this means is, if you remember, we've talked about the list before. The list can store mixed types, whereas the NumPy array or the [INAUDIBLE] array will force all of the types to be the same. For the rest of this discussion we're going to generate a simulated regression problem. We're going to perform ordinary least squares. And then we're going to plot our results. So here we go.       </p>
+      <p>
+So step one, let's generate that problem. So what we're going to do is first we need a function to be our true line. So we're going to stick with polynomials so it's a simple example. We're going to model using this equation. So f of x equals 3 plus 0.5n minus n squared plus 0.15 n cubed. So we're going to visualize that function first and then what we'll do is we'll add in some noise.       </p>
+      <p>
+So let's go ahead and execute this cell here. So we can pull in that NumPy library. And if you recall, we did this as np, and that's that aliasing that we discussed previously. It just shortens the typing that we can do. Now what we're going to do is we're going to use that [INAUDIBLE] array to create some points for x. So we're going to look at that. And simply, we're doing the np.arrange.       </p>
+      <p>
+So we're going to go from negative 5 to 5. And we're going to say we want 0.1 in between those values. So it's going to create a range of values for us to use. And you might be asking yourself, how can I figure out what dimensionality I have? You can simply use the dot shape command and you can print that off to the screen. That comes in really handy if you're looking at lots of data and you don't want to count them by hand. So the output of the x.shape gives you this information.       </p>
+      <p>
+So here you have 100 observations or 100 rows of data. And then there's no value in the columnar data. And that is an implied 1 value. So now what we're going to do is we're going to create f of x. So if this function is simply an implementation of this function here that we said we were going to use for our simulated [INAUDIBLE] line.       </p>
+      <p>
+So now that we've calculated, that we can execute that cell and see what our y data looks like. Now we could simply do some math on that. And all the operations by default are going to be element wise. And there's different notation if we want to do vector operations. And that's the at symbol. I will point that out in a few cells when that comes into play.       </p>
+      <p>
+So let's go ahead and plot or function so we can look at it. We've discussed plotting in our visualization just before this. So we import our mat plot library as plt-- remember, we're using that aliasing-- and then we're simply going to plot x versus y. So we have our line. And it-- by default, we didn't specify what kind of markers or what kind of color. So we're letting Python do that for us.       </p>
+      <p>
+If we wanted it to be a different color, remember, we could just simply put in quotes that we'd like it to be a red line. So that's our line. So what do we want to do next? So we just talked about adding in this random noise. So let's go ahead and add that in so that we have more realistic data. Typically when you're collecting data out in the field or we've got data provided for us, there's going to be some noise. It's not going to fit perfectly on a line.       </p>
+      <p>
+So now what we want to do is we want to create this train x. So this is our training data. So we've changed the name of our notation a little bit. We want to pull in np.random and we want to tell it what kind of range of data that we want to create to add that noise. So let's put those together so that we can plug-in that noise into our function and get something that's going to stimulate more of a real-world situation.       </p>
+      <p>
+So if you look at this plot, we have our training datas in the black dots. And then we've added the randomness. So this is a little crazy to look at. But it's important for us to realize that when we get data that it's going to be quite noisy. So now what we want to do-- so let's execute this cell. So we have our data. We've added some noise. And we're going to plot that in black dots. That's this first line.       </p>
+      <p>
+Now what we're going to do is we're-- let's go back to that true line, so our true x and our y values, and we're going to do that in a blue line. So what we've done here is we now have a line of fit through some noisy data. Here's the shape function again if you want to go and look and say, well, I have this x data now. How many samples do I have? How many features do I have? So we can do train x.shape.       </p>
+      <p>
+And see here to indicate that we still have 20 observations that we're using for this part, but we still have just one feature or one column of data. So we're going to fix that in a second. OK, step one complete. We have an estimated line of fit. No, sorry-- a simulated line of fit and some simulated noisy data. We haven't done any estimation, right? We will do that next.       </p>
+      <p>
+So now what we're going to do is we're going to expand that x out to have multiple columns or multiple features. So what we're going to do is we're going to develop this design matrix or our capital phi. So what we're going to do is it says we're going to cheat and use polynomials of x. We're just going to give you a comprehension here to go ahead and expand that out. So remember, we have this 20 by 1 and we want to pull that out and we want to create multiple features. Let's execute this cell and then we'll talk about what it's doing.       </p>
+      <p>
+Perhaps we should add v.shape to show you that we've changed that from a 20 by 1-- so I'll leave that here, 20 by 1-- to a 20 by 6. So we now have a multidimensional array of data based on the incoming x values. So this comprehension, we've studied him briefly before. What we're doing is-- I want to make sure this makes sense. So remember, comprehensions, we read those somewhat backwards.       </p>
+      <p>
+So for p in range 6-- so what we want to do is we want to go from 0 to 5. And each time this loop executes, p will take on a new value. So the first time through, it's going to be a 0. And we're going to take our training data. And we're going to take it to the power of p. So the first time we go through then it sounds like we're making an identity matrix, because that's all going to be ones, which is fine. And then what we do is the next time through, p will hold the value of 1. So we'll train x to the power of 1.       </p>
+      <p>
+So we'll just bring that data in. So now we have the identity. We have the regular train x of the true values. And then the columns after that will be train x squared, train x cubed, train x to the fourth, and train x to the fifth to give us all of this data, et cetera. OK, so if you want more information, if that was a lot to wrap your brain around, here's a simple example. So we have a is a simple sequence of sequences-- basically rows and columns.       </p>
+      <p>
+And so we can create that looking at the annotation as we have our parentheses that are going to be part of the np.array creation or the constructor for that. And then we send it in a list of lists. So let's execute that. So that's going to be the result. And then what we did is turned around and then expanded that out. Just didn't want to make sure I took a sidestep on you.       </p>
+      <p>
+So one more step to finish up our ordinary least squares. So as a reminder, what is the point here? What are we trying to accomplish? What we're trying to do is find the best coefficient for our estimated line of fit to minimize that difference between our true line and our new predicted line. So that's what's going to be stored in w. And we're going to implement this function using this line of code here.       </p>
+      <p>
+So to unpack this line of code-- it's introducing some new notation. And I said I promised that we were going to do this at sign. So we're going to talk about that symbol. We're also going to talk about this dot t and what that means. And we also have introduced this dot inv. So looking at our formula here, we can see that w equals the inverse-- that's the inverse notation here-- of what? Of phi transposed times phi. So phi transposed is here. So that's the dot t notation. And then doing the dot product or our matrix multiplication, we use the at sign versus the star symbol that will do the element [INAUDIBLE]       </p>
+      <p>
+Then what we do is we have at phi t. So let's go ahead and look at that. So we're going to transpose here. And then we want to then bring in y. So then we say, at train y. So that's all that notation. So let's execute that cell and see what we have. Well, we have some coefficients here. And since we used ordinary least squares, we're going to assume that those are the best coefficients for our estimated line of fit.       </p>
+      <p>
+So not too bad. If we compare them, we can look and see that our true coefficients are 3, 0.5, negative 1, and 0.15. So as a reminder, we got that way up here with this original equation. I didn't want to lose you. There's a lot of new notation today. There's a lot of equations. So that's this equation here with those coefficients from this function.       </p>
+      <p>
+So let's finish up. So let's plot our results, celebrate, and then we will be done for the day. So let's go ahead and plot those results. So using this w, right, with those coefficients for our estimated minimization, we can now calculate y hat. And then we can plot. So this is going to say, OK, I would like to plot x versus y hat using a red line. Looks pretty good. It looks similar to the line that we plotted up here.       </p>
+      <p>
+So let me scroll. I don't want to move too fast. Here's our true line, remember, and our noisy training data. And now we have this line here. So how can we do this comparison? We can't just scroll up and down the slides. So let's go ahead and plot our data all on one plot. It'll provide for a much better representation using those visualization techniques that we've just learned. So what we're doing here is we're plotting x and y hat in a red line. So that's our estimated line of fit.       </p>
+      <p>
+X versus y-- so that's our true line of fit in the blue. And then we're going to throw in k dot-- black dots showing our noisy data. And so you can see that we're actually not too far off. So the difference between the red and the blue line, if you go up through, it's a pretty good fit. You might be asking yourself, is there a mathematical way to check ourselves?       </p>
+      <p>
+Well, guess what? There absolutely is. We will learn about that next time. So we'll continue exploring this example and introduce the root means squared error, which is a measure of the performance of how well our model generalizes.       </p>
+      <p>
+[MUSIC PLAYING]       </p>
+      <p>
+      </p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/omml/2004/12/core" xmlns:ve="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o12="http://schemas.microsoft.com/office/2004/7/core" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/3/wordprocessingDrawing" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/3/main" xmlns="http://www.w3.org/TR/REC-html40">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <head>
+    <style>style</style>
+  </head>
+  <body>
+    <div class="Section1">
+      <p>
+        <b>
+          <u>
+            <span style="font-size:20.0pt">CSCI303 | Project 4-1 - Data Acquisition Pandas Overview</span>
+          </u>
+        </b>
+      </p>
+      <p>
+      </p>
+      <p>
+Hello, everyone. My name is [INAUDIBLE], and this is a quick introduction to Project 4, Part 1, which deals with data acquisition in pandas data frames. For this project, you'll be using the [INAUDIBLE] file, which can be found in Canvas under Files. And what you're going to have to do is you're going to have to load it into a pandas data frame and use it to answer all of these questions right here that you see.       </p>
+      <p>
+Now when you're doing this, you'll have the data loaded into the Panda's data frame. And if you need help with that, go ahead and refer to lecture notes because we've done that, and it's a great example of how to do it again. And then what you're going to do is to answer the questions, is you're going to manipulate the data frame and just grab certain parts of it. That way you can find the exact answers to the questions, do some counts, and some things like that.       </p>
+      <p>
+So if you get stuck on that, I would suggest following this Helpful Resources tab. And what it is here is kind of how to locate different components of data frames that you're using. So in this case, the data frame named [INAUDIBLE] or [INAUDIBLE]. And that will help you find different parts of rows, columns, and stuff like that that you can use. And there's different examples to use, different ways to do it in here. So if you get stuck, or lost, or confused, go ahead and reference this. Or always use the lecture slides and the lecture notes that you've been provided.       </p>
+      <p>
+Now when doing this project, just be careful. There's different ways to do it and that's fine. But just double-check your answers. Make sure that they make sense when you go back through. Other than that, I think you should be good. And go ahead and answer these questions. And good luck on the project.       </p>
+    </div>
+  </body>
+</html>

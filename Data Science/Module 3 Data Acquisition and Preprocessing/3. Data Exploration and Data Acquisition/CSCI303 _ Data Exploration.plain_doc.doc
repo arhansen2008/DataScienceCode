@@ -1,0 +1,101 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/omml/2004/12/core" xmlns:ve="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o12="http://schemas.microsoft.com/office/2004/7/core" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/3/wordprocessingDrawing" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/3/main" xmlns="http://www.w3.org/TR/REC-html40">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <head>
+    <style>style</style>
+  </head>
+  <body>
+    <div class="Section1">
+      <p>
+        <b>
+          <u>
+            <span style="font-size:20.0pt">CSCI303 | Data Exploration</span>
+          </u>
+        </b>
+      </p>
+      <p>
+      </p>
+      <p>
+Let's continue with our sample use case and data exploration with the sample data set that we introduced last time when talking about Pandas and the data frame, the Boston Housing data set.       </p>
+      <p>
+Starting off with our libraries that we need to conduct our experiment, let's go ahead and execute that cell. Now we're going to load our data into our data frame. This is a repeat of what we did previously, but I wanted to show you. The Boston Housing data set conducts analysis predicting the median home value using 13 primary features. And then our 14th feature here listed, MEDVAL, is the median home value. And that is our target, the item that we're trying to predict.       </p>
+      <p>
+One thing I wanted to tell you is that, if you wanted to look at the information, if you recall, you can say, raw dot-- and I hit the Tab key to get all of my choices-- we can use that capital D-E-S-C-R to describe or to get some statistics. To get that to print to the screen, we want to wrap that in a print command. There. So as a reminder, let's look at this for just a second.       </p>
+      <p>
+So we have 506 observations. We have 13 features. And again, attribute 14 is that target value, or the median home value, the item we're trying to predict. Let's take a minute and look at this. Shall we hypothesize what features might be the best indicators of the output? Or what data can we use to predict that median home value? Could it be the number of rooms? The age of the home? Certain crime statistics? Possibly, it's the distance to employment centers.       </p>
+      <p>
+Some might say we have all those features, why don't we use them all? As you'll see in your experimentation, more might not always be better. So we're going to take a look at different ways to explore our data and make a good decision for that starting point.       </p>
+      <p>
+Now that we've loaded the data and thought about what features might be the most relevant, we can look at some basic statistics and think about what we can explore to gain some additional insights. Possibly, we could start with some basic summaries of the statistics, and we could look at that. Possibly, we could explore individual inputs, how they're distributed.       </p>
+      <p>
+Maybe we could use a histogram for that. Maybe we could use a time to look at correlations between pairs of inputs, so a scatter plot between maybe an individual feature and the target. And there's many other things. So feel free to add in your discussion or your suggestions here.       </p>
+      <p>
+Let's start with looking at some distributions. For example, let's go ahead and execute this cell and look at a histogram of just the number of rooms. It appears that this is distributed quite normally, so that's a good sign. We have evenly-spaced bins using the default. Maybe we want to look at a little bit more precision, and we want to change those bins to 20 and plot the histogram again.       </p>
+      <p>
+We can also look at the crime. So we can go ahead, using bins equals 20, let's look at how it's distributed when we're looking at the crime. And if you remember in the description, that is the per capita crime rate by town. This histogram shows us good news, a high occurrence of very low crime rate. So that's a good thing. But we still don't want to eliminate that as a possibility.       </p>
+      <p>
+We can also look at some different correlations. They're best seen using the scatter plot to compare two variables. So when we plot the percentage of industrial zoning against the nitric oxide, let's take a look at that.       </p>
+      <p>
+Hmm. We see an odd artifact around this 18% here. So maybe we want to dig a little bit closer and see what's going on there. What we can do is we can plot a histogram of just that INDUS data.       </p>
+      <p>
+Hmm. It is showing a high spike here at that 18.10 value. It's my recommendation that we dig a little bit deeper. So let's look at, using our command value_counts-- so that's a Pandas command, and it'll tell you how many values fall into that 18.10 that we were looking at. And this is telling us that 132 items fall into that 18.10 in the INDUS feature.       </p>
+      <p>
+So that spike at 18.10 does sound a little suspicious. So what you could think is this is survey data. It is possible this could be some kind of default value. And what we should ask ourselves is, should we include that in our data?       </p>
+      <p>
+So digging a little bit deeper, we've created this new data frame called B2. And what B2 is, is it's looking into the Boston data frame. And remember how we could do these Boolean logic selections? We could read this sum kind of inside out.       </p>
+      <p>
+And this is looking in the Boston data frame in the column called INDUS. And it's collecting all the values that match that 18.10, then returning B2 as a data frame. And we can turn around and do a .describe on that. The .describe is going to give us some statistics and some additional insights.       </p>
+      <p>
+If you look closely at the standard deviation line-- I'm going to highlight that, so it's across in blue-- we do see that there's four other columns that have a standard deviation of zero. So what are the chances-- let's go ahead and print this off, so we know what we're looking at. And what are the chances-- we should probably do a .head on that, huh? So let's do that, b2.head. And we know that the default is 5, so we can look at our data.       </p>
+      <p>
+And what we're trying to ask ourselves is, what are the chances that these 132 sequential entries have the same data for all of these features? So we want to put a pin on that and think about, should we include these in our further analysis? So for now we will include those, but we might want to take those out down the road.       </p>
+      <p>
+Let's continue exploring. And although we do know how to use the Matplotlib library, we can also do scatter plots right out of Pandas. This line of code here is saying, use the Boston-- I'm going to highlight that with my mouse for you. We're using the Boston data frame, and we can call a plot command right from there.       </p>
+      <p>
+We tell it we want to use a scatter plot and that we want to use the column called ROOM for x and the column called MEDVAL for our y. This will give us the correlation between the number of rooms and our target value and our median home value.       </p>
+      <p>
+Looking at the scatter plot, we can see that there is a correlation between rooms and the median home value. So it's good to see this strong correlation. However, it did highlight another strange anomaly or some suspicious data around that $50,000. And remember, it says $50, but our data, according to the description, is in thousands of dollars.       </p>
+      <p>
+So what we want to ask ourself is, is there really a bunch of houses that cost the same amount no matter if they have five rooms or up to nine? So this could be an anomaly or some other kind of weird default value with our survey data. So let's put that in a histogram to see how that data is distributed.       </p>
+      <p>
+So this does show us that the data is quite nicely distributed, but there is this spike of homes here at $50,000 in that bin. So we could look at the value counts again and see that there is indeed 16 houses that are at this $50,000 mark.       </p>
+      <p>
+And let's go ahead and pull out-- so B3 is a data frame. And we're looking in the Boston data frame and just grabbing only those values that equal that 15. And we don't need to do our .head, because it's only going to return those 16 values. So we can look at that a little closer.       </p>
+      <p>
+Hmm. So looking at this data, we can think maybe it could be some kind of default or some kind of data entry. I mean, it's definitely-- it's a round number. It's the maximum number. It's got some big outliers there. And we're just not sure, again, if truly our houses could be $50,000 no matter how many rooms between five and nine. So that's a little suspicious.       </p>
+      <p>
+So for now what we're going to do is we're going to show you how to remove that data. Now remember, we don't typically want to just randomly remove data. Sometimes you can call that cherry-picking. But we could remove this, conduct some experiments, and then compare the results.       </p>
+      <p>
+So I wanted to show you how we could use Boolean logic and the Pandas data frame to exclude certain data. So here's an example that does not include the $50,000 homes. We're calling that bfix1.       </p>
+      <p>
+Now, we see that those $50,000 outliers are no longer in our data set when we look at our new scatter plot. But we do still have some really strange outliers here that don't follow our trend. So we're going to add in some other things in a different kind of scatter plot. We could try to gain some additional insights.       </p>
+      <p>
+Hmm. That didn't really give us much information, so let's continue experimenting. And this is the fun of doing these initial experimentation and initial visualizations, just to see what our data looks like and what kind of correlations we can find.       </p>
+      <p>
+Hmm. So if we add in some information using our rooms, our median home value, and then we use our color map with using that INDUS variable. And if you remember, the INDUS is the proportion of non-retail business acres per town. And we can plot that in a color map. Hmm. We still are kind of seeing weird outliers and an odd correlation, but it is getting a little bit better.       </p>
+      <p>
+The next thing I wanted to show you is how you can continue to utilize Panda's Boolean logic to remove some possible additional outliers. So if you recall, bfix1 is the new data frame that removed those houses that have that $50,000 or that possible default value. Now, bfix2 is going to be a data frame that also discludes the rows that have that 18.1 or that very suspicious INDUS value.       </p>
+      <p>
+Wow, that plot looks really nice now. One thing we want to ask ourselves though is, did we lose some really good data? Have we messed with the integrity of the original data set? And was removing the values the right thing to do? So that's something you want to definitely ask yourself. If we look at the shape, in other words, bfix2 only has 363 data observations, where our original one had 506. So we have lost quite a bit of data.       </p>
+      <p>
+Other things we could explore that don't include removing possible outliers or default values is, what is the deal with the houses? We could look at different histograms of the houses or this kind of, like, on/off value on how close it is to the Charles River. Maybe we could look at the remaining variables and how they correlate with our target value or that median home value.       </p>
+      <p>
+Possibly, we could look at DIS, RAD, and INDUS, how they relate to each other. And as a reminder, DIS is the weighted distance to five Boston employment centers. We've already talked about INDUS. But RAD, let's give an example of that. That's an index of the accessibility to radio highways. So these are just other factors that might not be as obvious as number of rooms or the age of the house, but they might be very important, very relevant features. So maybe we could look and see if there is a correlation or relationship between some of these things.       </p>
+      <p>
+So let's run through a couple of examples before we wrap up. This is just an example of plotting two histograms on top of each other to get a nice visual and a comparison. Sometimes that works and sometimes it doesn't. So let's do another example of doing those histograms, but let's separate those out so we can look.       </p>
+      <p>
+This last example here is looking at the number of values that fall in that 0, close to the Charles River, or 1, in 24 of them. And so we're looking at that number 1, if the track bounds the river, and a 0 if it does not. So those 24 houses that are close to the river is what that's showing us. Then what we can do for this last example is we could go ahead and plot some more histograms on that CHAS variable.       </p>
+      <p>
+Now for this last example, we're using a loop. And it's going to loop. I'm going to go ahead and execute, and then I'll show you the result while it's working. It's going to loop through all of the features and plot a histogram of that feature. And beside it, it's going to plot a scatter plot, comparing that feature with the median home value or our target vector.       </p>
+      <p>
+And if you see, it's got all the different features in a histogram and if they're correlated with our median value. So that's going to give you a nice way to look at those side by side. And there they are.       </p>
+      <p>
+Well, now that we've shown some examples of how to load in and do some initial investigation with this Boston Housing data set, your next task is to complete the activity utilizing the workflow that we discussed in the scikit-learn basics discussion slides. In other words, you're going to repeat that experiment using this new data set.       </p>
+      <p>
+It will be really interesting to see your results from using all of the features. Then, you can see if you can improve the performance of that model by comparing that result of using all the features to the result of using just a subset of the most relevant features. Then, see if that matches your original hypothesis that you made at the very beginning of these slides.       </p>
+      <p>
+[MUSIC PLAYING]       </p>
+      <p>
+      </p>
+    </div>
+  </body>
+</html>

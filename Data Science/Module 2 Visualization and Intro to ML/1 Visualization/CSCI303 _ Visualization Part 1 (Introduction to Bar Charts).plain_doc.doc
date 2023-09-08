@@ -1,0 +1,109 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/omml/2004/12/core" xmlns:ve="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o12="http://schemas.microsoft.com/office/2004/7/core" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/3/wordprocessingDrawing" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/3/main" xmlns="http://www.w3.org/TR/REC-html40">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <head>
+    <style>style</style>
+  </head>
+  <body>
+    <div class="Section1">
+      <p>
+        <b>
+          <u>
+            <span style="font-size:20.0pt">CSCI303 | Visualization Part 1 (Introduction to Bar Charts)</span>
+          </u>
+        </b>
+      </p>
+      <p>
+      </p>
+      <p>
+We continue building the tools for our data scientist tool box. And data visualization is one of the most important tools in the arsenal of any data scientist. The human brain is not able to understand, or even just imagine, large amounts of numbers or data or even text all at once. It needs this visual representation to make sense of it.       </p>
+      <p>
+If you think about, as we were growing up, language or speaking was one of the first and most basic skills that we learned. Well now, in this data-driven world we are living, data visualization is the equivalent of speaking, since it's a skill used to translate this data into actionable and understandable insights. Today we'll go through the different ways to use visualization, whether it's in the pre-processing stage, or after learning occurs, to display or report your results.       </p>
+      <p>
+Beginning with, what is data visualization? You might just be thinking, it's charts and graphs. But it can be more than that. It's any kind of representation of the information designed to communicate for analysis, discovery, exploration, or providing conclusions. So when using all these tools, it's really important to remember who your audience is. Maybe your audience is your boss at a job or internship. Maybe it's your advisor if you're doing research. And maybe you're in this class and it's your professor.       </p>
+      <p>
+So although it's important to use visualization for our own discovery and analysis, it's important to remember, again, that audience, so that you know how to tell a story in a concise manner. The next few cells are examples of comparing and contrasting the same data in its raw form versus a series of plots to tell the same story. So let's get started.       </p>
+      <p>
+This might look familiar as we start digging into it. It's called Anscombe's quartet. This is four data sets that have nearly identical simple descriptive statistics, yet have very different distributions, and appear different when graphed. Before we get started, let me explain this new code that appears in this cell here. We're importing the map plot library. And we're using this as plt. And that's called aliasing.       </p>
+      <p>
+So what we're doing is we're bringing in the features of this library and we're using aliasing, or shortening the name, by saying as plt. So anytime we want to access those functions, we can say plt dot, such as this line of code here, to set a different style. We're pulling in our NumPy library on this second line of code here-- import NumPy as np. So we've aliased that to np.       </p>
+      <p>
+We're pulling in the pandas library. This is something that we haven't discussed yet, but we will next week. So we're going to use it here, though, to show a really nice, tabular format for our data, as well as be able to work with those separate arrays of data. So I'll explain that. In about a week, we'll go through a whole pandas lecture.       </p>
+      <p>
+This next line of code has the percent sign to be able to access command line functions. And this is simply so that we can plot right here in line in the Jupyter notebook cells. And then this last little new piece of code here is to give us a retina display. And that's going to give us a nice 2x kind of display.       </p>
+      <p>
+The other items that are here is this np.random.seed. And that's just seeding our random number generator. We're going to use random numbers for simulated data down below. The other thing here is we're pulling in the HTML functionality from this IPython display. And all that's doing is it's simply giving us-- let me execute that cell and show you-- it gives us a little button here that we can click so we can show or hide the raw code of what we're doing.       </p>
+      <p>
+So I'm going to click that, because we do want to see the raw code. So that's just a little trick of the trade. So let's go ahead and jump into this. We're going to first set up some arrays or lists of data for our x's and our y's. And I'm going to execute that cell so it's already in memory. And what you'll see is that we have our x data and we have our y data in lists. And then we create a list of lists. So then we could utilize that.       </p>
+      <p>
+The rest of this information that you're going to see down below is we're going to then-- I'm going to execute these two. And that's going to calculate the mean of the x and the y. The next few cells is we're going to calculate the variance of x and y. And as we're going through this, hopefully you have identified the fact that the mean of the series 1 through 4 is all 9 for the x values. And for the y values, it's all approximately 7.5.       </p>
+      <p>
+So again, numerically and statistically, they all look the same, these four data sets. But we might see a very different picture in a minute when we go to graph our data. Let's go ahead and execute these next few cells here. We'll get the variance. And then we're going to execute this. We're going to get the correlation between the x's and the y's. Again, we have a 0.816. They're all approximately, statistically, very much the same.       </p>
+      <p>
+And then we're going to look at the fit line. So we have very similar lines there. And now what I want to do is I want to show you-- there. Toggle that code. This one I want to stop here and show you how we can look at it again. Statistically all four data sets looked very much the same. And now we're going to graph those. So I'll walk through the code, and then we'll talk a little bit more about the graphs.       </p>
+      <p>
+OK, so we're getting ready to plot all of these datas and then look at them. What you'll notice here is we're getting the max of all of the x's and the max of all of the y's. We're going to use that in our lines. And then we're just getting some things set up here to plot. And we're going to learn how to create subplots. This is something that you will be doing in the project 2 in your visualization project is creating subplots. So we've provided examples here.       </p>
+      <p>
+And then we're going to loop through. So this little block of code here, what it's going to do is the enumerate function is a way-- and if you remember, we talked about range, right? So range and then we could loop through different iteratable objects. And for each iteration of that loop, it would grab an item out of the list. Well, the enumerate is a little different. So what we're doing is we're doing variable unpacking.       </p>
+      <p>
+So for i comma a x in enumerate axes. So let's think about, what is that doing? So it's returning to a thing. OK, that makes sense. So the numerate function, what it does is not only does it return an item within the axis, it returns an index or a counter, as well. So then we can use that in the fashion that we're used to. If we say x, s, sub i, then that's going to be the i-th element. So we can index into that list in a fashion that we're used to. And that gives us a really nice way to access the elements within a for loop.       </p>
+      <p>
+The rest of these items we'll walk through in these slides is, how do we plot? This is visualization. So not only why we plot or some examples, but how. So we'll be unpacking these more and more as we go through this down below. This is a simple example to look at Anscombe's quartet statistically versus in a plot.       </p>
+      <p>
+So here are our plots. OK. So again, we have our title and we have our subtitles. But I want to look at the data here. So statistically, if you remember, they all looked very much the same. And if you've studied statistics, this may be a very familiar problem to you, so I won't continue going on. But I wanted to just highlight at a high level the difference between these.       </p>
+      <p>
+This first one illustrates the scatter plot. It appears to be a simple linear relationship. The second one is not distributed quite normally, but we can still see that there is a relationship between the two variables. This third graph has kind of a linear distribution, but this outlier here greatly affects this fit line. And then this fourth one is going to also show you an example of one high leverage point that can affect and produce this high correlation coefficient, even though the other data points clearly do not indicate a strong relationship.       </p>
+      <p>
+So again, the point of this exercise is that we showed statistically the four data sets look very much the same. But then when you graph them, they're different. So this just reinforces the importance of plotting your data and graphing it and looking at it visually as well as statistically. Visual encoding is important to remember how our brains understand information represented on these graphs that we're getting ready to talk about. This list is some general ideas, most of which should seem familiar to you-- points on a scale, length, direction of the angle, of course, area and volume.       </p>
+      <p>
+You can also use shading and saturation to tell a picture. Also color and hue are very important. And again, most of us are visual learners. So this is very common to see this. So now let's go through some graphs that we would use throughout this course. The most common ones are the scatter plot, the bar chart, histogram, and also line charts.       </p>
+      <p>
+So I'll go through some examples of each one of those and make sure that you know how to do that. So the scatter plot is typically used when we're trying to show the relationship between two variables. So let's go ahead and execute that cell so we can talk about that. This is a simple scatter plot. And when we say simple, we really mean it.       </p>
+      <p>
+So what we're doing here is we're creating x. We're creating a range of variables. And remember, that's going to have a start, a stop, and a step. So x is going to be starting at 0, stopping before we get to 11. And then we're going to go every other, so we're going to count by twos. And then y is going to be this similar range down here from 0 to 17, counting by threes, so just some linear data.       </p>
+      <p>
+And we're going to plot it. So we're going to say plt-- if you remember, we pulled in that library, that mat plot lib library. But we aliased it. We said as plt. So all throughout the code you'll see plt dot, and that will access that library. So we're going to plt dot plot, plot x versus y. And then this last piece here, the string at the end, indicates that we want blue circles. So that's blue circles.       </p>
+      <p>
+So then we're going to say, OK, for our x label, on this line here, is we want it to say x. And for our y label, we want it to say y. And then we want to give it a tile. This plt dot show that you're seeing, what that's doing is it's pushing it to the screen. So plotting happens in two stages. So we can set up the plot and then we can say, OK, now that we're done with the setup, plt dot show. Now, show me the plot or push it to the screen.       </p>
+      <p>
+And that's really handy if you want to plot two different sets of data on the same plot is that you set it all up and then you do one plt dot show and it'll put it all on one plot. OK, so we get our dots. Now let's look at a scatterplot to add maybe a best fit line. Let's practice that idea to where we can put a line on it.       </p>
+      <p>
+There. So we have that same data, but we now have a fit line that we've calculated. And we've added that as a red line. And you'll see that that is going to be right here. So we're going to plot that as a line. And then we didn't specify a color. We let Python figure that out. If we wanted to indicate what color it was, we could simply add that single or double quotes, but we can add that.       </p>
+      <p>
+Maybe we want it to be a black line. So you use k for black. And you can look this up in your Python documentation. But the default colors are things like blue, red, green, yellow, cyan, and then we have black. Those are some of the most common default colors. Continuing on with another scatter plot example is that we can use this to add an average line.       </p>
+      <p>
+Now, the average of this data is not very exciting, but it could be useful in more examples. And we'll keep showing those. Now, what we have is we want to add another dimension. And so what we can do is we can-- let's execute these cells. So we can look at it is we can have some data that we want to plot. But typically if you want to look at a scatter plot, we're looking at two dimensions. So we can add this third dimension by doing a two dimensional scatter plot, but adding some colors or some gradients to get kind of that idea of a third dimension.       </p>
+      <p>
+So let's look at this data. So we have some different fruits here. And then we have some numeric data. And then we have our size. So we have 500 rows and we have four columns of data. So we can't plot all four dimensions. So what do we do? Well, let's look at this plot here. And we've added some dimensions to our plot.       </p>
+      <p>
+So let's look at this and see what it's doing. So we're saying, we want to do this plot and we want it to be a scatter plot here. We want our x-axis to be the apples data. We want our y-axis to be the orange data. And then this c equals avocados, what that's telling Python in the plotting library is that we want to use the data in the column called avocados-- and I'll go up here and kind of scroll up here for you. So we want to use the data in this column to determine that gradient scale.       </p>
+      <p>
+And then we plot a gradient scale here. And we can see that as the value gets higher, the color gets darker. So we can look at that again. That's a really nice way to show that third dimension in a two dimensional scatter plot. Very visual.       </p>
+      <p>
+Now, here's another example. And this is doing a 3D scatter plot. So we have our subplot, of course. We're doing some of this. And then we're also doing this ax dot scatter. So let's look at that. That's the same kind of line that we used above, but a little different. So we're saying, we want to use our sales apple data for x. We want to use our sales oranges data for y.       </p>
+      <p>
+And then we want to use avocado data for z. So it's a little different than what we did with our 2D gradient, but we're getting the same type of effect. Here's one last example that I wanted to show. And this is if you want to look at all of them. So this is definitely a tool that you can utilize. This scatter matrix is a good visual representation if you want to look at the relationship between all the variables, all the pairs.       </p>
+      <p>
+OK. So let's move on to the next type and we have then the bar chart. The bar chart is typically used to show the comparison of items. You can use a horizontal bar chart to show the comparison of many items, or simple vertical bar chart to show the comparison of a few. So let's walk through a couple examples.       </p>
+      <p>
+I don't want to forget to highlight this that says, always start the feature scale at 0. And what we want to do is make sure that when we look at a bar chart that we're getting the correct visual representation. And the assumption is that on the y-axis that you're going to start at 0 and then go up. So if you make any changes, you want to make sure and identify that to the user. But typically, you want to go ahead and start that at 0.       </p>
+      <p>
+So the first example that we're going to look at, we're using three different locations. And we have some data set up that we're going to look at. We're still doing our fruit, so we have our apples sales, our orange sales, our avocados sales, our cherry sales, et cetera. And so this pd.dataframe, that's something we're going to learn in our pandas lecture. For now, we're using it because it makes our life a lot easier.       </p>
+      <p>
+So I'm going to execute that cell. And so let's go ahead and pull up our apple sales. So this is a very simple bar chart that you're going to use. And we're using it in a vertical fashion where we're comparing our apple sales for each of the cities. So we see that Boulder seems to have a higher number of apple sales than the other cities.       </p>
+      <p>
+Oh, I probably did-- I probably should explain the code a little bit for you. So what we're looking at is we want to use this list. And it's going to tell us what two items we want to compare. So that's location versus apples. So then the number of sales dollars, so that's located in the apples column. We're telling it we want it to be a bar chart. And then also what we want to do is we want to say what the location is, and then also if we want a legend or not.       </p>
+      <p>
+So if we want a legend, we can simply tell it to do a legend. It's not very exciting here, because we only have one set of data. But once we're doing multiple ones on the same graph, then that legend becomes critical. So I'll just leave that in there. OK, so let's do the next one. Let's execute this sale. And this is example-- say we want to look at it in a horizontal fashion. So you just simply turn that around and tell it which way to do it. So this is bar h versus bar. So those are the two differences there.       </p>
+      <p>
+So let's give you another example here. And this is simply sorting the data in ascending order. So we have the lowest at the top, the middle one here, the middle, and then Boulder, with the most sales at the bottom here. And that's just another visual representation. And it's up to you how you would like to portray your story.       </p>
+      <p>
+So what we want to do is let's make that a little bit more exciting. Let's add multiple series. So we want these side by side bars instead of these stacked ones. So let's take a look at that in the code. So that's a little bit more exciting. So what we're doing is we're looking at all of our data. We're telling it which way to do the ascending or the descending. And then we're using the horizontal bar here.       </p>
+      <p>
+And so let's go ahead and look at this. We're looking at apples, oranges, avocados, and cherries, all by location, so for Golden, Denver, and then, of course, Boulder. It's critical that we have this key-- or this legend here. And notice that we did not have to specify that in our code like we did above. Let's go ahead and find that example so you can see that. Here it is.       </p>
+      <p>
+So we said legend equals true. So what that means-- let me take that out for you, just to show you-- that that is a default value. So if we don't tell it legend false, then it will assume that we want a legend. So that's a default value. So that's why we did not have to provide it here. And then it gave us the legend.       </p>
+      <p>
+OK, so those are bar. And if you want to plot that in a vertical fashion, you certainly can. Just change that to-- let me-- sorry about that. You can change this to bar instead of bar h. And you can play with it. You can move the legend around. There's a lot of things you can do once you get your data graphed. And then you can start making it fancy and tweaking your titles and whatnot.       </p>
+    </div>
+  </body>
+</html>

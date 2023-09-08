@@ -1,0 +1,101 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/omml/2004/12/core" xmlns:ve="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o12="http://schemas.microsoft.com/office/2004/7/core" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/3/wordprocessingDrawing" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/3/main" xmlns="http://www.w3.org/TR/REC-html40">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <head>
+    <style>style</style>
+  </head>
+  <body>
+    <div class="Section1">
+      <p>
+        <b>
+          <u>
+            <span style="font-size:20.0pt">CSCI303 | Pandas Basics</span>
+          </u>
+        </b>
+      </p>
+      <p>
+      </p>
+      <p>
+Once we have our data, we need the available to work with it. Today we're going to focus on the pandas library, some of the basics, and some examples on how to utilize this toolkit during our data science experiments. Recall, we're learning and getting experience with tools in our data scientist toolbox, whether that's learning basic Python, the sci-kit learn toolkit, or this new library for organizing and reviewing our data in a nice tabular fashion.       </p>
+      <p>
+What you'll notice is that we're using our same libraries as before, but we've added this one here, import pandas spd, to bring in the pandas library and the functions. Also, you'll notice another library here that I've highlighted with my mouse called importsklearn dot datasets. We're going to play with a real world data set at the very tail end of these slides. So I'm going to re-execute that cell to make sure we have our library is included.       </p>
+      <p>
+The idea of this new toolkit is that has these two primary data structures that we will utilize. One is called a series object, and one is called a data frame. We will go through those in detail down below. But an overview is that a series object is a one dimensional indexed array of data of the same type, whereas a data frame is a sequence of aligned series objects whereas each column represents a series. Each one of these objects has its own set of library functions to work on data within them.       </p>
+      <p>
+Going into the series object in detail, you can think of it as, again, a one dimensional array. It has a sequence of values, all of the same type. It is associated indexes like you may be used to if you use other languages. Some things that are distinct is that these index labels don't have to be integers. They don't even have to be unique or sequential. We will bring in this series library from pandas and show you how you can send in a list of values to create a new series object.       </p>
+      <p>
+Which you can see now as s is created in the automatic indexing on these integers are 0, 1, and 2 associated with the values 42, 17, and 99 that we sent in with a list. And keep in mind from our discussion when we talked about our list, Python indexes do started 0. So you can look at these using the dot indexed command, as well.       </p>
+      <p>
+Let me execute that cell for you. You can see that we have our start, stop, and our step, similar to our range command. Also, if you want to look at the values within that, you can use s dot values, and see that we do, in fact, have our 42, our 17, and our 99 that matches that of above.       </p>
+      <p>
+You can also add labels to your indexes. Instead of using the integer values, we're using our fruit names here. So for apple, pear, and orange, we have those labels instead of our 0, 1, and 2.       </p>
+      <p>
+Now we can think of accessing the items within our series object almost like a dictionary, in that we use the label name to access the items, using the square brackets. The difference in would be the ordering is maintained, and the labels do not have to be unique. Here's an example of a series object called S2, and different ways that you can access the items.       </p>
+      <p>
+Let me execute these cells and look at these examples. So S2 is, again, a series object, and we've used this index equal to give names to our indexes. So we have apple, pear, orange, and then apple. Noticed that is not unique. That is allowed in a series object. So when we show an example of accessing that, think about what the expected outcome would be. Would it grab the first value, the second value, or possibly both?       </p>
+      <p>
+First let's do an example looking at S2 orange that does, in fact, return the 99 that matches the quantity or the value located at the index label orange. Now what we want to do is we want to grab two different things. Notice the double bracketing. So we have two square brackets at the beginning, and two square brackets at the end, like I've highlighted with my mouse. And what this is is that the object wants one item or one list of items sent into it. And then it does return those items as expected for the orange and the pear label.       </p>
+      <p>
+Now, hopefully you've thought about that for a minute, and we're going to execute the cell to find out when we say S2 apple, will in fact return 42, 3.1415, or maybe both. Ah, it returned both, or it will return all of the items labeled with that index label.       </p>
+      <p>
+The other thing that we can do is we can show an example of how we can have mixed types for our labels. So we have foo, 17, and true. Those are all different types. And that is completely allowed when you're labeling your series object items.       </p>
+      <p>
+You can also use mathematical operations with a series object. Here we're multiplying S2 by 2, and it's going to double all of our values. [INAUDIBLE] execute that cell, and see that it indeed did that, as well as if you want to do the cosine from the NumPy library to do the cosine on each of those items.       </p>
+      <p>
+The other thing to notice is that when doing mathematical operations between two series objects, it will line up the labels. And if there's not a value associated with that mathematical operation, it will return a NAND, or not in number. Here's another example of how that would work.       </p>
+      <p>
+These last two examples for the series object just shows how you can name certain items. This first example is that if we want to set the name of our data frame, or if we want to-- let me execute the cell for you, there, so we can talk about both of those-- if we want to give a name to a certain index, and this one we're naming it as fruit.       </p>
+      <p>
+Moving on to the data frame, it could be thought of as a database table, or this ordered collection of columns, each having a specific type. We also stated earlier that it's a sequence of aligned series objects. And how that lines up with our data science concepts is that each row still represents a data observation, and each column is a feature or attribute. Now we can use the power of pandas to name, organize, and also gain that benefit to display our data in a nice, tabular format.       </p>
+      <p>
+Here's an example of creating a new data frame object from a dictionary. The keys of the dictionary become the column names, and the values are used for the items within that column. This example shows how to create a new data frame, that we're calling df, populating that with a dictionary, and then also naming the indexes, crate 1, crate 2, create 16, and crate 11. Then we're printing it off to the screen so we can see what's going on, and this last item is showing you an example of the slicing.       </p>
+      <p>
+One thing I wanted to note is if you notice the difference in the formatting. When we simply say print df, it'll print the entire data frame. But it prints it in this sort of raw format. If we want it to print off in the nice, tabular format, let me show you an example of that-- there, df. If it's the last executed line of code, I want it to highlight the difference between the raw format using the print function, and printing it or pushing it to the screen, so we get that nice output. So if you're ever wondering how to get that nice output it's simply using the power of Jupiter notebooks to push that out as the last executable line of code.       </p>
+      <p>
+So let me get rid of that, because I wanted to show you how you could use our slicing, as well, to grab certain rows or certain crates of items. So this df colon 2 is going to say, I would like to have all of these columns with the fruit type and times, but I would only like to have crates 1 and 2 printed to the screen. I'm gonna execute the cell for you. This is a repeat of what was above, just to show you that you could do this at any time.       </p>
+      <p>
+This next example is how you can access certain columns by name. You can either use the square brackets, or you can use the dot operator. This first example, df fruit, is grabbing those fruit names from the column that we've labeled fruit. Let me show you this other example that you can also access the same information. And I'm gonna comment that out just to prove that it's, in fact, pulling that information using the df dot fruit. So you can access it either way. I'm going to put that back.       </p>
+      <p>
+OK, so the next line is showing an example of using the double bracketing again. And this is looking at the two square brackets and the two square brackets. And what that's telling the data frame is that we want several columns returned from that. One note I wanted to have here is that notice that the slicing notation does apply to rows in your data frame.       </p>
+      <p>
+So the slicing says start at number one and stop before I get to three. And so with our zero indexing, we know that crate 1 was at index 0, crate 2 is index 1, create 16 is index location 2, and then it stopped before it got to 3. So that's how to read that.       </p>
+      <p>
+This next block of code is showing examples using some more specific operators, the dot loc to access certain items, and then the dot iloc-- let me execute those-- and I'll tell you a little bit about what the difference is between the two.       </p>
+      <p>
+The dot loc stands for a location in index, and the dot iloc stands for position in index. And these examples show you the result of using those two commands. Another popular way of indexing or accessing certain items is using Boolean logic. Let me execute this cell to show you the result of that.       </p>
+      <p>
+The example, you can almost think about it as reading this inside out. So this line of code states, look at the data frame in the column called fruit, and if there's a match to the name apple, I'd like you to return that subset for me. You can also select things based on certain values. And this is going to look at the column called tons, and if it's greater than 20, then I want to return that subset into a data frame. And it prints it off to the screen.       </p>
+      <p>
+Woo, that was a lot of information on pandas. We talked about the two main data structures called the series and the data frame objects, different commands within them, different ways to access items within those. We'll continue exploring and utilizing these throughout the semester. You can also look at this information in the pandas documentation, as well as a cheat sheet or a flowchart. I'm going to bring that up. It's linked here, and it's also linked from the instructional materials page in Canvas.       </p>
+      <p>
+For the last part of this discussion, we will look at some real world data. We'll show how we can utilize the power of pandas to load this data and store it in a data frame. The data that we're going to experiment with this week throughout the next few discussions is the Boston Housing Data Set. This data was collected by the US census service and can be utilized to predict the median value of a home. Using this data set library in sci-kit learn toolkit, we can easily pull in that data, and then once we have the data loaded, we can explore what is inside of it.       </p>
+      <p>
+With one line of code in the data set's library that we included above, we can say load Boston, and it'll pull in that data. Now to see what's inside of that data, we can look at the different keys. So we have data, we have target, we have feature names, then we have a description of the data.       </p>
+      <p>
+So looking at that raw dot description, it's going to give us some information about our data set. For example, how many data observations do we have, or instances. This shows us we have 506 data observations. How many attributes or features do we have? We have 13 of those.       </p>
+      <p>
+And then our median value, that's our target, or it's included here as attribute 14, but that's our target or our y-vector. That's what we're going to predict. The rest of this just some basic descriptions if you want more information about that.       </p>
+      <p>
+So we can look at our data. We have raw dot data and raw dot target. Remember, data is going to be all of our features, and target's going to be that median home value.       </p>
+      <p>
+So I'd like to execute both of those, and let's look at the data that we have. Hm, well, that's kind of messy and kind of hard to read. Hopefully you're sitting there thinking, didn't we just discuss a way that you could bring this data in and look at it in a nice, tabular fashion, name the columns, and make sense of all of it? The answer is yes. So let's go ahead and show you how to do that.       </p>
+      <p>
+It's a little bit more easy to look at it using that interface. So once I execute this line of code, we're going to have an object or a data frame called Boston, using the constructor or creating a brand new data frame. The parameters that we're putting in here, what this means is we want raw dot data. We want all of our data or our feature values loaded in. Also, we're going to say, well, I would like to go ahead and name the columns using raw dot feature names. Let's see what that looks like.       </p>
+      <p>
+That's a lot better. By the way, we're using this dot head command to show just the first five rows of our data so it's not hard to navigate. You can also change that. If you want like, the first, say, 10 rows of your data, it's a lot easier to look at it just to see if it loaded incorrectly. If you left all of that off, you'd get all of your data, but remember, there's over 500 data observations. So it's a little hard to look at on a screen. And it'll break it. It'll do a dot, dot, dot, it'll break the data. It's still there, it's just not displaying it for you.       </p>
+      <p>
+So let me put that back in. It's a little bit neater to use the dot head. OK. At this point, what we can do is look at the data-- let me execute that cell, and talk about why we just did that. So let me get these both on one screen.       </p>
+      <p>
+So this is our data. We created our new data frame and we said, use all of our feature values. So we have all of these values across the top with our nice labels, but we don't have our targets or that median home value loaded in yet. Well, we can do it in a couple of different ways. You could store that target value in a separate variable and call it, say, y, or target, or you can tack it on to the end here.       </p>
+      <p>
+So I'm gonna highlight that, because that's what we did for this example. So you can add a row or you can delete a row. I have it commented out of here.       </p>
+      <p>
+But I'm going to show you an example of how you can add that in. You say Boston, you give it a name in those square brackets, until it what data look at. If that column does not exist in the data frame, it will create it for you. And that's what this example is showing, that here it added that last column for your target value. And that will be your median home value.       </p>
+      <p>
+These last few cells are going to show you some information and some examples on how you can get some basic statistics of your data. The dot describe we'll give you a summary of all of the basic statistics, mean, minimum, standard deviation, et cetera, for all of the feature values or all of the columns of that data frame.       </p>
+      <p>
+You can also look at different convenience methods. This one is the pair-wise correlations of the data. If you want to get just information or statistics by each row or column, you can also do that. So here's an example of getting the mean or the sum.       </p>
+      <p>
+There's a lot of power in what we're utilizing here with the pandas. And the data frames, we, again, we will utilize those throughout the semester. Now that we can bring in some data and stored in that data frame, obviously display it nicely-- that raw data was kind of messy-- grab some common statistics. Now we're ready to move forward to the next step and do some data exploration. And we'll do that next time.       </p>
+    </div>
+  </body>
+</html>

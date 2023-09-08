@@ -1,0 +1,29 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/omml/2004/12/core" xmlns:ve="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o12="http://schemas.microsoft.com/office/2004/7/core" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/3/wordprocessingDrawing" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/3/main" xmlns="http://www.w3.org/TR/REC-html40">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <head>
+    <style>style</style>
+  </head>
+  <body>
+    <div class="Section1">
+      <p>
+        <b>
+          <u>
+            <span style="font-size:20.0pt">CSCI303 | Jupyter Notebook Setup - Selecting Your Jupyter Environment</span>
+          </u>
+        </b>
+      </p>
+      <p>
+      </p>
+      <p>
+Hello, everyone. My name is Morgan Cox, and this is a walk-through for setting up Jupyter-- not the planet, notebooks.       </p>
+      <p>
+So first, let's start by weighing the two options. You have Jupyter Notebook, which will be a local environment on your personal computer, laptop, or desktop. And that just stores everything locally and has all the same functionalities as Jupyter Hub.       </p>
+      <p>
+Jupyter Hub is an online environment provided by Mines that you have to log into. And you need [INAUDIBLE] or something of that sort, a Mines VPN, in order to be able to use. Either one works just fine. It's however you would prefer to do it.       </p>
+      <p>
+[MUSIC PLAYING]       </p>
+      <p>
+      </p>
+    </div>
+  </body>
+</html>
