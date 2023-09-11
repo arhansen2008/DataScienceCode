@@ -1,0 +1,47 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/omml/2004/12/core" xmlns:ve="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o12="http://schemas.microsoft.com/office/2004/7/core" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/3/wordprocessingDrawing" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/3/main" xmlns="http://www.w3.org/TR/REC-html40">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <head>
+    <style>style</style>
+  </head>
+  <body>
+    <div class="Section1">
+      <p>
+        <b>
+          <u>
+            <span style="font-size:20.0pt">CSCI303 | Project 4-2 - Data Acquisition SQL Overview</span>
+          </u>
+        </b>
+      </p>
+      <p>
+      </p>
+      <p>
+Hello, everyone. My name is Morgan Cox, and today I'll be giving you a quick overview of project 4-2, which is data acquisition dealing with SQL. So in 4-1, you kind of worked with Panda's data frames, but here we're going to be working strictly with SQL. You can use data frames as well if you'd like and that works just fine.       </p>
+      <p>
+So what you get up here, we just have the basic starts to any project, some imports, description, and submitting your solution. Now, down here is when it starts. So we're going to be looking at this datum provided by the Bureau of Labor statistics. That has three different tables, occupation codes, occupational attainments, and occupational assignments.       </p>
+      <p>
+Go ahead and read the descriptions of each of those who get a little better idea of what they are. So once you've done that and kind of understand what data we're using, let's go into the setup. So there's three steps to do the setup.       </p>
+      <p>
+You have to first create a database variable, which will hold the name of the database you've downloaded for this assignment. And the database should be the CSCI 303 database, which can be found in Canvas for you to use, and that's how we're going to be creating this and doing the SQL quarters.       </p>
+      <p>
+Then what you're going to do is you have to create an inspector object and create engine on the database that you've created in part one. And finally, we're going to print out some information to get a better understanding of what the database actually contains.       </p>
+      <p>
+This setup portion has three different questions that you need to ask as well. That to just kind of made sure that, one, you've done it, and two, just to make sure you kind of understand what's going on. So this code right here that you start with is started for you.       </p>
+      <p>
+This first part right here is actually connecting to the database. The second part is that inspector step, which actually allows you to look at the tables within the database. It's a create engine and all of that. So this is done for you.       </p>
+      <p>
+However, the first line, you're going to have to put in your path to your database right here. So wherever it is in your files, just put the path to it. And then, this table's variable takes the inspector and kind of looks at all the different tables within it and puts them into a list, which we then loop through in this four loop, and say, OK. Well, now that we have all these tables and we have this information, let's get a better look.       </p>
+      <p>
+And you need to finish this four loop. It's mostly done. But down here, we want you to fill in these to-dos for what columns you want out of them. And then, you need to answer these questions up here.       </p>
+      <p>
+So then, there's a part two to this as well. And in part two, you're going to be doing more as to what queries on the database that you've created and answering each of these questions. Be careful.       </p>
+      <p>
+Sometimes these can be a little bit tricky. But if you refer to the notes that we've shown you in class, you should be able to go through them just OK. Feel free to ask any questions that you have.       </p>
+      <p>
+These questions, like I said, they can be a little bit tricky, and they can all be done in one mine. But you don't have to do that. It's just using select statements from the different tables to take a look at the data and try to manipulate it to get the answer to the questions that we're asking.       </p>
+      <p>
+Now question E is also an optional one if you want an extra challenge. It's a little bit harder or a little bit different than what we've been doing, and uses something that we haven't really talked about in class. But it's just a little add on if you'd like to go above and beyond for this project.       </p>
+      <p>
+But overall, that is project 4-2. Make sure you look at the lecture notes because they can be helpful for this, the inter joins, the joins, and all of that. And that's just kind of how you do it. It's just an expansion on the lectures. So good luck with this project, and you will do well.       </p>
+    </div>
+  </body>
+</html>

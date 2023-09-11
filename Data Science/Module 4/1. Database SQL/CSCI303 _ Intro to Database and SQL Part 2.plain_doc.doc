@@ -1,0 +1,103 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/omml/2004/12/core" xmlns:ve="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o12="http://schemas.microsoft.com/office/2004/7/core" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/3/wordprocessingDrawing" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/3/main" xmlns="http://www.w3.org/TR/REC-html40">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <head>
+    <style>style</style>
+  </head>
+  <body>
+    <div class="Section1">
+      <p>
+        <b>
+          <u>
+            <span style="font-size:20.0pt">CSCI303 | Intro to Database and SQL Part 2</span>
+          </u>
+        </b>
+      </p>
+      <p>
+      </p>
+      <p>
+Continuing with our discussion about databases in the SQL language, today we will add in some more advanced SQL commands that will set you up for success, like more advanced WHERE clauses, functions, sorting and aggregating the results, and combining those results of two tables that are connected by a common field. We'll again load in our required libraries-- execute that cell. There you go-- and also set up our inspector so we can look at what's going on.       </p>
+      <p>
+Notice here above that I've highlighted with my mouse. We've also established a variable to hold the location of our sample database so we can use that throughout today's discussion. What we're going to do today is we're going to utilize a table called sci-fi author. We're going to inspect and answer some questions about different authors, what books they've published, how many books they've published, and maybe in what years they were most productive.       </p>
+      <p>
+Let me make a note of the items or elements that are included in each of these tables. So sci-fi authors-- the first one we'll investigate-- it has fields like id, name, birth year, and also death year, if they have deceased. If not, this table or this value will be null. The next table that we'll work with is sci-fi work. This holds all of the book titles that have been published by a certain author, and it includes fields like another ID, the author ID, a title, and also a publication year.       </p>
+      <p>
+One thing to note is that these two tables are related or connected-- also we call these linked-- by the ID of the author. And down here in this table, it's called author ID. So you'll see at the very end of this discussion how we can use that to do what we call a join. When using the WHERE conditions, you can add in wild carding. The first one we will discuss today is called the LIKE.       </p>
+      <p>
+So here's an example of looking in our sci-fi author table for author names that start with an A. I wanted to highlight the use of these percent signs right here. And what that means is that since the percent sign has meaning in SQL-- just one of them-- it also has meaning inside of Python, if you recall the modulus operation. So we need to escape that by using an extra percent sign, like this.       </p>
+      <p>
+Another thing I wanted to highlight is the use of double quotes at the beginning and end of this SELECT statement, as well as the single quotes around the string that we're sending into our SQ command. The SQL likes-- or requires, if you will-- the strings to be surrounded by quotes. So we use that double quote, single quote combination just to make sure that they match up for you. Let's execute that. And that's going to return all of the authors whose name starts with an A.       </p>
+      <p>
+You can also use another wildcard. It's the underscore. And what this underscore represents is any single character. This example is going to get you all of the authors that have a first initial listed in their name. See, we have this set of results returned. And they all have an initial.       </p>
+      <p>
+We also can do different mathematical operations and functions. So here's an example of finding their age based on the difference between their birth year and their death year. One thing that I wanted to highlight is that we added a few things into our query statement. So the couple of things that we added-- and let me pull that up on the screen so you can see that-- is that we added not only this mathematical operation-- death year minus birth year-- but we've added in using this AS keyword to alias or create a column that's named appropriately that makes more sense.       </p>
+      <p>
+So we said AS approx age. If you recall, when we're importing our library, we've also used the AS command for aliasing. For example, if I take this out and rerun this cell, you'll notice that the column is named death year minus birth year. But that doesn't make a ton of sense to the reader, so we can use that aliasing to give us a proper name.       </p>
+      <p>
+The other thing that we added is in our WHERE clause, we added another set of keywords called, is not null. And so you can check for the presence of a value. So this is saying, well, as long as they do have a death year, go ahead and do the math. There's also a number of string operations that you can use to get the result that you're looking for.       </p>
+      <p>
+When working with strings, it's also handy to be able to convert them to all lowercase or all uppercase for searching. Here's an example of one author that has a different capitalization for part of their last name. This could cause an issue if you're looking for an exact match. So we can use the lower or lower case command to reduce this as a problem. So here's an example of how to use the lower.       </p>
+      <p>
+As you can see, the author has a different capitalization than one might think. It has the lowercase v on the first part of the last name. This command worked where we have the lower command-- so we lowercase it all. We're using the LIKE for wildcarding. So we don't have to specify the entire last name. We also want to give you an example of what would happen if you did exact matching. So you could say WHERE name equals and use the exact-- let me copy this one and put it here, so not using the LIKE or any of the fancy lower.       </p>
+      <p>
+Now, what would happen? What would be the result of this command? As you can see, there was nothing returned by this query because of the V. So if we change that to a lowercase v, it does return that result. However, using the wildcarding and the lower casing gives us the opportunity to not have to know that that capitalization difference was present. Let me go ahead and re-execute that as expected.       </p>
+      <p>
+Previously we talked about the ordering of results of your query. You can specify, if you'd like, the results to be ordered by a specific column of data, and whether that should be a ascending or descending. Here's an example of ordering them by the author's name. And remember, we're using the slicing here at the end to specify that we'd only like the last-- or the first 10 records to show.       </p>
+      <p>
+Combining ideas, this next query will select the name, compute the approximate age, alias that to a new column name, and then order them with the oldest author on top. So here we have a 93-year-old author that's on the top. And then they get younger as they go down the line.       </p>
+      <p>
+Another operation that you may want to use is to only get results returned to you that are unique. This is accomplished using the DISTINCT keyword just before the column name. Here's an example of a query that returns the unique author names that start with a C. We also have the ability to group items and then use that result for some calculations, such as counting the number of records, the sum, average, minimum, or maximum. One thing to keep in mind that the columns or attributes selected are included in the group operation. Let's look at some examples in the next five program blocks to see what that means.       </p>
+      <p>
+Let's scroll up so you can see the results of this. This is selecting the name and giving us a count of how many times that name occurs from the sci-fi author table. And again, I'm going to add in some slicing so we can see our results all on one page or screen. If you notice, I wanted to highlight that we GROUP BY the same field that we've selected and used for our aggregation or our COUNT.       </p>
+      <p>
+This next one is not going to give you expected results because the fields are not included-- they're not all included in the GROUP BY. Let's look at another example. This one, however, is using the ORDER BY combined with the COUNT to give us the most duplicated authors in the sci-fi author table. We also added in an order by so we could see the highest number on top here.       </p>
+      <p>
+OK. So another example-- we're just running through a couple of quick ones so you can see the different uses of aggregating and the GROUP BY. This one is adding in the use of the keyword called HAVING, plus it's also letting us query on the authors that are included more than twice.       </p>
+      <p>
+And this last one is an example of doing the aggregate functions without doing the grouping. Notice that we didn't do the aliasing, either. We could easily add that in to make the column names more readable. And I'll show you that. So we're doing the minimum and we're taking the difference between the death year and the birth year. We could always add in our aliasing and say, this is the min-- for example-- and it renamed that column name. And you can do that for all of these.       </p>
+      <p>
+Now we're going to add in a powerful concept called the join. There's many types of joins if you've studied or will study an entire database course. For this course, we're going to focus on the inner join, which can be thought of as an intersection between two sets. This is a way to gather information from more than one table at a time using a field that is common to both tables.       </p>
+      <p>
+For this example, we've been using this sci-fi author table. Now we want to see what books they have published. And that's in the sci-fi works table. If you recall, using our inspector above, we did look at that and saw that they're, again, joined by the author's ID. As a refresher, I'll go ahead and print out the information associated with the author in the sci-fi works table. So the two tables that we're working with are joined or linked by that author's ID, as a reminder. So we'll go through a couple of different ways to join these tables using that linked field.       </p>
+      <p>
+So this first example is a little wordy, but it's clear and it gets the job done. See how we've specified the different column names that we want, and from which table. So from sci-fi author, we want name. From sci-fi work, we'd like the title and the publication year. The other thing that we do is we use the JOIN keyword to say which two tables we're wanting to join, and then on which field to join them, or define the intersection between author ID and sci-fi work-- sorry, and ID and sci-fi author. There you go. That was a mouthful.       </p>
+      <p>
+The other thing we can do is we can utilize our slicing just to clean up our display. If the name where your fields or columns are unique, it's not necessary to specify which table they're located in, like we did above. However, there is a shorter way to do this so that you can use the aliasing along with removing any possible ambiguity. So see how here, the name, title, and publication you have in A, a W, and in another W to specify what table they belong with. And in the FROM line, we say sci-fi author AS a and sci-fi work AS W.       </p>
+      <p>
+That's using our aliasing so that in this call we can now use A and W instead of typing out or specifying the entire table name. And then this third line is we still are specifying which field is used for that linkage. So let's execute that. And we can see-- let me add in this slicing-- we can see that we get the same result for these first five authors and below.       </p>
+      <p>
+I just shortened that so we can scroll easily. OK, so we have some more work to do. So here's another way to use the same idea for the join, but doing it in a little different way. And it's a little bit more succinct, putting it in the WHERE clause. So if you see, we ended up with the same result-- let me see if I can get this on one screen for you. That's pretty close.       </p>
+      <p>
+So we have the same result, but instead of using the join, we've actually provided this linkage here in the WHERE clause for the ID. We can also add on a compound condition that looks for the books that our specific author has written by author name, or this other example with a specific title. So let's look at these two examples here.       </p>
+      <p>
+So this is looking for a specific author with the name Ann Leckie and printing off the title of her publications. This example is looking for the title of the publication I, Robot, and printing off the author associated with that. Now we can start asking some specific questions about how the data is located in the database, looking at specific questions like, how many books are listed for each author entry, for example.       </p>
+      <p>
+Now, what I would recommend is as you start getting these questions and trying to figure out, well, how would I get this information out of the database? I would recommend breaking it down into sub problems-- in other words, kind of like incremental programming where accomplish the tasks that you know how to do first, and then start making it more complicated or more complex.       </p>
+      <p>
+So for example, I would say maybe first see if you can connect to the database and select the author IDs and the author names. Then maybe add in the aggregate, the count method, for the number of titles for each author. And then you could specify how to order those results, as we've done here. We've combined all of those ideas to get this result.       </p>
+      <p>
+One thing to notice is that we have some duplication. This Arthur C. Clarke has three entries-- a 376, a 1, and a 2. So maybe we could combine ideas to get a little bit more of a succinct result. So let's do this next query and let's go ahead and use our count on the title to combine those ideas. So let's look and see what happened.       </p>
+      <p>
+So for Arthur C. Clarke, we do see now we have the 379 listed instead of having three different entries. Another thing we could look at and refine those results and continue experimenting is, let's select those books a little bit differently, maybe by just one particular author. And this is Arthur C. Clarke. So we're combining ideas. We're doing our SELECT and our aliasing, so from the works table, we're doing title. And then we're doing our aggregate. We're counting those titles.       </p>
+      <p>
+We're telling it what tables to look in and using our aliasing in our WHERE clause. Instead of using the JOIN, we're just doing that compound statement where the ID equals the author ID. So that's-- in essence, finding that intersection or doing that JOIN. We're also doing a compound statement where we're saying, oh, we only want to look at the books by this particular author. And then we're going to group the title names. And then we're going to count whether it's more than one.       </p>
+      <p>
+And then we're going to ORDER BY. That's a lot. Let's see what kind of result we get. OK. So we're refining our results just a little bit more. And what we're finding is that there is some duplication. So for each one of these, it's saying how many times that book is located in the database. So let's take this refinement just one more step further and look for the distinct title names, as I've highlighted here with my mouse.       </p>
+      <p>
+So let's execute that. And now we see a little bit of a different result. So the two columns that were returned-- or created, if you will-- is let's highlight that with this author here that I have in blue now-- Arthur C. Clarke. So yes, we have 379 books in the database by this author. But what we have here is that only 291 are actual distinct or unique book names.       </p>
+      <p>
+So let's execute this next cell to look at the actual distinct title name. So in other words, we can use this DISTINCT keyword without doing all of the grouping, like we've done before. That's a lot of book names. And remember there's 4,088 items returned. And we can utilize-- always we can utilize that slicing to eliminate those-- that very long set of results.       </p>
+      <p>
+Now we can ask some more complicated questions. The first question that maybe we could ask is, which one of our authors have published the most work. So let's go ahead and execute that and see what we have. We see that this first author here has been very busy. Maybe what-- let's figure out what year had the most books published? So that's giving the publication year and the count.       </p>
+      <p>
+Let's go a little bit further. Since we've been studying this-- our Arthur C. Clarke author, how about if we take a look and see, well, what years was that particular author the most productive? And what year did this author publish the most books? And here it looks like in 1957 and 1972, five books were published. That sounds like a lot to me.       </p>
+      <p>
+Well, now that we've walked through several different examples, before we're done, maybe we wanted to talk about what else we could do with our sample database. So we've connected to it in two different ways. We've used the inspector to see what is stored. We've been able to put those results inside of a data frame and then ask some very specific questions using different aggregations and sorting of the results.       </p>
+      <p>
+So I think you're all set to do some basic SQL. And you'll definitely get lots of practice in our next project. The very last slide here, I've listed some things that we didn't cover that you could certainly research and study on your own, or take an entire course on database. You can learn about set operations, subqueries, and different types of joins. Good luck.       </p>
+      <p>
+[MUSIC PLAYING]       </p>
+      <p>
+      </p>
+    </div>
+  </body>
+</html>

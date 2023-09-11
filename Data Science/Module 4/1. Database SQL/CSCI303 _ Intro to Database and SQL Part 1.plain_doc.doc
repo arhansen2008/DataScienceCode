@@ -1,0 +1,125 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/omml/2004/12/core" xmlns:ve="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o12="http://schemas.microsoft.com/office/2004/7/core" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/3/wordprocessingDrawing" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/3/main" xmlns="http://www.w3.org/TR/REC-html40">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <head>
+    <style>style</style>
+  </head>
+  <body>
+    <div class="Section1">
+      <p>
+        <b>
+          <u>
+            <span style="font-size:20.0pt">CSCI303 | Intro to Database and SQL Part 1</span>
+          </u>
+        </b>
+      </p>
+      <p>
+      </p>
+      <p>
+Hello, today we're going to continue exploring data acquisition and adding another tool to our data scientist toolbox. We will talk about the basics of a relational database and SQL, Structured Query Language, which is a special-purpose programming language that is designed and used to communicate with a database.       </p>
+      <p>
+We will get practice with some basic commands to gather data from a database, and store them into a Pandas DataFrame. We will also investigate two different ways to connect to a database through the use of Python commands.       </p>
+      <p>
+As you walk through the slides, make sure you have downloaded the sample database that is linked from the Instructional Materials page. This file is to be located in the same directory as the Jupyter Notebook file for this discussion and your project.       </p>
+      <p>
+Let's get started. The database can be thought of as a store or repository for your data. There's certain access points and commands to be able to retrieve this or modify information as needed in a very intuitive and straightforward way.       </p>
+      <p>
+The earliest database was kind of flat, called a flat database, which was basically a text file. There's many types of databases that are used-- for example, centralized, distributed, or NoSQL databases. The NoSQL database is needed to work with non-tabular or unstructured data.       </p>
+      <p>
+The type of database we'll discuss in our class is called a relational database. The data is stored in tables. And those tables contain rows and columns. Each row represents an individual record in a column that holds a field for the data values. Related information links the tables together with a unique field called a primary key.       </p>
+      <p>
+First, I'll start with an example of what a table might look like. This table is called employees, and has rows for these three individuals. And the columns or features are name, age, and salary.       </p>
+      <p>
+Note the rows are not ordered in any particular way. In fact, each time you do a query or a lookup, you could possibly get a different ordering. We will talk next time about how to specify whether you want the records returned in ascending or maybe descending order, for example.       </p>
+      <p>
+SQL has its own syntax. We'll learn enough to be able to access or gather data that's already stored in our sample database provided. When issuing these commands, we're telling the database what we want versus maybe what we would like the database to do. These requests are called a query in SQL.       </p>
+      <p>
+So here's a basic sample that's asking the database to look in the employee table and return those employee names who are younger than 40. Keep in mind, there are entire courses on database. We will cover just the introductory piece so that you can get practice with some basic queries to gather data from our sample database.       </p>
+      <p>
+The first command we're going to cover is the SELECT. Looking at this command, you'll see that there are other words that are capitalized, which indicate that they are keywords. There's the SELECT, the FROM, and the WHERE.       </p>
+      <p>
+Although capitalization is not necessary, it's common convention so that at a quick glance you can make a distinction between the keywords and the field names. Investigating the sample table that we discussed just above, which rows do you think are returned by the following command? And I'll highlight that with my mouse.       </p>
+      <p>
+That's the command. And this is our table. Hmm. That's right just Raluca, the name Raluca, because that's all we asked for, is returned. And if you notice, that Raluca is the only one with age of less than 40. Their age is 33.       </p>
+      <p>
+The basic format for the SELECT statement is which fields or columns you'd like returned from what table in the database should we look at. And then also what conditions that we would like to use to restrict which items are returned.       </p>
+      <p>
+If you want all of the columns or field returned, you can replace the column names with that star or asterisk. Now the WHERE clause is optional. And it works with Boolean logic. You can have multiple conditions using the keywords of AND, OE, and also NOT.       </p>
+      <p>
+In this sample SELECT statement, we'll return all the fields from the employee tables that are older than 40 and make less than $100,000, or have the name of Raluca. So what we should do is think about this for just a second.       </p>
+      <p>
+Let's look at the original table. Which items do you think are returned from our new SELECT statement? Right. Although Laura met the condition of age over 40, her salary is higher than $100,000. So she would not be included.       </p>
+      <p>
+Let's scroll back to that. Here we go. This slide is a reminder that in SQL, keywords within commands are not case sensitive. So all three of these queries do mean the same thing. Although mentioned above, it was convention to capitalize the keywords for ease of reading.       </p>
+      <p>
+Now that we have talked about the theory and some ideas about a database and what SQL are, let's run through some examples of how to code this up. So we're going to show you how to connect to a database and issue some different queries.       </p>
+      <p>
+These are the libraries that we'll need for today's discussion. We have our NumPy library, our Pandas library. And then also we want to pull in the series and the data frames.       </p>
+      <p>
+This first example shows a simple interface to connect to the database and establish a handle or cursor that you can utilize to execute your queries. This block of code will import the SQLite library so that we can use our sample file. And then we will try to establish the connection.       </p>
+      <p>
+The rest of this code is error trapping or error code in case there's a problem. So let's execute that. No errors, that's good.       </p>
+      <p>
+This next block of code will issue a query. And as long as there's no errors, it will also loop through the results and print them to the screen. Let's execute that.       </p>
+      <p>
+And as a reminder, we use this SELECT statement, SELECT star from employees. And the way to read that is to select all of the items from the employees table. So the star is a wild card.       </p>
+      <p>
+I wanted to make a note about the error trapping or the error code. The error handling, it's a little overkill for our simple example. But in the future, if you're doing something more complicated, it does give you the opportunity to undo a certain command or do a rollback. So we've included this just as a sample.       </p>
+      <p>
+In this example, we've asked for a column of information to be returned that doesn't exist. Let me execute that. We get a user readable error that says no such column, arglebargle, and we have done no damage to the database.       </p>
+      <p>
+Even though the data that returned above as requested-- I'm going to scroll up to show you that-- in this non-error one is we asked for all of the records in that table. We would like to go ahead and put it in a more readable format or a tabular format.       </p>
+      <p>
+So we are able to issue that command and put the information directly into a database, just like that.       </p>
+      <p>
+Now notice the names of our columns didn't come across. Luckily, what we can do is now that we've established a connection to the database and we've issued a command using our cursor, we can get those column names using this description property. The description property is going to return all of the information associated.       </p>
+      <p>
+So we have name, age, and salary. Now we want to access that information. It's the zeroth element for each record. This next line of code will run through and issue this command here, columns equal, and using our comprehension and our list features and the accessibility, we can combine all of that to be able to grab those column names. Again, r0, for each row that has returned and that matches here above name, age, and salary, and use those as our column names.       </p>
+      <p>
+We've also loaded the Boston Housing dataset into our sample database. Here's an example of using a query to gather three of the features-- crime, indus, and rooms, and medval, our target vector. If you remember, that's the median home value from the Boston table.       </p>
+      <p>
+This next line of code is going to issue that query from above. It's going to utilize the information from the sample above where we-- there it is-- we use the description and grab that zeroth element for each to name the columns. And there's a lot of things going on in this one line of code.       </p>
+      <p>
+We're going to use the DataFrame constructor to take those results from the fetchall, dump them into a DataFrame. And then the last thing to notice here is we're using slicing to just show the first 10 rows that are returned from that command.       </p>
+      <p>
+So let's execute that cell and see what this does. All right, that's what's expected. So we have three features. And then we have our target, medval. And we're looking at the first 10 rows that were returned from that.       </p>
+      <p>
+It's good programming practice to clean up your connections. In Jupyter Notebooks, the connections will be closed for you during shutdown. However, if the notebooks continue to run, the database connection is not closed.       </p>
+      <p>
+This sample closes the cursor and the database connection. And again, it's good programming practice to go ahead and clean that up.       </p>
+      <p>
+Just like when we were reading in our TXT, CSV and JSON files, there is a Panda shortcut to issue an SQL query and put the results directly into a Pandas DataFrame.       </p>
+      <p>
+Let's go ahead and issue that. This is the second way to establish a database connection. The first thing that we do is this dburi is to create a variable to hold the connection or the location of our sample database.       </p>
+      <p>
+Then this next line is to setup in the first parameter here to the pd.read_SQL query is our SELECT statement, or our query that we'd like to issue.       </p>
+      <p>
+The second parameter is this dburi. And this is a variable that tells the Pandas query command where our database is located. And again, we're asking to just look at the first 10 rows of data.       </p>
+      <p>
+The result is what is expected, that it said, I want to select all of the columns from Boston where this chaz variable-- and this is using Boolean logic-- so where chaz is-- what do you think? 1, correct. So in other words, chaz is true or 1.       </p>
+      <p>
+And if you recall, looking at the Boston Housing dataset, this was a variable, a 1 or a 0, that designated its location to the Charles River.       </p>
+      <p>
+Maybe we just want all of the information returned from a whole table. We can use the pd.read_SQL table. And of course, the second parameter is still the link or the location to where our database is located. And that will return all of the information from that table.       </p>
+      <p>
+Now the above samples worked because I knew what tables and what records that we were looking for. So what if you were working with a database that you haven't seen before?       </p>
+      <p>
+The following we'll show you some examples of how to inspect a database, how to, in other words, get the big picture overview of the contents. We'll use the SQLAlchemy library, because it works nicely with Python and Jupyter Notebooks.       </p>
+      <p>
+Once we've created this connection and this engine object, we can use this inspector to get information about the database. Let's execute this one. There.       </p>
+      <p>
+This command is getting all of the table names that are located inside of the database. As you can see, we have the Boston. And we've used that before.       </p>
+      <p>
+Here's the employees table that we've used in this example as well. And there's all this other information that's included.       </p>
+      <p>
+Now what we can do is now that we have an inspector object set up, we can go ahead and get information or specific items and types about what is in a table. So let me issue this command here. And we're looking at our employees table.       </p>
+      <p>
+And as you can see, we have name, age, and salary. And also included is the type of data that's included in that column or field. You could even take it one step further and combine what we know. You can do the inspector get columns and put the results directly into a Pandas DataFrame.       </p>
+      <p>
+Now that we went through an overview of connecting to a database, issuing basic queries, and inspecting the elements inside of a database, it's your turn to think about and practice.       </p>
+      <p>
+Maybe you could do some queries on the Boston Housing data set? Maybe you can look at the university's table and get information about your university. I'll leave this as an optional fun exercise for you.       </p>
+      <p>
+Next time, we'll add in some more advanced SQL commands that will set you up for success. We'll look at some more advanced WHERE clauses, functions, sorting the results, also combining the results of two tables that are connected by a common field.       </p>
+    </div>
+  </body>
+</html>
