@@ -1,0 +1,77 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/omml/2004/12/core" xmlns:ve="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o12="http://schemas.microsoft.com/office/2004/7/core" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/3/wordprocessingDrawing" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/3/main" xmlns="http://www.w3.org/TR/REC-html40">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <head>
+    <style>style</style>
+  </head>
+  <body>
+    <div class="Section1">
+      <p>
+        <b>
+          <u>
+            <span style="font-size:20.0pt">CSCI303 | Confusion Matrix Introduction</span>
+          </u>
+        </b>
+      </p>
+      <p>
+      </p>
+      <p>
+When we're validating our models, we want to look at not only visualizations, but calculate certain metrics. The confusion matrix is a summary, or holistic view, of our prediction results from a classification problem. Now, recall when we compare our expected outcome and our predicted outcome. We can determine how well our model can predict on unseen data-- the difference, again, between y and y hat.       </p>
+      <p>
+In the classification examples we've covered so far in class, the default metric return by the dot-score function and scikit-learn was the accuracy of your model. Now, we've talked about the fact that accuracy is the percent of correctly classified observations, and you can come up with this number on your own by dividing the correctly predicted observations by the total observations.       </p>
+      <p>
+But you may be asking yourself, well, where do we get all of those numbers? Well, the confusion matrix, which we'll go through today, will organize this data in a clear, readable fashion. It identifies where the classifier predicted correctly as well as show us where the classifier went wrong, and this gives you the opportunity to make some improvements and rerun your model.       </p>
+      <p>
+So let's go through this together. I'm going to go ahead and do my annotation and fill this out with you. And then after this video, you'll have the opportunity to utilize our interactive online form to fill it out, or you can print off a PDF and fill it out by hand. We'll go through it together first. So to reiterate the definition-- I've copied that into my buffer for you so you don't have to watch me type for so long-- and again, it's a summary of the prediction results from classification.       </p>
+      <p>
+It compares expected with predicted outcome to determine how well the model can predict unseen data. And again, difference between y and y hat. This next one says, well, the diagonal elements, those are where the classifier predicted correctly. Whereas the off-diagonal elements are where the classifier-- and I'm going to put here-- made mistakes. Then I'll identify those in the diagram here to the right. I'm going to go ahead and circle the diagonal elements, and as we define our terminology in the next item we'll fill this in.       </p>
+      <p>
+So moving down here, TP, that also stands for "true positive." What this means is-- what do you think? Right. This is where the correctly predicted positive examples, and after we type out these four definitions, we'll identify where those belong in the square diagram above. FP-- so that's "false positive," and that is the incorrectly predicted positive examples.       </p>
+      <p>
+We'll continue with our definitions. TN, that would be a "true negative." What that is is the correctly predicted negative examples. Remember, sometimes you might have your confusion matrix set up and have different categories instead of positive and negative. This is just a generic example that will fit into most any problem. FN is "false negatives," and these are the incorrectly predicted negative examples.       </p>
+      <p>
+OK, so now that we have our definitions, let's go ahead and fill in our diagram together. Let's go back up to the top, true positive. So think about correctly predicted positive examples. So that's going to go up here. That's when our true label was positive and our trained model then predicted that it was also a positive. So let's put that up there. There's another term, though, that I typically use, and this is a hit, and this is a really good thing.       </p>
+      <p>
+So if you want to go down the line-- so b is FP, or False Positive. Where do you think that's going to belong? Right. That's down here. That's when it really was a negative observation or example. But our classifier predicted it as positive.       </p>
+      <p>
+So let's put that here. And also is a term that I use called a false alarm. So let's go to TN, or True Negative, so that we have two choices here. That's going to go here.       </p>
+      <p>
+And we're going to go ahead and click off so we can get that in here. So our True Negative, or TN, can also be thought of as a correct reject. And that's where it correctly predicted that negative example.       </p>
+      <p>
+Then the fourth item goes here in this last box. And that's a false negative. Another term for that could be a miss.       </p>
+      <p>
+So looking at this diagram, the idea here is that we're not going to always have perfect classification results. It's a bit unrealistic. So what we want to think about is which of these elements in these boxes or a combination of these things, which ones do we want to minimize. So this could be situation-specific.       </p>
+      <p>
+So a real use example is from my research that I conducted in anomaly detection. It was more important to minimize the false negatives. In other words, we were OK with a few false alarms, saying, hey, there might be a problem with this levee, but then it was really OK.       </p>
+      <p>
+That was a lot better than missing a major event that could lead to levee failure. That would be really bad. So again, it could be situation-specific. And that's how it would have worked in my research.       </p>
+      <p>
+So now we're going to go through the bottom and define a couple more terms. I've scrolled to the bottom of the form to look at these last things in item number 5. So we've been talking about accuracy quite a bit.       </p>
+      <p>
+However, you should watch for the accuracy paradox. This was described in the linked article that you read just before watching this video. You could get misleading results by looking at just a single metric.       </p>
+      <p>
+And it's important to introduce some additional ones, like precision, recall, and also the F measure or F score. So we go ahead and fill in some definitions and talk about the formulas for the following four terms.       </p>
+      <p>
+So the first one is accuracy. And accuracy is the percent of-- let me go ahead and type that in for you-- it's the percent of correctly classified observations. And how you would calculate that is you would take the true positives plus the true negatives, divided by the total number of observations.       </p>
+      <p>
+The next definition we wanted to give you is precision. Precision can be thought of as the percent of positive predictions. In other words, out of all of the examples, the classifier labeled as positive, what fraction were correct?       </p>
+      <p>
+To save you some time watching me type, I've copied that into my buffer for you. The formula for that-- that would be the true positives divided by the true positives plus the false positives.       </p>
+      <p>
+Now recall is another thing that you can measure. And what that is is the percent of positive observations predicted as positive. In other words, out of all the positive examples, what fraction did the classifier pick up? Now that formula would be the true positives divided by the true positives plus the false negatives.       </p>
+      <p>
+So the last metric on here is the harmonic mean between precision and recall. And this is a way to balance these two between precision and recall. Again, it's going to give you a really good metric that you can rely on versus rely on accuracy alone.       </p>
+      <p>
+So again, the definition for F score, it's a way to balance precision and recall. And again, it's the harmonic mean between them. A formula that we've derived for that is 2 times precision times recall, divided by precision plus recall.       </p>
+      <p>
+You can get these formulas, again, from the linked article. And I look forward to seeing you utilize these throughout your project and filling in your form and submitting that for this activity.       </p>
+      <p>
+One thing I wanted to note is that the results returned from the confusion matrix, the library call and scikit learn, they have the positive and negative switched in our confusion matrix box. So just wanted to make sure that when you print that off in your Jupyter Notebook file that you know what you're looking at.       </p>
+      <p>
+The diagonal elements will still have the correctly predicted events. And the off diagonal is still where the classifier made mistakes. Just swap those boxes for TP and TN, and also for FN and FP.       </p>
+      <p>
+Now, it's time for you to put this into practice. In your activity, you'll fill out the same worksheet. So again, you'll either use the interactive version or download and fill in a PDF.       </p>
+      <p>
+You can also continue using these throughout the semester to evaluate your results of your semester project, as well as in the next project after this where you can compare three different classification algorithms. So see if you can do this on your own.       </p>
+    </div>
+  </body>
+</html>

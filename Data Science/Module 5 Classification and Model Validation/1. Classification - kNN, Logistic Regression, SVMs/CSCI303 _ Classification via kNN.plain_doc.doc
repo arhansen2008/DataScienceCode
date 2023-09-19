@@ -1,0 +1,115 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/omml/2004/12/core" xmlns:ve="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o12="http://schemas.microsoft.com/office/2004/7/core" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/3/wordprocessingDrawing" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/3/main" xmlns="http://www.w3.org/TR/REC-html40">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <head>
+    <style>style</style>
+  </head>
+  <body>
+    <div class="Section1">
+      <p>
+        <b>
+          <u>
+            <span style="font-size:20.0pt">CSCI303 | Classification via kNN</span>
+          </u>
+        </b>
+      </p>
+      <p>
+      </p>
+      <p>
+This week we're going to continue with exploring supervised machine learning by introducing the concept of classification. We'll start with an overview of classification and a practical example of an algorithm called k-nearest neighbors. Now, these libraries should look familiar to you. I'm going to go ahead and execute those and pull in those libraries.       </p>
+      <p>
+We've added a couple new ones-- the Statistics Library that we used to generate our simulated data down below in a function. And I'll point that out. And we're also bringing in part of the mapplotlib plotting library so that we can print off some specialty plots to show different decision boundaries, if you will. So I'll point that out as well.       </p>
+      <p>
+The rest of this we've seen before. As a refresher, the biggest difference between supervised and unsupervised learning is that we have known labels, or classes, or we call them targets. We've already discussed in practice with linear regression. And I'll return to that later this semester when we talk about random forests.       </p>
+      <p>
+What we're doing, though, is we're trying to find some function that maps X onto Y, such that given an unseen observation, data point X, our model can confidently predict a value for Y. One thing to highlight is that the target variable-- let me go ahead and scroll up here so you can see the text. There we go-- is that the targets are not continuous like in linear regression. They are discrete values. So a common example to clarify this is to say maybe you wanted to predict whether somebody will default on a loan or not.       </p>
+      <p>
+The target vector may include values for yes they will default or no they will not. Given these input features for your X matrix such as financial history, payments, credit score, et cetera. So let's go ahead and set up our example problem. We're going to use synthetic data in two-dimensional space.       </p>
+      <p>
+Our target classes will be named Class A and Class B. The block of code includes some convenience functions that we'll use to generate this synthetic data. See this line of code here, I wanted to tell you that I would highlight where we utilize that new library we haven't seen before, the norm.cdf. Also, what I wanted to highlight is that we are, down below here, is that we're creating our classes B and A, like such. And then we do our assignment.       </p>
+      <p>
+So we call this function within our function. And then we'll return a data frame of observations that belong to one class or another. And let me go ahead and highlight that. There, we've executed that cell. Know though, it didn't do anything yet. Just remember that we're just setting up our convenience functions. And then we will utilize these in this cell below here. And then you'll see the result of that.       </p>
+      <p>
+Now using those convenience functions, what we're going to do is create-- I'll execute that for you-- is we're our data. We're using 100 samples. We're splitting that between training and testing. And then we're using our Panda's data frame knowledge to create these two vectors for A and B, as I'm highlighted here with my mouse. And those are just used for plotting purposes.       </p>
+      <p>
+Now, what we can see in this plot here is results of that. And we have our blue squares to represent class A and our red triangles to represent class B. We will now introduce the k-nearest neighbors algorithm for a classification. This example is a robust, simple fast algorithm, and can be used as a benchmark for more complex models.       </p>
+      <p>
+This model works well with all sized data sets and can be used for things like recommender systems and even facial recognition problems. It uses a voting strategy for each new observation to determine which class it belongs to. First, what we'll do is we'll pull in the proper library here from SK Learn called Neighbors. And this will set up a k-neighbors classifier. We're going to set up a variable for the number of neighbors. We'll start with k equals 5 here.       </p>
+      <p>
+On the next line, we create our model object. We're going to call it Model. And then we send in our k here as a parameter. And we'll just use the default parameters for the rest of the items.       </p>
+      <p>
+The next line is we'll also train our model using that dot fit. The two parameters that it expects are what features to work with and what targets we're trying to use in our prediction. Let me execute that cell. And I wanted to highlight something. After you execute that cell, Jupiter notebooks will output this information here as I've highlighted with my mouse.       </p>
+      <p>
+And what that is, is all the parameters and their information associated with that model object. I wanted to take a minute to talk about the distance metrics. To measure the distance from one observation to another, these algorithms can use various distance metrics. The common ones you've heard of are Euclidean distance or the Manhattan or City Block metric.       </p>
+      <p>
+You'll see in this parameter list there's one called Minkowski, where it says metric equals Minkowski. When the power parameter, which is specified here, p=2, when the power parameter is set to 1, that tells the algorithm to use the Manhattan distance. And when the power parameter is set to 2, such as this, it tells the algorithm to use the Euclidean distance to compare the distance between two observations.       </p>
+      <p>
+The last thing I wanted to mention is that people ask, well, what if there's a tie in this voting metric? Well, if two neighbors, k and k plus 1 have the same distance, the algorithm will break the ties in a few different ways. One is they will just randomly select which class to assign that observation to.       </p>
+      <p>
+Another way is it can use a data observation that's close to it within the vector or the feature matrix. You can also avoid this by using an odd number for k, the number of neighbors. So after we train our model, we can now use that to predict where unseen observations might belong. Plotting their results can be a little tricky.       </p>
+      <p>
+So here's an example of plotting the result where the classified points belong. Let me go ahead and execute that so you can look at it. While we're talking about it, let me move that up just a little bit here. There you go.       </p>
+      <p>
+So this example, what it's doing is we're plotting our results where the correctly classified points are going to be solid, whether it's a square or triangle, depending on if it's class A or class B. And then the misclassified observations will be denoted in it empty triangle or square. The colors and shapes will match the prediction, not the ground truth. So it gets a little confusing. But let's take a look at this.       </p>
+      <p>
+All of this code in this first plotting function is just setting us up so we can get this nice visualization. And I wanted to point out here is that we do the model.predict right here in our plot function. So again, we've trained our model. And now we can go ahead and use model.predict and send it data it hasn't seen before and let it do it predictions.       </p>
+      <p>
+All the rest of this code in this function are just setting us up so we can do our nice plot. So it might be a little confusing because the plot above-- let me scroll so you can look at it-- this is our training data. Whereas the plot that we're looking at, because we want to see the predictions, we're using our test data. So it's really hard. You don't want to scroll up and then down and then compare those two charts, because they are going to be different data observations.       </p>
+      <p>
+So let's take another look at how we can plot our data using a decision boundary. This is a lot of code and it gets a lot complicated. So what I've done is I've created a bunch of comments within this code. And this is that new part of that matplotlib library that I mentioned that we brought in. And this is going to give us more of a contour or a dividing boundary.       </p>
+      <p>
+Let me go ahead and execute this so you can see what I'm talking about. Here we go. So now notice we're calling this new function plot_predicted_2 that we just executed above. We're sending in our trained model, as well as our test data. So this diagram here does match this diagram. But it still doesn't match the training one above, like this one.       </p>
+      <p>
+So what I wanted to show you-- sorry about all the scrolling. There's a lot of plots to look at-- is that this does make a little bit more sense because we can see this dividing boundary. What we can do, though, is we can-- let me execute this one. So we can use that same plotting function to send in the second parameter here. And this is all of our data, not just our test data, like this one above here where we send in our test.       </p>
+      <p>
+So it gives you a little bit better idea. Because we are now looking at all of our data, we can do that visual comparison. Another thing you may want to do is change this last parameter to train. And this is going to show us the same dividing boundary, the output of our prediction. But it's going to show us our training data. So we can see that truly these points here match up to what we've expected.       </p>
+      <p>
+And one thing I wanted to highlight is keep an eye on this one so we have a blue square that was correctly classified. We have a red triangle that was incorrectly classified. And then these two red ones here. Let's go up to our training data one more time and let's look at that.       </p>
+      <p>
+So in fact, we do have that blue square. Well, our training data, or our original ground truth data, this was supposed to be a blue square or class A. And our classifier made a mistake. It thought it was a red triangle or a class B, so that's why it's not filled in. And then these two are just fine.       </p>
+      <p>
+So looking at that data, again, visualizing it, it makes a lot more sense when we use the training data to compare it. So just make sure that you've lined those up, whether you're looking at test data and test data, or training data, and training data, et cetera.       </p>
+      <p>
+OK, so now that we've created a model object for k-nearest neighbors, we've trained our model. And then we utilized their prediction function to look at the results in a plot. We can possibly look at tuning our model by increasing or decreasing the number of neighbors or that value of k. The following several examples are going to show you how that decision boundary changes.       </p>
+      <p>
+One thing to note is that in these plots I'm going to leave the second parameter, not as test data or training data, but just of all of the data so we have a constant comparison as we go through k=1, k=3, k=7, et cetera. So I'm going to go ahead and execute these cells and show you how the decision boundary changes as you increase or decrease the value of k.       </p>
+      <p>
+And notice for each one of these, we're creating a new model object with that k. We're doing a dot fit. And then we're calling our plotting function that does the dot predict inside of it.       </p>
+      <p>
+Do you see any changes amongst these decision boundaries and the misclassified points that make you think that maybe there's something going on as we increase the value for k? Are we seeing more misclassified points, possibly? Was it better when we used k=1 when we were down here?       </p>
+      <p>
+Remember, in our original model we used k=5. Hmm. So as you can tell, although the visualizations are really nice, and it gives you some idea of what's going on, maybe we want to look at some metrics and look at that dot score, which gives us the accuracy of our model. And that might give us a better idea of what's going on.       </p>
+      <p>
+So as we look at this metric, what we're going to find is that these models are also sensitive to how complex the model is. In other words, more is not always better. But we do want to find that sweet spot or that balance between under fitting and over fitting our model. In the case of k-nearest neighbors, you can definitely over fit by using too few neighbors. This means your model will not generalize well to data observations it hasn't seen before.       </p>
+      <p>
+You also risk under fitting your model by using too many neighbors. And that way your model cannot capture the underlying trend of the data. So let's look at the results of looping through a range of values. Let me scroll up so you can see that.       </p>
+      <p>
+So we've done a couple of things here. We've looped through and reevaluated our k neighbors classifier in the range of 1 to 23. And what this is, is the odd numbers. We're counting by twos. So that's going to be k equals, what do we think? Yes, right.       </p>
+      <p>
+So it's going to start and it's going to go all the way up to 23. So how would you know that? If you wanted to get more information about what this is outputting, you could certainly printk. And look at that, you could say, oh, we're doing k equals 1, 3, 5, et cetera to 23. Let's take that out, though. It's a little messy.       </p>
+      <p>
+But what we can do is we can visualize. And we're taking the score. So here, we're taking the score of the training set and we're taking the score of the test set. And we're appending that into our list as we go through each iteration of this for-loop. Then we're going to plot those values or those results. The training is going to be in red squares. And the test is going to be in blue dots.       </p>
+      <p>
+So what we can do, we can look at this visually. And the x-axis are the number of neighbors. And then the y-axis represents that accuracy measure. What we've identified is accuracy, the higher the value is better. And so what we're looking at here is at-- I can kind of look here with my mouse-- at about k=11, we reach that maximum point for our accuracy. And you can kind of look over here and see that that's probably about 0.88, right? So we could certainly print that.       </p>
+      <p>
+And here I have a print of all of the test scores. Let's do a print statement here. Maybe we want to look at the max of test score. Yes, a 0.88. So that makes it a little bit easier than dragging your mouse across that graph. So anyway, that is just a really great example of how you can redo the training and the prediction, and looking at the quality. And that's going to print out the accuracy. And we can talk a little bit more about some metrics we haven't quite talked about.       </p>
+      <p>
+So let me go ahead and execute this cell. And let's have a pause for discussion. So this evaluation metric, we haven't quite discussed yet. This is called a confusion matrix. , Basically this is the code to get the information about the performance of your classifier.       </p>
+      <p>
+This value, this 0.84 value here, that's output. This last value here is the last value for the accuracy from the list of them. And see how this matches? This is the last one here.       </p>
+      <p>
+And I wanted to tell you a little bit about what that was and how it was calculated. This is calculated by taking the number of observations that were correctly classified and dividing that by the total number of observations in all. So for our experiment here, looking at this confusion matrix, we take the 28 plus the 14. Because on the diagonal of a confusion matrix, the classifier did a good job along the diagonal, or correctly classified observations.       </p>
+      <p>
+And then our total number of observations that we used in our test set is 50. If you recall, we created 100 sample observations in our synthetic set. And then divided that in half for training and testing. So again, 42 divided by 50 gives us that 84.       </p>
+      <p>
+Your first activity this week will be to review and fill out a worksheet that goes over this terminology and all of the formulas. So don't worry about that at this time. But I wanted to highlight this last little piece here. And what this is, is that there is some confusion about the confusion matrix. No pun intended.       </p>
+      <p>
+When reviewing examples in class, different literature that you may read, and then also the way scikit-learn library outputs this data, you might find the true and predicted labels set up a little differently. In other words, the items along the diagonal are still where the classifier predicted correctly. And the off diagonal is where the classifier made mistakes. But sometimes these elements are swapped.       </p>
+      <p>
+This last piece of code will just kind of prove that to you so you know where those values are coming from. Well, we'll see you next time as we continue with more on this and more classification algorithms.       </p>
+      <p>
+[MUSIC PLAYING]       </p>
+      <p>
+      </p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/omml/2004/12/core" xmlns:ve="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o12="http://schemas.microsoft.com/office/2004/7/core" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/3/wordprocessingDrawing" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/3/main" xmlns="http://www.w3.org/TR/REC-html40">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <head>
+    <style>style</style>
+  </head>
+  <body>
+    <div class="Section1">
+      <p>
+        <b>
+          <u>
+            <span style="font-size:20.0pt">CSCI303 | Project 5 - Classification Overview</span>
+          </u>
+        </b>
+      </p>
+      <p>
+      </p>
+      <p>
+Hello, everyone. Today we're going to be looking over Project 5, which is on classification. And this project deals with a few different methods of classifying your data. What you're going to do is start by loading in the Titanic data set. And as a student in this class when I took it this was one of my favorite projects because it's so cool what we kind of do and what we kind of learn with this data.       </p>
+      <p>
+So you'll start by watching these intro videos, load in this data set that has quite a bit of data on actual Titanic passengers, and then you're going to start with Problem 1, which is figuring out what's going on with the data. So you have seven different questions. The first two are right here. Just kind of loading it is, number one, easy. Number two is just exploring it, describing the database, and just kind of seeing what information is in the data so that way you get a good idea of what you're dealing with.       </p>
+      <p>
+Then you're going to answer Step 3, Step 4, Step 5 right here. Make sure you provide the answers to them. And then Step 6 and Step 7 here is these same 6 and 7 questions, just a little bit further down and with some information. You're going to do some plotting and then find out the age distribution.       </p>
+      <p>
+Step 1 isn't too difficult. It's just those initial steps, understanding what the data you're being provided is and how you're going to work with it. And that will just give you a better idea of how to do the rest of the things throughout the process and at the class.       </p>
+      <p>
+Problem 2 in this is dealing with transforming the data. So now that you have a good understanding of the data and see what it is, what you're going to do is you're going to actually change the data. And we're going to change it so we're going to get rid of the sex column, either male or female, and we're going to replace it with ones and zeros, because that's how a computer understands the data.       </p>
+      <p>
+So if you were to provide an F or an M which is in there already, it's not going to understand that. You're going to map it to a one or a zero. And this is important because the famous saying women and children first on the Titanic. So you might find that to be a useful column to try to predict who's going to live or die, what the outcome is.       </p>
+      <p>
+So now we're actually doing the classification in Problem 3. There are six steps for this, and what you are actually going to be doing is using the K nearest neighbors in this one and defining the input target. Just read through these six steps and complete them down here. Here we have already set your K equal to 5 for your nearest neighbors. And just go ahead and decide what inputs you want, and what your target is, and then do the train test split, and then create the model and predict with Y hat and see how it is.       </p>
+      <p>
+Problem 4, you're doing the cross-validation and classification report. So you're saying how good it was. You can find this information in Lecture 17, which is the model selection slides, and you'll be using the cross-value score from scikit-learn to estimate the F store. And this is just kind of seeing how well your model did and how well it worked. And what you also do is a Confusion matrix at some point in this.       </p>
+      <p>
+So then Problem 5, kind of what you did just up above here, but with support vector machines. Again you're going to compute the F store in the Confusion matrix. And this just trying to walk you through it, creating a model, training model, evaluating model, get F store and CV. Then do Confusion ratio, then the classification report.       </p>
+      <p>
+Now down here same exact thing with logistic regression. And then Step 7 is comparison and discussion. And then this last little questionnaire, as on every project.       </p>
+      <p>
+Now Problems 4, 5, 6 are just similar things, but you're using K nearest neighbors, SVMs, or logistic regression just to see how each of them perform and see which one might be better or different, which you'll talk about in discussion down below.       </p>
+      <p>
+Overall, this project isn't that in-depth. It's just kind of setting things up. That is the tricky and challenging part, so just make sure you have a good understanding of Problem 1, what's in the data. And then Problem 2 can be difficult as well. There's good examples of getting dummies in the lecture slides and videos. So I would suggest going back and looking at those because that will help you get through it. And other than that, I wish you good luck with Project 5 and keep predicting.       </p>
+    </div>
+  </body>
+</html>

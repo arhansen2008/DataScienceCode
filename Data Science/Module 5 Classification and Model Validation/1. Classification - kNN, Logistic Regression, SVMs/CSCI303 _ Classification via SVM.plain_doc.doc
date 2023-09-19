@@ -1,0 +1,81 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/omml/2004/12/core" xmlns:ve="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o12="http://schemas.microsoft.com/office/2004/7/core" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/3/wordprocessingDrawing" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/3/main" xmlns="http://www.w3.org/TR/REC-html40">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <head>
+    <style>style</style>
+  </head>
+  <body>
+    <div class="Section1">
+      <p>
+        <b>
+          <u>
+            <span style="font-size:20.0pt">CSCI303 | Classification via SVM</span>
+          </u>
+        </b>
+      </p>
+      <p>
+      </p>
+      <p>
+Finishing up our classification sequence, we introduce a third algorithm called a support vector machine. The support vector machine is what we call a large margin classifier. It can be used to solve one class, two class, multi class, and even regression problems. In our examples today, we will go through and discuss a two-class classification problem.       </p>
+      <p>
+The support vector machine aims to find a hyper plane relative to a specified kernel function that separates the classes while maximizing the margin between them. It has support vectors. And what these are is they're elements that touch the boundary-- the ones that lie closest to the decision surface or hyper plain. We'll go through the elements that build this diagram in an experiment throughout the slides today.       </p>
+      <p>
+We bring in our same libraries for classification. And this time our example problem is going to be a little bit different. Our synthetic problem is going to have two clusters of normally distributed data observations in two dimensions. This is going to give us data that we call linearly separable. In other words, we can find a dividing line or hyper plain between the two classes of observations.       </p>
+      <p>
+Well, before we continue, I want to just stop for a minute. We've introduced this last line of code that has proven to be a little confusing in the past to some students. So I want to take a little bit of a sidestep, because we do seem to introduce a lot of new Python programming throughout our slides.       </p>
+      <p>
+Now, I know you can go and you can look up the documentations for the pandas range index command. But I wanted to kind of just unpack that and talk a little bit about what we're doing for just a second. So first, what we did is we've created this D1 and D2. And these are two data frames. D1 holds all of the features and class information about class A. D2 is going to hold all of the observations that have to do with class B. So we've basically divided this data.       </p>
+      <p>
+And what happens when you divide that data up, it messes with the indexing. So let's go through just a couple of samples here that I've provided and you can keep and utilize for later. So this is what's going on. We have all of our A data and all of our B data. But as I scrolled through, did you notice something really strange is we have index to 0 through 24 and then they repeat again, 0 through 24.       </p>
+      <p>
+Well, that's no good if you're trying to specify a specific data observation. And Python's not going to know which index we're referring to. So we want to go ahead and put that back together in a way that the indices make sense. And so that's what the range index is doing. And notice now we have our nice indexing, 0 through 49 for those data observations.       </p>
+      <p>
+OK, so back to support vector machines. This plot will show the two clusters of simulated data. Let me go ahead and execute that while we're talking. You can easily visualize a line between these two classes of data-- between the blue squares and the red triangles. What's interesting is that there's many different possible lines through this data. The question that we want to ask and then answer is which one is the best line?       </p>
+      <p>
+So let's show an example of three different lines that you could use to separate that same data. So let's take a step back and think about which one would be the most accurate separation between those two classes that could be later used as this dividing boundary for the classification of new data observation. Well, this question leads straight into our next conversation piece. We want to provide some additional definitions of why this support vector machine is called a maximum margin classifier.       </p>
+      <p>
+The idea is that the line should be located such that the nearest sample data observation for each class are equidistant from the line while maximizing that distance. This concept becomes clear from the graph we displayed at the very top of the slides. And we'll show you that again in just a few code cells below, just after our experiment.       </p>
+      <p>
+Some pros and cons of a support vector machine-- the pro is that it works well with small data sets and it can work with a fat matrix. It's also flexible. You can use a custom kernel function to separate your data. We'll talk about what those kernel functions are, as well, down below in our slide. The cons, though, are that it can be computationally very inefficient and is sensitive to noisy data.       </p>
+      <p>
+Some example applications include facial detection, the categorization of data, text, the classification of images, and even bioinformatics. Well, let's set up our experiment creating this support vector machine on our synthetic data. So executing this cell is that we pull in the SVM library. We create our model object.       </p>
+      <p>
+And one thing to note and highlight is this says SVC. This stands for Support Vector Classifier. And this is to help us distinguish the difference between that and a support vector machine that you would use for regression, or an SVR. Notice I've highlighted a couple of things, as well, while we're talking. These are some parameters that we will discuss. I will not skip these.       </p>
+      <p>
+We talked about the kernel function in this parameter called c. This time, we're going to use a linear kernel, which means we want a line or straight line through our data. Let's go ahead and plot that. So what I wanted to do is show you these two functions before I go down. This is our same function that we're used to. It's plotting our blue squares and our red triangles and making different highlights of empty squares and triangles for the misclassified observations.       </p>
+      <p>
+This next, rather complicated function is just going to give us that information. It's going to extract the support vectors. It's going to draw a circle around them. It's going to draw our dividing line and our margins. So now that we have those two functions set up, let's go ahead and execute that. Now, this should look familiar. This is the plot that was at the very beginning of our slides today. So now we can look at it a little bit closer.       </p>
+      <p>
+Notice the solid line in the plot is the actual decision boundary and the dotted lines show the margin area between the classifier. And these nearest points are the two clusters of data observations. We see our red triangles and our blue squares. And also these support vectors, let me kind of highlight these with my mouse. They're quite small. But these are the support vectors that lie on this boundary. And they're encircled.       </p>
+      <p>
+So this is really nice, our synthetic data. Remember, we created two clusters that we knew would be separable in a linear fashion. So what happens if your data isn't this nice and clean and separable? Well, there is a way. But let's go ahead and introduce that parameter that I discussed earlier called C. So let's go ahead and set up some synthetic data that's not so clean and plot that out to look at.       </p>
+      <p>
+OK, so this data is not going to give us that nice, clean, linear dividing line, so that's good, because we want to use this as an example. So let's go ahead and see what the classifier does with this messier data before we talk about C.       </p>
+      <p>
+Hmm. Well, it's definitely not as clean. So let's talk about how these items got in the middle and what that means. So looking here, we have C equals 10. And we want to talk about what that is. So C-- this is a regularization term that we can use to avoid over fitting our model. It's also called a penalization term, and the default value is 1. So if we don't set it at all, like above, then it does give us a value of 1.       </p>
+      <p>
+So as C becomes higher, it means that there's a stronger penalty. And we're trying to reduce missclassifications. And you want to be careful, though, because if C is too high, we risk overfitting our model. So to clarify this, we're going to run through a couple examples of different values for C using our linear kernel. But everything else remains the same.       </p>
+      <p>
+So I'm going to execute the next four cells. And then we have a side-by-side evaluation of these same plots for ease of visibility. To that's C equals 1. C equals 0.1-- those are two very small values-- then we have C equals 100. So our first example was C equals 10. And then we did 1, 0.1, and 100. So we don't have to scroll up and down. Let's go ahead and put that in a loop and look at all four of them side by side.       </p>
+      <p>
+So running through these different versions of C, we can see that as the value for the C parameter, or the penalization term, as it becomes lower, we soften the margin and we allow more outliers. How this plays into the support vector machine is as we reduce the value of C and allow those observations into the margin, we tend to reduce the variance at the cost of some bias.       </p>
+      <p>
+So we do want to find the best value of C so our model can generalize well the unseen data. That is our goal, but one way to determine the best value for C is doing something like a grid search and running through all possible values within a certain range. Well, guess what? We'll cover this next time in our discussion on model selection and cross validation.       </p>
+      <p>
+Now, I've mentioned a couple of times during this discussion so far something called a kernel. Well, what this is, it's a function that allows us to replace this linear separator with a different function that we could use to separate our data. The common types are linear, polynomial, RBF or Gaussian, and then there's other custom functions.       </p>
+      <p>
+This has been called before a kernel trick, where it transforms the data from one plane to another so that we can then divide it. So we're going to do an experiment with our synthetic data again to show how this can work. If we don't specify-- let's set this same sample data up again. Here we go. So now we have this messy data. And we want to try to separate it.       </p>
+      <p>
+So if you don't specify the kernel for the SVC in that model object here that we've created, you can see that it automatically selected by default the RBF kernel. So let's go ahead and plot that result so we can look at it. So that looks a little different than the picture that we were looking at prior to now, but you can see with the RBF kernel and this messy data that we say it's not linearly separable, it did actually turn out quite nice.       </p>
+      <p>
+This next plot we're going to do adds in a color mash to show the decision function. So let's execute that and take a look. It's one of my favorite. It shows a very clear distinction between the classes. So the next thing that we want to discuss is that now that we're using the RBF kernel, there's another parameter that we can add into our discussion and use for tuning our model, and that's called gamma. So let's execute this so we can talk about gamma.       </p>
+      <p>
+So again, this parameter's only used with the RBF kernel and a smaller gamma will smooth out the results of the Gaussians. Now, the default value for gamma is something that's scaled using a formula based on the number of samples. And you can certainly look this up in the documentation. What we're going to do here is we're going to set gamma to a very low value of 0.1 to show a smooth Gaussian.       </p>
+      <p>
+And then we're also going to show another example here of gamma 2, which is a large value for gamma, that's going to show very spiky Gaussians. So we do want to find that sweet spot, kind of like we're tuning the C parameter. We do want to be able to tune this gamma parameter, as well.       </p>
+      <p>
+And guess what? We can also use that greedy algorithm called the grid search to find the best-performing values for things like C and gamma. So we'll discuss that next time. This last example is using a polynomial kernel. Maybe the RBF kernel doesn't work well, either, for your data set. There's also these polynomial kernels that you can apply.       </p>
+      <p>
+Well, that was our third version of a classification algorithm. We discussed k nearest neighbors and how the voting strategy works, logistic regression, which gave a probability of membership to a certain class, and now the support vector machine, which is a flexible, maximum-margin classifier that can use custom kernels for these dividing boundaries. Next time, we'll discuss something called cross validation and an algorithm I think I've tempted you with. It's a grid search algorithm that can be used for parameter tuning.       </p>
+    </div>
+  </body>
+</html>

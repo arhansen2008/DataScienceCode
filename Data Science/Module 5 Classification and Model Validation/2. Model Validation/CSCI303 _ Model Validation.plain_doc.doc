@@ -1,0 +1,73 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/omml/2004/12/core" xmlns:ve="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o12="http://schemas.microsoft.com/office/2004/7/core" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/3/wordprocessingDrawing" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/3/main" xmlns="http://www.w3.org/TR/REC-html40">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <head>
+    <style>style</style>
+  </head>
+  <body>
+    <div class="Section1">
+      <p>
+        <b>
+          <u>
+            <span style="font-size:20.0pt">CSCI303 | Model Validation</span>
+          </u>
+        </b>
+      </p>
+      <p>
+      </p>
+      <p>
+Some very powerful techniques utilized in supervised machine learning are cross validation and parameter search. These methods give us a robust way of evaluating our model, as well as help us correctly identify the parameters that we need to get the best performance from our selected models. This diagram is a result of looking at different values for C and gamma. These are two parameters that we discussed previously when doing our discussion on support vector machines.       </p>
+      <p>
+This set up-- there's nothing new about these libraries. So I'll go ahead and pull those in. As a review, we've discussed the difference between training data and test data and how we can calculate evaluation metrics. We can look at the training error that, yes, it tells us about our approximation power, but it doesn't really tell us about how our model will predict unseen data observations.       </p>
+      <p>
+We'll typically evaluate our model's performance on test data that we've held out-- in other words, evaluating that model on how well it generalizes to this new, unseen data. This helps us find the best possible features and parameters for our models to avoid underfitting and overfitting. We introduce cross validation. This is a robust way to evaluate our model. It does allow us to make better use of our limited training data and reduces the bias that can be introduced by how well we split the data in our traditional sense.       </p>
+      <p>
+The idea is that we utilize multiple training test splits and compute the mean score from the results of each individual run. The most popular form of cross validation is k-fold cross validation. How this works is that your data set is divided into k equal sized sets or folds. And for each iteration, one fold is held out for testing and the remaining k minus 1 folds are used for training your model.       </p>
+      <p>
+This is repeated k times until all k folds have been used as a test set, or once. For each individual iteration, a score metric is calculated. And when the algorithm completes, you can take the mean of that to represent the best result. To show an example of k-fold cross validation, let's set up our synthetic problem from our previous discussion.       </p>
+      <p>
+As you can see, we have some data here. And I hope you're saying to yourself, hey, that doesn't look linearly separable. Well done. This is the messy data samples. We still have our two classes, our blue squares and our red triangles for our classes A and B. We're going to need this extra library. So let's go ahead and execute that and bring that cross val score library in.       </p>
+      <p>
+Now what we're going to do is we're going to set up just like before is we'll bring in the SVC library to do our support vector classifier. We're going to create our model object and we're using our linear kernel and our C value of 1. This part is new, so the scores equals cross val score that I've highlighted here takes a couple of different arguments.       </p>
+      <p>
+We have our model object, our observations or our feature data, our target vector, and then this last argument here, CV equals 5, designates how many folds to create when doing our cross validation. As we run that, we notice we get this vector of results. We have a 1, a 0.95, a 1, a 0.85, and another 0.85. So these are five values for each of the runs of that cross validation.       </p>
+      <p>
+What we can do is we can take the mean of that to see that we have an average of 0.93 accuracy from the runs of the model. You can also calculate other statistics, like the standard deviation, to see how much variation there is from run to run. The benefits of using cross validation over that one time trained test split is that all the data gets an opportunity to be included in the test and training sets.       </p>
+      <p>
+You can also identify some additional information about the sensitivity of the data to particular splits. You can utilize a larger percentage of the data for training, which is typical. This is in contrast to a lot of our examples where we use a 50% split. Now, since you're using observations that may not be randomized throughout the rows of your input matrix, how you choose to fold or split your data makes a big difference on the result.       </p>
+      <p>
+You could take a naive approach, where you just take the first block of data items as the first fold, et cetera. Now, in our example, this would have yielded an imbalance of representation. In other words, all of one class could have been included in a test set. There was a stratified method, which uses the first kth of each class to ensure this better, equal representation. And this is the default in scikit-learn for classification.       </p>
+      <p>
+Random shuffling is another technique that can be used, which preserves the percentage of samples for each class. So this example here will generate the cross val score. But notice in this last parameter here we said instead of CV equals 5 or some value, we've said CV equals stratified k fold. It included two additional parameters that I'd like to make sure that I explain.       </p>
+      <p>
+The first parameter here is the number of splits. And the Boolean value indicates whether to shuffle each classes samples before splitting it into the batches. We then print off the scores and also the mean and standard deviation. There's also a shuffle split cross validation. Let's go ahead and execute that and look at what this one's doing. We need another library pulled in. And then we can call the cross val score in a similar fashion where we send it in the model object, the feature data, the target vector. But we have identified the shuffle split in this last parameter. So that's a little different than what we're used to seeing.       </p>
+      <p>
+The first parameter is the number of reshuffling or splitting iterations. And then the last one is the test size, like what we're used to seeing in other functions that we've used. So given all of the different parameters and values for those parameters, we can certainly make ourselves crazy trying different parameters, rerunning our experiments, and keeping track of those results.       </p>
+      <p>
+One way to efficiently find that sweet spot is looping through all the different values for parameters and plotting those results. So we'll do that in this diagram here. If you've noticed, I have two different lists for my C params, and I'll run the second one in a minute. This one you can actually see that at C parameter 14, we have a spike here above the 0.95 mean score. We can rerun this experiment with C parameters of 0.1 to 1,000 and see that, well, we have a spike-- a different spike here at 2. And it's somewhere between 0.94 and 0.95, or there's a higher one here at 20.       </p>
+      <p>
+This is all just visual, so it's a little hard to see. But we do notice that we get a little different results for our parameters for C. So let's keep going with our experiment so that we're not doing it manually. We have this grid search, which will try all combinations of settings and parameters. This is what we call a greedy algorithm. It's very computationally expensive, but we can certainly utilize this to narrow down a range of parameters and then we can fine tune those and rerun our model.       </p>
+      <p>
+So let's go through an example of using our support vector classifier. But we're going to use this kernel equals RBF so we can tune our C parameters as well as our gamma parameter that is used to identify how smooth our gaussians are. When we rerun this, the diagram that's created is-- this is just a copy of what's in the very top of our slides. So we can see at a quick glance that the highest value is up here around 0.94.       </p>
+      <p>
+It may be hard to see, but that's the yellow line. And I'll highlight that with my mouse. That's this yellow contour here. And what we can see is the maximum values for somewhere around C equals 200 and gamma is 0.1 is where we are lying inside of that contour. Now, does that mean that our model is 94% accurate? Have we overfit our model?       </p>
+      <p>
+Well, we did kind of handpick some of these parameters, so we could have favored our own data set. There is another way that we can ensure that that does not happen and that we have evaluated the performance of our model in the best way possible. And this is to add in a third split of our data.       </p>
+      <p>
+This is called adding in a validation set. So now we have three groups of data. We have our training data that we used to train our model, our validation set that can be used to fine tune these parameters. And then we still have our test set that is used to see how well our model generalizes on unseen data. So this last example-- we'll put it all together.       </p>
+      <p>
+It took a few minutes to run this evaluation of all of those different things. But we do see that we have some different outputs. So let's go ahead and go through those. One thing to notice is that we do our trained test split and we do our test size at 0.25 right here. And what that's doing is that we are doing our trained test split and we're holding out that test set. But we're not going to utilize that down below as we're running through our grid search.       </p>
+      <p>
+As you can see, we get a training accuracy of 93%, and C is 50 and gamma is one. It seems to be all over the place. So we're getting very different settings for gamma and C. We're also using less data for training. So this does imply that our parameter search is very sensitive to how we're splitting that data. This may be an artifact that we have very few data observations, so adding more observations may increase the performance, or at least give us a more consistent result.       </p>
+      <p>
+So today we'll end our discussion with a combination of doing a grid search with cross validation. This inconsistency is a common problem-- in fact, so common that scikit-learn has a function for it. So we're going to pull in this library and do what's called a grid search cross validation. And then what we're going to look at is this here on the bottom.       </p>
+      <p>
+So we're looking at the best score for our training accuracy and our best parameters that are utilized for that. So we have a 0.93 and then we have a gamma of 1 and a C of 50. Do remember there is some randomization built in, so we're going to get different results each time we run this, a little bit different. And sometimes we just want to keep trying and see what the best possible combinations are.       </p>
+      <p>
+One experiment that I've left for you to try on your own time is not only can we tune parameters like C and gamma, you can also try tuning different kernel functions. So hopefully you'll find that is a very interesting experiment. And I'll talk to you next time.       </p>
+      <p>
+[MUSIC PLAYING]       </p>
+      <p>
+      </p>
+    </div>
+  </body>
+</html>

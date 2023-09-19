@@ -1,0 +1,79 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/omml/2004/12/core" xmlns:ve="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o12="http://schemas.microsoft.com/office/2004/7/core" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/3/wordprocessingDrawing" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/3/main" xmlns="http://www.w3.org/TR/REC-html40">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <head>
+    <style>style</style>
+  </head>
+  <body>
+    <div class="Section1">
+      <p>
+        <b>
+          <u>
+            <span style="font-size:20.0pt">CSCI303 | Classification via LogReg</span>
+          </u>
+        </b>
+      </p>
+      <p>
+      </p>
+      <p>
+Continuing with our discussions on classification, we're going to introduce another algorithm called logistic regression. We'll start with all the same libraries that we used with our first classification experiment, as well as a quick overview. A quick reminder is that what we're trying to do is predict a particular class label. So like this example use case that we did discuss last time, this is whether somebody will default on their loan or not.       </p>
+      <p>
+The next thing is our example simulated data, so this is the same function that's creating data and assigning it to classes A or B. So let's go ahead and execute this. So we have 100 training samples, as designated here when we call our sample function. And then we did our train test split. We sent in our data. And we specified we'd like to split that in half, basically, or hold out a test size of 0.5.       </p>
+      <p>
+The rest of this code is just using-- or is used to create this nice plot where we have our class A with blue squares and class B with red triangles. Now let's go ahead and do something new. So we're all caught up. That's our same synthetic problem, our same simulated data. So that seemed familiar.       </p>
+      <p>
+Last time we discussed k nearest neighbors, which uses the trained model or remembers all the training data to make these predictions. This would be categorized as an instance-based method. We also have parametric methods, like we used in linear regression and ordinary least squares. We'll combine these ideas and look at parameterized methods for classification.       </p>
+      <p>
+Now, you might be asking, why don't we just use linear regression? This algorithm has regression in the title. Well, we're actually solving a classification problem, placing observations in a particular class. So just to hit home with that, we'll show a quick example of using our same problem and trying to gain insights with linear regression before we move on.       </p>
+      <p>
+To do this experiment, we first have to expand our data and have numerical classes-- in other words, 1's and 1's-- instead of our A's and B's. Looking at the scatter plot, you can see that the values that are 1 are in blue. It may be a little hard to see, but they're down here on the bottom, primarily. And then red is our values that are 0. And those are going to be across the top in this darker red color.       </p>
+      <p>
+The thing that I added is I added this last line of code here-- print data-- so we can see that originally we had a target vector of our classes of A's and B's. And now we have a numerical class of 0's and 1's. And we can utilize that as we move forward. Let me go ahead and execute this cell for you.       </p>
+      <p>
+So running a quick linear regression, remember, we pull in our library. We create our model object. We train our model with a dot fit. And then we utilize this dot predict-- and I'm going to highlight this with my mouse, because that's a little bit of-- we're combining two things. So the model dot predict does give us that y hat, or that vector of predicted outcomes. And we say, c equals, and that just tells the scatter plot to use those values for the color coding.       </p>
+      <p>
+And that does give us no longer discrete values. So if you notice, our values returned are continuous values. If you want to print those to the screen to see that we, in fact, no longer have 0's and 1's, we have our continuous values there. It sort of works. And yes, OK, we can work with continuous values. We can maybe set a threshold and say, well, everything above, say, 0.5 we can treat as one class, or otherwise treat as a 0. And then we can map that back to our A's and B's.       </p>
+      <p>
+But we really-- we're getting some negative values. We're getting some values that are higher than, say, 1. So it's not really the best representation for the problem that we're trying to solve. And that's what we're learning here in data science is what algorithm is appropriate to solve the problem that you have.       </p>
+      <p>
+So let's keep moving forward. So now what we want to do is we want to talk about logistic regression. It takes a different approach. Now, this algorithm will output the probability of belonging to one class or another using the maximum likelihood method. Now, this is in contrast to k nearest neighbors, which simply decides one class or another based on this voting mechanism.       </p>
+      <p>
+Using the same workflow, we'll create our model object for linear regression, as I've done here. And then we'll turn around and do our dot fit, sending in our data. We're also going to continue this for consistency, and we're going to use our same plot function so we can see the prediction and the misclassified points.       </p>
+      <p>
+As we can see, we have very few misclassifications. In fact, we just have this one point here that is not colored in that represents a misclassified point for class A. You also get additional information-- y hat does include our class labels for A and B. But we also get this decision function information back. And that's going to give you-- it's the distance from each point to that dividing hyper plane. So it gives it kind of a confidence interval, if you will.       </p>
+      <p>
+The other information that you get back from logistic regression is we can get the probabilities. And so we can get those probabilities and we can plot them. Maybe they would be better represented in a different kind of a plot. So let me show you a different kind of plot that we can look at. It takes just a minute to [INAUDIBLE] because we're using a mesh.       </p>
+      <p>
+So this is something we've used before, and we have our color map to show that dividing boundary. Just running through a couple of examples. It's just really-- I think it's fun to find different ways to display your results until you find one that actually paints the picture that you're wanting to paint. This last one is one of my favorites. But it does take a minute.       </p>
+      <p>
+There. I like this because it has a very clear visual representation and kind of a gradient leading into that dividing line. And we still have our one misclassified point here. So let's take note of that because now what we can do is we have a good visual representation. Let's go ahead and look at different orders and see if we can figure out if adding more features does give us a better result, and possibly maybe we can lead towards overfitting.       </p>
+      <p>
+So let's take a look at that and see what we get. The next few examples we're going to run through show how you can take our simulated example and add some higher orders for logistic regression. As we run through the examples of polynomial degree 2, 3, and even 4, notice how that last one becomes quite large.       </p>
+      <p>
+So how we do this is we can-- keep this-- is we're going to pull in this polynomial features library from scikit-learn. Then what we have to do is to transform our data. This first line of code here is we create a model object for polynomial features and tell it what degree we would like to work with. You'll see this again when we do things like PCA, or Principal Component Analysis, or also scaling of our data.       </p>
+      <p>
+So for now we're going to do the polynomial feature cell. So we do a pf equals-- we're creating that model object. We do pf fit, this next line. And what that does is it gives that object the data that we want to work with. And then the next line of code is that we then transform that data. And we build this phi, or our design matrix, that we've used in the past. We recreate our model object and then we can retrain using that phi as our input instead of our x vector.       </p>
+      <p>
+Let's update our plotting function a little bit to handle these polynomial features. So I'm just going to execute that so you can see the output of that. So here we have our order 2 polynomial function. And that does follow the trend we would expect. Notice we do have some misclassified points here. So maybe we want to look at the test score on that to see numerically what's going on.       </p>
+      <p>
+Leaving these both on the same screen, I wanted to highlight that we do have a 0.8, and that's our accuracy score. The other thing that we can look at is this confusion matrix. Remember, the items on the diagonal are where the classifier predicted correctly, and the off diagonal-- where these four and this one is-- are where the classifier made mistakes. So we do have some work to do.       </p>
+      <p>
+Shall we continue? More as may be better, so let's go to that degree 3 polynomial and see if we get a better result. So the two things that I'm doing here is I re-transformed the data with this polynomial degree 3-- I'm going to my highlight that with my mouse so you can see what I'm talking about. Then we re-transformed the data and then we retrained our model.       </p>
+      <p>
+And then when we call our plot function, it does the dot predict inside of that plot function, if you recall. So we have a little different output here. And this, again, is our degree 3 polynomial. We still have some misclassified points. So let's go ahead and look at that accuracy score to see if it got better or worse. It seems like it stayed the same. So maybe that didn't help. Well, it didn't hurt, either.       </p>
+      <p>
+So let's go-- why don't I take it one step further and do degree 4, polynomial. So we re-transform our data with our polynomial model object. And let's re-plot that that calls the dot predict inside of it. And oh my. So I'm getting a little bit of an overflow. So Jupyter notebooks is not happy with the complexity of running this higher order model.       </p>
+      <p>
+And let's do this. OK. So it appears that we are going downhill. So it's possible that we are overfitting our model by adding more features in a higher order. This one was-- where did it go? Degree equals 5. So I went right past 4. I did degree equals 5 just to see what it did. And we are seeing that 0.72 accuracy. So the accuracy went from 0.8 to 0.72.       </p>
+      <p>
+And we did see an increase in values on the off diagonal specifying that we have misclassified more data observations. So possibly we don't want to go up to polynomial degree 5. So you can keep tweaking that. You can actually go back to this slides. Maybe you want to plug-in degree polynomial 4, see if you get something in between the 0.72 and the 0.8 accuracy. I'd be curious to see your findings.       </p>
+      <p>
+Hopefully you're detecting a pattern here. We're utilizing that workflow over and over again that we talked about originally with regression. So keep this in mind as we discuss more and more algorithms. We're going to recognize that pattern where we obtain our training samples, we do some kind of initial visualization, statistics, or pre-processing, we initialize that model object, sometimes we'll split that data, depending on the model.       </p>
+      <p>
+But we also-- we'll train or make predictions, evaluate the quality in different ways, and also visualize our results. We'll see you next time when we discuss another classification algorithm called the support vector machine.       </p>
+      <p>
+[MUSIC PLAYING]       </p>
+      <p>
+      </p>
+    </div>
+  </body>
+</html>

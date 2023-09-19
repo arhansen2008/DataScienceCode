@@ -1,0 +1,41 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/omml/2004/12/core" xmlns:ve="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o12="http://schemas.microsoft.com/office/2004/7/core" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/3/wordprocessingDrawing" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/3/main" xmlns="http://www.w3.org/TR/REC-html40">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <head>
+    <style>style</style>
+  </head>
+  <body>
+    <div class="Section1">
+      <p>
+        <b>
+          <u>
+            <span style="font-size:20.0pt">CSCI303 | Project 5 - Classification Pandas get_dummies Overview</span>
+          </u>
+        </b>
+      </p>
+      <p>
+      </p>
+      <p>
+Hello, everyone. My name is Morgan Cox, and today I'm going to be walking you through the get_dummies Pandas function to help you get a better understanding of why it's used and what it's used for to help Project 5 go a little bit smoother. So this is kind of a quick run through of it, and I'm just going to give you some tips and tricks and a better understanding of why it's used.       </p>
+      <p>
+So in this first box that we see here that I'm highlighting, we have some original data. We have three different columns, dwelling, stories, and fruit. Now we see in the actual data in this line here that's highlighted, dwelling. A 1 represents a house, a 2 represents let's say a condo, and a 3 represents a rental. So those values themselves are not actually useful numbers. They're just kind of representative of what it would be, rather than typing in the numbers. We just know that a 1 is mapped to house, 2 to condo, and 3 to rental.       </p>
+      <p>
+Then we have stories, which that is an actual quantity. We can quantify that. So maybe my house has 3 stories. Maybe this apartment building has 7 stories. Something like that. That's an actual number, so we can actually measure the quantity of that, and that's actually useful.       </p>
+      <p>
+And then we have fruit, which is in this case, again, is actual string, so it's not even a number. So that's another case where we're going to use get_dummies. So again here, we're going to use get_dummies on the first one, the dwelling column and the fruit column, because they aren't actually measuring quantitative data.       </p>
+      <p>
+And what the get_dummies does is, since it's not meaningful for a machine learning algorithm to weight the dwelling column or the fruit column, even though the dwelling column is numeric. It's just not meaningful, since they are arbitrary values. They don't actually-- The numbers themselves are just representing something, or if we're talking about the fruit column, you can't even represent those quantities right now with numbers, because they're strings. That doesn't actually work for the machine learning algorithm, because if you were to put that data in, it would kind of mess it up and play with it, because it might weight a 3 higher than a 1, even though it's just a rental versus a house.       </p>
+      <p>
+What we need to do is replace these columns with a set of binary columns that indicate yes or no for each of the category types. A 1 will be a yes and a 0 would be a no. And you'll see that in a minute. And this allows the machine learning algorithm to actually weight those binary values, because it gives them a quantitative meaning.       </p>
+      <p>
+So what we're going to do is, I'm going to run this first, so we see here, it's pretty much just the data printed out in the data frame. We have a dwelling, so the first one is a house, the second one is a condo, the fourth one is a rental. We have stories, which again is quantitative data, and then we have fruit, which is string data. And then when we run the second one, we actually apply the get_dummies function to it, and we apply it to the dwelling column and the fruit column. And let's see what happens.       </p>
+      <p>
+So what happens is stories, since it was just left alone, it's still quantitative. Now all these dwellings are also quantitative. It recognized that there were 3 different values within the dwellings, a 1, 2 and a 3. And what it does is it says, OK, for the first one, that's a dwelling 1. That's a house. And we see that it's not a dwelling 2 or a dwelling 3. That's kind of where the 1s and 0s, the binary operations come in.       </p>
+      <p>
+And that is now interpretable for the machine learning algorithm, because it can say OK, so this line of data is either a house, apartment, or condo, or whatever they actually are. And that's useful now. It's not saying, OK, this is a 1. What does that mean? This is a 3. What does that mean? This is actually saying yes or no, it is this, it is not this. If we're trying to say all of these condo owners like fruits and all the house owners like apples, something like that, then we would actually be able to use a machine learning algorithm now, rather than saying, OK, well 1s like apples, 3s like pears. What does that mean? It doesn't mean anything.       </p>
+      <p>
+So now we go here again for the fruit apple and fruit pear. We see a 1 for the first one, likes apples, a 0, and so on and so forth. So what this has done again is just taken the dwelling in fruit columns and converted them into binary columns to say yes or no for that value, allowing the machine learning algorithm to actually use that data because it's now quantifiable. It's either yes or no, a 1 or a 0.       </p>
+      <p>
+And that was just a quick introductory video for the get_dummies function to give you a better understanding of how to use it and what it's used for, and why it's used. So I hope that helps, and good luck with Project 5.       </p>
+    </div>
+  </body>
+</html>
