@@ -1,0 +1,121 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/omml/2004/12/core" xmlns:ve="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o12="http://schemas.microsoft.com/office/2004/7/core" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/3/wordprocessingDrawing" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/3/main" xmlns="http://www.w3.org/TR/REC-html40">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <head>
+    <style>style</style>
+  </head>
+  <body>
+    <div class="Section1">
+      <p>
+        <b>
+          <u>
+            <span style="font-size:20.0pt">CSCI303 | Unsupervised Learning</span>
+          </u>
+        </b>
+      </p>
+      <p>
+      </p>
+      <p>
+Welcome to unsupervised learning. We're going to switch gears now and get away from working with data that has labeled classes or targets. Today we'll go over an introduction of unsupervised learning and a couple of key pre-processing techniques like scaling and normalization of your data. Also we'll talk about dimensionality reduction, what that is, and some examples and how to use it.       </p>
+      <p>
+So let's get started with the libraries that we'll need to go through this discussion. Let me execute that. These are ones we've been using before. We have the NumPy, pandas, the scikit-learn toolkit, and also some things for plotting down below. The next thing we have is a function that we've created that we're going to utilize to have some more simulated data. This sample function is modified a bit from what we've used in the past. We want to generate some random data that we can use for clustering.       </p>
+      <p>
+As a reminder, when working in a supervised fashion, we have labeled data. So we have our input features, of course, stored in our x matrix. And then we also have this additional information that we use for predicting, and that's a vector we call y. Remember, we train our model using both x and y. And then we see how well that model generalizes by making predictions. And we store that output in a vector we call y hat, traditionally.       </p>
+      <p>
+Now, this next example that we're going to go through is creating three clusters. We have C1, C2, and C3. And then we're going to plot our data to take a look at that. So we're using the colors as class labels. And you can see that there's primarily three groupings of data observations in this plot. And we do know that because we created three sample clusters and then turned around and colored those in red, blue, and yellow dots. But we want to use that as an example.       </p>
+      <p>
+So now we're talking about unsupervised learning, where we're given no labels. And what we do is we try to use the data to find hidden meaning or patterns in that. And let me go ahead and plot an example so that we can look at this while we're talking. So this next plot is the same data that we just looked at, just without using the different colors.       </p>
+      <p>
+Notice we can still visualize some potential groupings in the data now that we've removed the color, questions we might want to ask at this point is, is there a transformation of the data that can reveal some different patterns? What are the relevant features that we should utilize in our provided data that are informative? And then also, are there any other natural groupings of the data that we can use to make these separations?       </p>
+      <p>
+So that's going to lead into our unsupervised conversation. And remember, we don't have those known targets or labels that we've stored in that y vector. Now, there are some challenges that we run into when we do unsupervised learning. One of the biggest ones is that it's hard to evaluate. Since we don't have any known targets to test again-- in a meaningful way, anyway-- that leaves us to different techniques that are often subjective to evaluate the performance of our unsupervised algorithms.       </p>
+      <p>
+You'll see unsupervised learning used in exploratory data analysis, and then those results can be used moving forward. And it creates that y hat, of course, of predicted outputs. And you can then use those sometimes to feed into more of a supervised fashion. So listed here are some example applications of using unsupervised learning or clustering.       </p>
+      <p>
+It's been used in biology and gene expression research to identify different causes of a disease or different responses to a specific treatment. You could also look at it in an anomaly detection, where we're looking for those data observations that don't quite fit within what you would identify as normal. This example mentions looking for fraudulent use of credit cards.       </p>
+      <p>
+Also in unsupervised learning can be used to group people or organizations based on hidden similarities and then produce some targeted marketing. So what we're going to do is we're going to add in some more pre-processing techniques. We should explore these during unsupervised, because they fit nicely into the discussion. A lot of times, there are techniques that can be utilized to improve the performance of our unsupervised algorithm.       </p>
+      <p>
+One thing is scaling or normalization of our data. So we can transform this data so that it has the same scale or common statistics. There's two to three techniques that we'll talk about today and practice with throughout the course. One is the standardization or standard scaling. Another one is min-max scaling. Standardization is the way to scale your data so that it all has a 0 mean and unit standard deviation.       </p>
+      <p>
+We have our min-max scaling. It's used when we scale our feature values to a common range. This is especially useful in clustering, since the clusters can be strongly influenced by the magnitude of those variables. And if you remember just a second ago, I mentioned there's a third one. So down a little lower in the slides, we'll add in a variant of this scaling called normalization. And I'll show you how to do that.       </p>
+      <p>
+The other pre-processing technique that we want to talk about today, and we will go into detail, is dimensionality reduction. Sometimes when we have our data samples or our observations, there's many features that are provided-- sometimes hundreds or even thousands of features. We've discussed how more is not necessarily always better, though. So these extra features can lead to very computationally inefficient machine learning, and also can promote over fitting.       </p>
+      <p>
+We can also find that some of the variables or features, they're possibly highly correlated, and/or maybe this redundant information is not helpful. So this can, again, could lead to over vetting. The solution is to determine which are the most relevant features to utilize in either visualization or in our learning algorithms.       </p>
+      <p>
+So I wanted to put this note here-- and I'll highlight this with my mouse. This is an important note to have. Here we go. Is that dimensionality reduction, although we're talking here in unsupervised, it's a pre-processing technique, and it can be utilized for either supervised or unsupervised learning. The most popular form of dimensionality reduction is PCA, or Principal Component Analysis.       </p>
+      <p>
+PCA is a technique that transforms the data and helps to reveal the internal structure in a way that best explains the variance of our data. Now, before we continue, be sure you've downloaded and reviewed the PCA additional information page that was linked from the instructional materials for this discussion. Ideally, we're reducing our data into a lower dimensional space and the output can be useful in identifying irrelevant features.       </p>
+      <p>
+For example, if our original data has a feature with identical values-- in other words, zero variance-- we know that it's meaningless or redundant. So we can discard that feature. It's not adding any value. The output matrix from this transformation is a set of ordered columns with the first several giving the highest variance or relevance.       </p>
+      <p>
+So now let's go through a couple of examples to explain this and to show how to apply that principle component analysis. So let's create this. Let's look at this first diagram here. There we go. Get it all on one screen for you. So this first diagram shows variance along-- any axis may be driven by the separation of these datum clusters. But it's often more common in this next example that I wanted to show you.       </p>
+      <p>
+So let's go ahead and execute this and look at this. It's a little bit more common how your data is going to be spread out like this. There. Get that all on one screen for you. So this diagram shows where the data is spread out along this dimension of high variance. And see how most of the variance of the data occurs along this cyan axis?       </p>
+      <p>
+We can then reduce the dimensionality of the data with very little loss of information by transforming it into a subspace that includes only that PC1 dimension. In other words, we can discard the PC2 dimension. It's not adding anything. So to tie all this together, let's consider an example. We're going to use this data set of some random samples and then plot it in 3D to explore it a little bit more.       </p>
+      <p>
+So as you can see, we have-- down here I've plotted this out-- 600 observations and three dimensions. The next thing we're going to do is we're going to plot that in three dimensions so we can look at the data that we have. So it's a little hard to see what's going on with this data in three dimensions. And we're not sure where the separation points are.       </p>
+      <p>
+So let's go a step further and we'll apply principle component analysis and see if it looks better. So when we apply a principle component analysis, we can then look at the first and second principle component. So I'm going to execute the cell, and then we're going to stop for a minute to look at this, because we've introduced some new code.       </p>
+      <p>
+So we've brought in another library from the scikit-learn toolkit. This is the PCA library. The next thing we did is we-- when we say PCA equals PCA, and then in parentheses you can see n components equals 2, we're creating our new PCA object, telling it how many components we would like returned. And remember, this should be a value that's less than the total number of features in your original input matrix.       </p>
+      <p>
+The next thing we do is we fit the PCA object and send it our data. And this is 600 data observations with two different classes. And then they have three features. So we're going to transform each one of those classes. And this resultant plot shows that the two classes plotting the first and second principal component from the transformation. So we've reduced those dimensions to 3 to 2 while maintaining the separability of these two classes.       </p>
+      <p>
+Well, hopefully this example helped clarify things a little bit. But going from three features to two might not have been that exciting to see. So we're going to continue looking at a couple more examples. So this next example is utilizing a real data set. This is the Taiwan credit card data set. It's a public data set that can be used-- in a supervised fashion, if you prefer-- to predict whether someone will default on a payment for their credit card.       </p>
+      <p>
+So pulling in this data from the CSV file and looking at it in this first code cell-- we'll just look at dot head, look at the first five rows of the data-- we can see that there is some pre-processing that can be done. First we're looking at sex, education, marriage, et cetera, in some of these pay values that we have categorical data.       </p>
+      <p>
+So the first thing we're going to do is we're going to transform that data into something that the machine learning algorithms will work better with. And that's going to be this get dummies command. Hopefully that's familiar from a previous project. We're going to use the get dummies to convert these categorical features into new, expanded features that are represented with booleans.       </p>
+      <p>
+And to make that clear, I wanted to go ahead and execute this cell here for you. So we're looking at the category sex1. So it took this-- took this feature sex that was categorical for male or female and then it created two features from that. One's called sex1. One's called sex2. And it has a Boolean value of whether it was male or female in each one of those. So hopefully that made sense for you.       </p>
+      <p>
+OK. So let's keep going. So we've pre-processed it. We've done the get dummies. So now let's look at our datum and see kind of like what size it ended up being. So we have link 30,000. So we have 30,000 data observations. So let's go ahead and get this dot info back up for you. Here we go.       </p>
+      <p>
+So we now have 92 columns. So that's 91 features plus the target vector is still in there in 30,000 data observations. So have a lot of data to work with for this next sample. So let's go ahead and separate that into our x vector for all of our features. And then we're calling it t, which is our targets, or that'll be our y vector. Since we already have the information, let's go ahead and save it.       </p>
+      <p>
+Again, to go ahead and confirm, we have 30,000 observations and 91 features. If you notice, we drop the target vector out of that. That's how it ended up going from 92 in the previous cell to 91 because we have that target vector included. OK, so that's a lot of data. And although that's not super bad, but what we do want to do is we want to look at this and figure out, is 91 features truly the best representation of this problem we're trying to solve?       </p>
+      <p>
+So let's go ahead and do some transformations of our data so that we can look at this and answer that question. So this next technique here is one of those standardization, or that data scaling techniques that we discussed very briefly at the top here. We're pulling in a new library. So we're pulling in our standard scalar library.       </p>
+      <p>
+We create our standard scalar object. We fit the data. And then we transform it. And then we're going to save it in this new x variable. We don't want to override the values in x because we're going to use it later below. So we're going to use x scaled now moving forward. So this data should be all scaled nicely.       </p>
+      <p>
+So the next thing we're going to do is we're going to apply PCA or Principal Component Analysis. One thing to notice is that we're saying n equals 10. So instead of two, like above, we're now transforming from 91 features to 10, 10 principal components. We're transforming our data. And again, note that we're sending in our x scale data, not our original x.       </p>
+      <p>
+And then we do the transformation and we save that back into yet another variable. So we have our data that's been PTA transformed called xpca. Let's go ahead and check the shape of these. So x dot shape, that's our original data, 91 features. And once we do the PCA transformation, we end up with 10. And that's what we asked for. So everything's lining up.       </p>
+      <p>
+So the PCA object holds some additional information. And we're going to go ahead and plot that and look at what we are talking about as we increase the number of principal components, or as we go up in number of principal components, we're going to see this huge drop off for variance and variance explained. And then we do see that.       </p>
+      <p>
+So for principal component 1, we have the highest variance. And then principal component 2, it drops significantly. But that's our second highest. And then it drops off significantly after that. So this is what we were looking for, this downward trend that is-- it matches what we thought about PCA and what the resultant matrix looks like. And it also indicates that the first few principal components do have that highest variability.       </p>
+      <p>
+OK. So let's take it a step further and look at that transform data in a scatter plot. So we just have two dimensions. So we're doing a two dimensional scatter plot, because remember, we transformed it. And let's see. We don't want to look at three dimensions anymore. These are really good. I like this. OK, so what we're doing in the first plot here is notice we're plotting principle component 1 against principal component 2.       </p>
+      <p>
+And then this second plot, we're looking at principal components 9 and 10. And this gives us a good representation and an indication that we have this trend here in the first plot that we were looking for. So in other words, not a ton of information with the first and second principal components. But we do see that the last ones are highly correlated with very little variability.       </p>
+      <p>
+So let's keep going. So not a ton to see, but we know, as a recap, we did see a little bit of information about how the first principal component is, again, highly-- a higher variance. The second one is still higher than the rest, but still not too much. And then it diminishes. It just falls off after that. So let's go ahead and keep moving and look at another pre-processing technique.       </p>
+      <p>
+Remember, we haven't gotten into any unsupervised machine learning yet. We're just doing some experimentation with different scaling techniques and then applying principal component analysis and then plotting them. So let's continue. So this is that third scaling technique that we discussed. So earlier we discussed the min max and the standard scaling.       </p>
+      <p>
+This one is this normalization. So you'll see it a lot in clustering because the magnitudes of the variables can strongly influence the determination of those clusters. So what we want to do is show you an example of using this normalizer here that puts everything on a scale such that it has this unit norm. OK. So this first cell that I just executed pulls in our normalizer library function, creates our normalizer object, fits our data-- and notice we're still using X, which is that original data. We're not messing with that.       </p>
+      <p>
+And when we transform the data, we save it into x norm. And we can print off the shape. The reason we're doing that is I just wanted to highlight is that when we transform the data using these scalers that we're not changing the shape of our feature matrix. OK. So then let's apply PCA again.       </p>
+      <p>
+And to keep it consistent, we've also asked for 10 principal components, like we did before. And then we've done our PCA transformation and saved it into a variable called xpca. Double check in the shapes again. Great. Went from 91 features to 10. Let's do our scatter plots again. Oh, sorry. Let's do our trend plots again. And then we'll do our scatter plots. Got ahead of myself.       </p>
+      <p>
+Our trend plots do show a similar trend where as the number-- the principal component number increases, we see the variance and variance explained do this drop off where we have this very high value for the first principal component and then it drops off. And then it's basically almost zero for many of the latter principal components.       </p>
+      <p>
+So let's go ahead and look at our scatter plot now and talk about that. Here we go. So one thing to highlight is, here we have principal component 10 versus 9. And they do have a variance of 0. So what that's telling me is that we can get rid of some of those. They're not adding any additional information.       </p>
+      <p>
+We can now go ahead, though, and say that we can utilize this first and second principal component to explain our data. And maybe we can do our machine learning with just those two principal components and get the same or similar result of using all 91 features. Like, imagine how that would help with computational efficiency.       </p>
+      <p>
+So those were our first examples of doing some standard scaling and some normalization and a couple different ways to do principal component analysis. And we will definitely come back to this. And you'll get to practice with it in the project. While there's no exact answer on how many features are the best representatives of the problem you're trying to solve, we do have some tools and techniques that we've just shown you that you can utilize to help reduce the number of features.       </p>
+      <p>
+It can help with more efficient machine learning. It can help with visualization. We did some 3D plots and some 2D plots. Next time we will continue discussing this. We'll continue talking about unsupervised learning. And we're going to introduce something called clustering and then practice with an algorithm called k-means clustering. So we'll see you next time.       </p>
+      <p>
+[MUSIC PLAYING]       </p>
+      <p>
+      </p>
+    </div>
+  </body>
+</html>

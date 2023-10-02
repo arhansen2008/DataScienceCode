@@ -1,0 +1,73 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/omml/2004/12/core" xmlns:ve="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o12="http://schemas.microsoft.com/office/2004/7/core" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/3/wordprocessingDrawing" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/3/main" xmlns="http://www.w3.org/TR/REC-html40">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <head>
+    <style>style</style>
+  </head>
+  <body>
+    <div class="Section1">
+      <p>
+        <b>
+          <u>
+            <span style="font-size:20.0pt">CSCI303 | Clustering</span>
+          </u>
+        </b>
+      </p>
+      <p>
+      </p>
+      <p>
+Today, we continue with unsupervised machine learning and introduce the concept of clustering. Clustering algorithms group similar multidimensional data observations and fall predominantly in two categories, partitioning and hierarchical. We'll talk about those today.       </p>
+      <p>
+Let's start with our libraries, of course. So we have these libraries that we've been using. These are the same ones for NumPy, pandas, scikit-learn, and our plotting libraries. We also have our function that we've defined for generating some data that we can then turn around and cluster. So let's go ahead and set up our synthetic experiment, very similar and like our previous example in unsupervised learning.       </p>
+      <p>
+Now, what we can do is look at this sample scatter plot. Can you determine how many clusters are the best representation of this data? Now, we can cheat and see by the code that we created three distinct clusters of data. But if we did not know that, would it be two clusters, three, maybe more? It's hard to tell when they're all one color.       </p>
+      <p>
+Well, we'll start with the first type of clustering, the partitioning method. This is where an algorithm learns clusters by assigning data points into clusters using a distance metric. Now, although you can use a brute force method to do these assignments, that would be very computationally expensive. You will get a globally optimal solution, of course, but very inefficient.       </p>
+      <p>
+The iterative solution, or improvement, is this k-means algorithm that we will discuss today. The k-means clustering algorithm has to start somewhere. So it's important to understand how the initial cluster centers are selected. One way is at random, and another way is to choose k data points at random as those initial cluster centers. There's also heuristics that you can use. You may have heard of one called k-means++. That's just used to give it a smarter start. And there's an example in our discussion slides below.       </p>
+      <p>
+The k-means algorithm works in an iterative nature. It repartitions the data points until a stop condition is met. Now, the stop condition can be based on some objective function like the sum of the squared error. And these types of algorithms, they do, they work well with small to medium data sets. They produce spherical or other convex-shape clusters. The main disadvantage, though, is this requirement to preselect k or the number of clusters. And the result could be locally optimal.       </p>
+      <p>
+So they can be computationally inefficient with large data sets, but again, are very efficient with small to medium data. I'm sure you're guessing that there's a way to use the scikit-learn toolkit to do our clustering, similar to linear regression and classification. Before we look at that, though, let's code it up ourselves to see what's really going on under the hood. It's a relatively simple implementation.       </p>
+      <p>
+This first block of code is a function that initializes the data into random clusters. And you can see-- I'm going to go ahead and execute this so we can talk about it, there we go. But you can see, in the while loop, that it's going to continue reshuffling and reassigning observations into clusters until our Boolean called change becomes false. This tells us that there's little or no movement among those cluster assignments.       </p>
+      <p>
+When we run this and print out the number of iterations, we see that it did finish in seven iterations. Don't worry if you're experimenting with these slides. It may converge in three, four, or even seven iterations. There is some randomization behind the scenes. So what we're going to do, though, is we're going to continue. We have seven iterations that it took to converge. So let's look and see what that means by doing some scatter plots. So these first three scatter plots are the first three iterations.       </p>
+      <p>
+And notice that the color assignments are from this vector c, ci. And that is going to be our output or our cluster assignment. And so each cluster has its own unique color using the color map above of red, yellow, and blue. So now that we know where the colors are coming from, let's look at this just for a minute. We can see that this first iteration, the clusters, they're not very well separated. In fact, they're pretty mixed up. It just looks like somebody threw splatter paint on there. Once it did its adjustment, it really recalculated the cluster centers, it did some more assignments, and even in the second iteration it looks even better.       </p>
+      <p>
+But we know that it did seven iterations. So let's go ahead and scroll down and look at those final four or the final three. There you go. So there's not much change between these. In fact, it's really hard to track down what the change is. But we can see that within a couple of iterations, the cluster assignments became pretty stable.       </p>
+      <p>
+The next thing we want to experiment is a different implementation. If you remember, I said there were several ways to pick those initial cluster centers. Well, this next function called k-means two, is going to randomly select k data points as the cluster centers. And we'll rerun our experiments. Now, if you see, it still took seven iterations, which that's not a problem, but let's go ahead and look at the cluster assignments in our scatter plots and see if it's any different.       </p>
+      <p>
+Oh, yeah. So this looks a lot different. If you notice, the very first iteration, we have a better separation. Now, we still have some work to do. But it's a lot better than that random, or what I called splatter paint, of doing the randomization in our first function. And we can continue and go ahead and look at the last few scatter plots and see that, although it started in a better place, it converged in a very similar manner. So the separation is really nice.       </p>
+      <p>
+Well, now that we've looked at how to code it up ourselves, let's go ahead and use the scikit-learn tool kit, and create our k-means object. So we pull in the library-- let me go ahead and execute that for you. We pull in the k-means library. We create our object, our model object, km equals, k-means means. And go ahead and highlight this so you know where I'm pointing here. And we send it in a three. This is a parameter that specifies to the algorithm, we want to use all the default parameters, but we have to set k, which is the number of clusters.       </p>
+      <p>
+The next thing we do is we fit our data. Now, we say km.fit, and we send in all of our data. So did you notice anything about-- we didn't do a train test split. So I wanted to go ahead and mention that. So in unsupervised machine learning, there's normally no training and test data split, because we don't have these labels. So there's not this concept of actually training and then testing our model. We still do our train. So we still do the dot fit to train our model.       </p>
+      <p>
+But then we're going to turn around and do a dot predict to return those estimated or predicted cluster assignments into what we would call a y hat. So I'll show you that. Before I move on, let me highlight a couple of things. The default parameter for this k-means object initializes those cluster centers using that heuristic that I mentioned a minute ago called the k-means++, just gives it a smart start.       </p>
+      <p>
+The other one is this max iterations. Since this may or may not converge in the number of iterations that we prefer, you can set this max iteration just to make sure that we have another stop conditions set into place. OK. So now that we've created a model object and then sent in that data to fit our model, let's go ahead and plot our results. Now, notice that we don't really get the convenience to visualize all those steps, like all the results at each iteration like we did before. But we can see that we have this nice output. And we did the km.predict. Let me highlight that so you can see what we did. And we use that for our cluster assignments.       </p>
+      <p>
+Now, we could put that into a variable, of course. If you wanted to do that separate, you could say y hat equals km.predict. And then simply say c equals y hat here. Either way works. We just used it to put it directly in there, to plot this out using the colors for our cluster assignments. And you can see that it did separate quite well.       </p>
+      <p>
+Now, the next thing we want to talk about, is I mentioned that one of the disadvantages of using this algorithm was the pre-selection of the number of clusters or the value of k. There are several approaches that you could take. You could use intuition as a starting place. Or you can use domain knowledge. If you're looking for three particular classes to emerge from this data, you could start there. It's really all guessing, at some point.       </p>
+      <p>
+So why don't we do some experimentation. And let's guess. So using our same data, let's try two clusters. That looked pretty good. But what about k equals 4? Let's try that. Well, you can see that there are some groupings. So depending on what our data represents, possibly these are good groupings of our data. So maybe-- I don't know, let's get crazy. Maybe let's try k equals 10, see what that looks like. Hmm.       </p>
+      <p>
+Well, that doesn't look too good. So now, maybe we're thinking somewhere between 2 and 10. Remember, we're doing our guessing. One thing I recommend is taking a note. In the project, I introduce a concept that would help you with this evaluation. It's called the silhouette width. And this is a metric that measures the within-cluster density and how well separated the clusters are. And the higher the value that's put out of the silhouette width means you have a better result.       </p>
+      <p>
+So you can measure that with several values of, say, k through to 10, and then see where that silhouette width value or silhouette score takes a spike. And then that would give you a better indication of where you should start or what k should be. That's an idea. Well, the second type of clustering that I mentioned we would talk about today is called hierarchical. And what this is, is it can be used to identify how many clusters is best. You can just try all of them using this method.       </p>
+      <p>
+So what the hierarchical does, is it will establish clusters gradually through either an agglomeration or a divisive technique. Agglomerative starts with all points in separate, singleton clusters. And then it combines data observations until the number of clusters is obtained or all data points belong to one group. Divisive is the opposite. It starts with all data observations combined into one cluster and divides them until the requested number of clusters are achieved.       </p>
+      <p>
+This development, or dividing, is used-- we use a similarity measure. And this could be termed single, complete, or average. And that's just how you measure the distance between those. The advantage of this method is the results could be displayed in a dendrogram. This is a diagram or a tree. And then you can cut it at the desired number of clusters.       </p>
+      <p>
+The disadvantage is a slow runtime and the inability to backtrack or reassign data points to different clusters. So in closing for today, I'm going to go ahead and create a similar smaller data set and show you how to do this experiment and create a dendrogram. There we go.       </p>
+      <p>
+So I'm going to go ahead and scroll up here and talk about this before we're done. So this diagram shows the hierarchical relationship between objects. And looking at this output, the height at which two items are joined is the key. So when the height of the link that joins two items is the smallest, then that means those items are the most similar. So all these items with these short links are actually most similar. So you can practice with those more. And I look forward to seeing your work and your project where you practice clustering and the silhouette width.       </p>
+      <p>
+      </p>
+    </div>
+  </body>
+</html>
