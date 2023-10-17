@@ -1,0 +1,87 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/omml/2004/12/core" xmlns:ve="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o12="http://schemas.microsoft.com/office/2004/7/core" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/3/wordprocessingDrawing" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/3/main" xmlns="http://www.w3.org/TR/REC-html40">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <head>
+    <style>style</style>
+  </head>
+  <body>
+    <div class="Section1">
+      <p>
+        <b>
+          <u>
+            <span style="font-size:20.0pt">CSCI303 | Random Forests</span>
+          </u>
+        </b>
+      </p>
+      <p>
+      </p>
+      <p>
+Now, moving on from our last discussion on decision trees. Let's talk about the random forest or random decision forest. This initial diagram should look familiar from our previous discussion and might give you a hint that we're going to talk about how multiple decision trees can be utilized to better their performance of a single decision tree and to avoid that problem of potentially over fitting our model.       </p>
+      <p>
+A random forest is an ensemble learning method. For classification or regression or other tasks that operate by building and training many decision trees. And the output is the mean prediction, if you're doing regression, of the individual trees or the majority vote or mode of the classes if you're doing classification, again, from the individual trees.       </p>
+      <p>
+You'll hear this term ensemble used in many contexts throughout your studies. And it simply means a bunch of models are assembled, and you gather or average the results to come up with a more robust solution. You'll find many advantages of using a random forest versus a single decision tree.       </p>
+      <p>
+The first one is the most powerful, where it reduces the variance of individual decision trees. Another benefit that we'll see towards the bottom of today's discussions slides, is that it can output the rank or feature importance that's naturally based on the calculation of the reduction in that Gini impurity metric. This feature ranking output can also be used to see which features are most dominant in the predictive power of your model.       </p>
+      <p>
+So it is possible that you could then reduce your feature set and rerun your experiments. So in a sense, it's another way to gain insights and reduce the features and maybe simplify your model. The random forest can also operate on many features and trains well with small sample set. When looking at the cons, we do lose this interoperability that we had when we were looking at a single decision tree, where if you recall, we could walk a single data observation through the tree.       </p>
+      <p>
+While we are kind of losing this part, at least we do gain that output of the feature ranking. Some issues that we've mentioned before is, it doesn't work well with regression where it's just bending the features using an actual function to estimate where those values lie. Now, this issue is minimized with the random forest, however. And we'll practice that in the project.       </p>
+      <p>
+Now, since the word random is in the name random forest, this should imply that there's different results that are generated for each tree. For example, if the same training set and method of feature splitting is used for every tree, then the output would be the same. And there would be no advantage of having multiple trees within our forest. The two types of randomization that we will see while training each tree, which this does aim to reduce this correlation between having like the same trees and the same results.       </p>
+      <p>
+This randomization that you'll see is going to be called bagging or bootstrap aggregating and also feature randomization or feature bagging. So let's talk about each one. First, bagging, or that bootstrap aggregating. This is turned on by default in a scikit-learn random forest classifier, which for each tree that you build, you don't actually use every data observation. In looking at this data set on the left, this is the entire data set, this next set of diagrams are random subsets of the data. And these are what are used for the different decision trees in this example diagram that would be the three different decision trees. And then we aggregate the results.       </p>
+      <p>
+Now, we've seen this technique before where we utilize different subsets of the data. And if you recall, that it's called k-fold cross validation. There may or may not be random selection, but it does utilize these different subsets of the data to have a more robust result. Anyway, back to bagging.       </p>
+      <p>
+One thing to note is that a sample can be selected more than once for these random subsets. And one question that I've had that comes up often is, what size should each of these bags be? Well, you can utilize the same idea as we do when we do our train test split. We can stick to that 80-20 rule where 80% your samples are used for training. And this is a parameter that you can set within the classifier.       </p>
+      <p>
+One bonus to note is this out of bag score, the notes down here on the bottom where it says bonus. This is a score that we can get from our training site. It's similar to a test score. The difference is that it's a score that's calculated for each individual decision tree, using as a test set the samples that were not selected for each individual subset of data that we use to train the tree. For example, these observations here in this first random subset will be used to train the decision tree.       </p>
+      <p>
+And then in this original data set, the items that were not selected for this sample would then be utilized for testing that trained decision tree. So it's a little different than what we're used to, but a usable metric that we can look at. It's a form of cross validation for a random forest.       </p>
+      <p>
+One thing to note, that if you set this value to false when you're doing your random forest model object, the hole data set is used to build each tree. So you eliminate the bootstrap aggregating. OK. So the second form of randomization is over the features that are selected for the splits on each individual tree. Now, this is different than using an individual decision tree where all features are considered when calculating that Gini impurity metric.       </p>
+      <p>
+In the random forest, each individual tree uses a random subset of the features. And these are selected based on the potential reduction in the Gini impurity metric for that subset of features. In other words, this diagram is an attempt to clarify that. So let's get that all on the screen for you. And let's talk about this.       </p>
+      <p>
+So let's go ahead and look at this for this first example here. So we have, it says N1 features. What that is, is N1 is a random subset of the entire feature set N. A split is decided based on one of those selected features. And then at the next node, a new random subset is drawn again from the features in N minus the already used feature. And then the data is split based on that newly selected feature. And it goes on until it gets to the bottom.       </p>
+      <p>
+So each tree does not necessarily use all the features in N. Let's use our Titanic data set as an example. So if this first split-- if you see this blue dot here-- if that first split was based on sex, male or female, then this next split would, randomly, at this next level, would randomly select a subset of the remaining features. Since we've now utilized all the potential splits on the feature for sex, it no longer has meaning. And it will continue this and output down here below a prediction of what class and observation belongs to.       </p>
+      <p>
+Since we're doing classification in this example, it will then conduct a majority vote and determine the final class that it has predicted for that data observation to belong to. Now, keep in mind, if this were a regression problem, instead of using the majority vote, it would be an average of the results. Now, onto the code. These next several cells of code are a repeat from our decision tree discussion. And we're going to go through this so we can have a comparison later when we run our random forest. And we're going to plot all the results on one plot and take a look.       </p>
+      <p>
+So here we're using the same common libraries for our scikit-learn, our Mapplotlib, etc. And we're also introducing those new libraries that we used before for graph vis, our decision tree classifier as well as our tree libraries. The other thing that we're going to do is read in our data. We'll read in that CSV file and look at the first five data observations.       </p>
+      <p>
+We continue our experiment by using our get_dummies to transform our data from categorical to something we want to utilize. We dropped some columns. The name is something that doesn't add value. The sex male and sex female, I repeat because they're Boolean columns of data. We set up our x matrix. We set up our y target vector, and then we do our train test split, again, utilizing 20% that data for testing.       </p>
+      <p>
+We're going to repeat our loop where we go through and do a range of values from 1 to max depth of 20. We redo our model object and our training. We capture, during testing, our accuracy scores and F1 scores. And we are going to store that in a list so we can look at that in our plot below.       </p>
+      <p>
+So here, we've repeated that experiment. And I wanted to make a note that last time when we did our decision tree example, we had a depth of 8, which was the best performer. And this time it's depth of 12. But if you look at the percentages, it's very close. So there is some randomization, and you could get a different output each time you run this. OK.       </p>
+      <p>
+So now, let's repeat that experiment using the random forest on the same data set. On the top of this code block you'll notice that we need one more library. This is an additional library for the random forest classifier. And note, for the project, we're going to do a random forest with regression. So you'll just need to import the random forest regressor instead.       </p>
+      <p>
+For consistency, we're still going to do our range of max depths for each tree in the range of 1 to 20. And this model does introduce some new parameters. So let's talk about those before we execute this cell and look at the results. This N estimators, that's the number of estimators. And that stands for, how many trees do you want included in your random forest? We've set this to 100.       </p>
+      <p>
+And remember, you could rerun this experiment with a range of values for the number of trees. Now, this would show you that there is a point where maybe using 100 trees gives you the same result as, say, 10,000 trees. And you can have the same result while saving computational load. So there is a sweet spot there as well. And again, that's parameter tuning that you can do experiments with.       </p>
+      <p>
+Another parameter here that we're setting is this OOB score, or out of bag score to true, because we would like it to collect those data values for us. And we're going to use those later in our plot. And again, we're setting that random state to zero again. If you recall that parameter by default is set to none, but we want to set it to zero to give it a constant value to get that deterministic behavior during fitting. In other words, every time we rerun this we would like to get the same result by seeding that random number generator.       </p>
+      <p>
+Just like before, we're going to loop through. We're going to create a model object. We'll train it. We have added this extra list here, this OOB scores, underscore r f. That's just a list that's going to hold those out of box scores for us as well as the accuracy and the F1 scores, like we've done before. Here at the bottom, we also are going to calculate and capture the best performance. So let's run that cell and see what it does. OK.       </p>
+      <p>
+So we can see that we have, for max depth of seven or eight, we have approximately 0.8, if you want to manually average those. So it's not too bad. It really did run quite well. And let's go out and plot those results so we can see what's going on. Let's leave all this on the screen for you.       </p>
+      <p>
+So across the x-axis we have the increasing value for the maximum depth of our individual trees. On the y-axis is the output score value. Now, we have five lines. So let's look at that. The solid lines are the output of our random forest. And the lighter and dashed lines are the output from our decision tree.       </p>
+      <p>
+You can see, at a quick glance, that we had an overall increase in performance when using the random forest, average of about 5% increase across the board. Now, remember the green line represents the out of bag score. Now, you might notice this is a little bit elevated. And remember, this is not a true score. It does tend to be elevated a bit, because if you remember, there's some information duplicated in the training and testing sets for this metric. But if you utilize this information and notice the blue line is the F1 score between the decision tree and the random forest, again, across the board we did see an overall increase maybe of about 5% when we introduced the random forest. And that was quite a good increase in accuracy and F1.       </p>
+      <p>
+So let's look at the other side benefit of using a random forest. So we mentioned earlier that the random forest can output this feature ranking or feature importance. So let's talk about what that importance is and how it's calculated. So it's defined as the mean decrease in that Gini impurity metric. And as the random forest goes along and makes these splits, recall, it uses this Gini impurity metric to determine the best split.       </p>
+      <p>
+And at the next decision point, the algorithm then keeps track of this reduction in impurity due to using that feature again to split on. So when you create and train your model, these values are generated and stored in this parameter called feature importances. And it has this little underscore at the end. So don't forget that. And then you can turn around and plot that. So let's do that.       </p>
+      <p>
+So here is the plot. And this is the output for feature ranking. Now, we know this Titanic data set quite well. And we shouldn't be surprised that the most dominant feature here is the sex of the passenger. We can also see from looking at this that the next important feature is the fare, and then maybe age in P class.       </p>
+      <p>
+The other ones don't seem to have a large impact. And they're a little bit less important. You know what would be really interesting is if you want to think back and compare these results to your classification experiments, I'd be really interested in hearing how this compares to the results of that. And we'll see you next time.       </p>
+      <p>
+      </p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/omml/2004/12/core" xmlns:ve="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o12="http://schemas.microsoft.com/office/2004/7/core" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/3/wordprocessingDrawing" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/3/main" xmlns="http://www.w3.org/TR/REC-html40">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <head>
+    <style>style</style>
+  </head>
+  <body>
+    <div class="Section1">
+      <p>
+        <b>
+          <u>
+            <span style="font-size:20.0pt">CSCI303 | Convolutional Neural Networks</span>
+          </u>
+        </b>
+      </p>
+      <p>
+      </p>
+      <p>
+Today, we're going to talk about a special type of a neural network called the convolutional neural network. As a reminder, last time we discussed these deep neural networks, which have many layers and sometimes very complex structures. We also discussed many applications that use the neural network. Some we use every day, and some of them from a purely scientific point of view.       </p>
+      <p>
+One of these examples we discussed that really got the field moving is the object recognition in real images. This convolutional of neural network is the foundational technique behind these image processing or computer vision type of tasks. A convolutional neural network, which I will refer to during our discussion sometimes by its acronym, the CNN. This is defined as a neural network with a specialized architecture for computer vision tasks. They work well because they can handle this translational variance, which means they can detect an object independent of where it is in the image.       </p>
+      <p>
+For example, if you have an image with a boat in it, it doesn't matter if it's at the top of the image, the bottom, or even the left or the right. CNN are also hierarchical. We have layers of these neurons like we've seen in our previous discussions. Now, this may become clear if we look at this image below in more of a bottom to top fashion instead of the left or right fashion that we're used to seeing it in.       </p>
+      <p>
+If you look here in the very bottom, is what it's showing is the sort of inputs that will make a neuron in the next layer excited or produce a high enough value to fire or be activated. In these lower level neurons, they seem to be just simple features or patterns. But these are pairs of lines that kind of represent positive or negative. These could be lines, arcs, corners, or even blobs. As you go higher it becomes more defined, showing parts of objects like ears, eyes, wheels.       </p>
+      <p>
+And at the highest level, this would represent this complete, or mostly complete, face. Now, keep in mind, this is a simplified version showing just three layers. Typically, a CNN for this task would have at least tens of layers. And this hierarchy is what we mean and we talk about these early and higher layers right here of the CNN. And on the right here is another representation going from bottom to top. And this is an application of a CNN showing these different layers that can be utilized for a speech recognition task.       </p>
+      <p>
+Now, talking briefly about what's going on behind the scenes, most layers of are convolution layers. And this is where we filter the image using this kernel, which is a matrix that's applied, or a filter. And imagine looking at this diagram where this back panel represents our input image. The smaller one here is our kernel or kernel matrix. And the values are weights that are multiplied by the values in our image matrix or our inputs. And the result, in some, is then stored in our output matrix.       </p>
+      <p>
+This process continues by shifting the kernel one pixel at a time over and repeats that action for all of the pixels in the input image. And you can have many different types of kernels that can be applied. And they are learned as the convolutional neural network goes through and does its back propagation, etc. So for example, if we look at the image network above, the very first layers composed of these layers or kernels, and then it goes up through the network.       </p>
+      <p>
+Now, here what we're showing in this one, let's scroll down to this one, is we're showing that it's actually more three dimensional. If we were looking at color images, the back panel of this really represents this. It looks 2D, but the color image, it has three dimensions. And so we have dimensions for red, green, and blue, of course, RGB images. And then as you apply the kernels to the images and different kernels, the output matrix becomes quite large. As you can see, in this resultant cube, it gets thicker and thicker as we apply more kernels and end up with more layers.       </p>
+      <p>
+The next key component of the CNN is this concept of max pooling. So after you get an input and output, you can reduce the size without losing too much information. A good way to look at this is, if we go up to our facial image network again, let's look at this, is the faces in the topmost layer here don't have to store as much information, pixel by pixel anyway, because we can say that it's comprised of pieces and parts of the previous layers, like eyes, ears, noses, etc. And so we used this idea of max pooling.       </p>
+      <p>
+And then what we do, is that we can divide this information, or this data, up into quadrants. And then we take the maximum value for each quadrant, and then assign it into this resultant smaller matrix. Now, this next overview or outline is the general structure of a CNN. Usually, we have this first, this convolutional layer with the ReLU activation. And then we have a max pooling layer. And then that will repeat. And you might not have four or five even, or a hundred of these that are repeated throughout this process.       </p>
+      <p>
+And then we finally get to this last one, and we flatten that, all those resultant layers into one big linear array. And then we put it through these dense layers like we saw in our previous neural network discussions. So let's go ahead and keep going, because that's just text. It's just an outline. So these six figures will actually make a lot more sense now that we've talked about it.       </p>
+      <p>
+So this is the image. It should look familiar, because it was at the top of our discussion slides. These two figures are showing what it would look like as it goes through the network. For example, this first one-- and this is a digit recognition problem, where we have this handwritten digit two. And we're going to run it through our convolutional neural network. What you do is you go through several convolutional layers, and then our max pooling, and then we get to the end here, and then we flatten it.       </p>
+      <p>
+Then it runs through these dense layers and then ends up at this output layer. What happens there, is you're going to have outputs representing each class of your targets. And then what we're going to do is designate which neuron is to be activated, which has the highest value. In other words, did we recognize the digit? And we will experiment with this digit recognition data set in our project.       </p>
+      <p>
+The second figure is a good representation is how each one of these kernels are applied. We can then reduce the dimensionality in the xy plane. It gets smaller in xy dimension as we go along. But it comes thicker, or in that z direction, because we're adding more layers, until we get to the very end. And then we flatten it. And then we do our processing in our dense layers.       </p>
+      <p>
+Well, hopefully that made some sense. And this, again, is just a high-level overview. There's entire classes that could be conducted in just neural networks. This next set of discussions are just some fun applications of the CNN. This is the open AI microscope. And what we've mentioned before is this open AI. This is a company. It is a non-profit organization.       </p>
+      <p>
+And if you recall, in our last discussion, we were showing you how the agents were learning to self-play, or to play hide and seek, or what I called tag. And they used the neural net to accomplish that task. This is some work from the same nonprofit that aims to show what individual neurons might look like or are sensitive to. These first six images are from the low-level features in this AlexNet model. Now, most of them seem to have simple patterns in them, lines, arcs, almost like textures.       </p>
+      <p>
+And then we can jump down and look at the highest level in the same model, and we can see patterns emerging and objects that kind of stand out. If you look at, say, unit 3, maybe this would be sensitive to something with ears. To me, it represents possibly a cat, maybe? Unit 4, it kind of looks like dog faces. So then this panel or this neuron would be sensitive to detection of a dog.       </p>
+      <p>
+There's a lot of really interesting research in this area. And if you're interested in learning more, there are entire classes in computer vision. So let's keep going. There's a couple more fun applications before we wrap up for the day. This is another image recognition. So like this one, we're classifying certain objects. And this, again, is a cat inside of an image. We can also do localization where we can build a bounding box around where that cat might be located within the image.       </p>
+      <p>
+Now, as we go along, these techniques get more complicated. This next one is going to be able to recognize multiple objects within the same image. And then in this last one, it's even more complicated, where we're trying to draw a close boundary around the detected object and not just a square bounding box.       </p>
+      <p>
+Here's one more fun application. This is the neural-style transfer. So it's an art application. What we're doing is we're taking a regular image. This first one is a regular image. The middle one is a famous painting by my favorite artist, Van Gogh. You can then take the textures from the style image, the one in the middle, and apply it to the original photo. And then you can get the effect in this third and final image.       </p>
+      <p>
+This next one-- we only have two more examples I wanted to show you. So this next one is an example of using this generative adversarial network where two networks are trained simultaneously and one of them, called the generator, takes random noise and creates realistic looking images like those below here. Some of these are generated from just random noise within this generator. Then the other network tries to distinguish, or make a distinction, between a real and a fake images. And they're quite successful.       </p>
+      <p>
+So this is another technology that uses CNN. This last one is called a deep fake. Now, this can be used to create images that are quite truthful. And there's much controversy about this in the news. It would also make for very interesting discussion in our ethics unit. However, this is a really cool technology that does use the CNN quite successfully.       </p>
+      <p>
+So that was a lot of complex information that we covered really fast. But again, as an overview so that you can maybe do a little self research, you can dig into this a little bit deeper. So hopefully you got a really good introduction to neural networks and then the convolutional neural network. They have very powerful applications. And there's many tools available for building and training these CNNs.       </p>
+      <p>
+And guess what? You guessed it. We will be exploring this by creating our own CNN using the TensorFlow platform, just like what we did in our neural net discussion. And you'll be applying that to the digit recognition problem.       </p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/omml/2004/12/core" xmlns:ve="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o12="http://schemas.microsoft.com/office/2004/7/core" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/3/wordprocessingDrawing" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/3/main" xmlns="http://www.w3.org/TR/REC-html40">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <head>
+    <style>style</style>
+  </head>
+  <body>
+    <div class="Section1">
+      <p>
+        <b>
+          <u>
+            <span style="font-size:20.0pt">CSCI303 | Project 7 - Random Forest Overview</span>
+          </u>
+        </b>
+      </p>
+      <p>
+      </p>
+      <p>
+Hello, everyone. My name is Morgan Cox. And today, we will be dealing with project number seven. Just a brief overview of kind of what we expect from you guys and how to do it.       </p>
+      <p>
+So project seven is dealing with random forests and APIs. The API is just an added thing to help us predict today's current weather. And that's later on. What you're going to do is start at the top is normal. And there's a chance you need this Pip install. If there's something that isn't working and it says PP print isn't there, go ahead and run that code. Uncomment it and run it. And you should be good.       </p>
+      <p>
+We're going to start by loading the data. And you should make sure you have the temps.cwv file in the same directory as this project so that way you can just load it really quickly and easily. And you're just going to load it into a data frame and that way it's usable throughout the rest of it. And what you can do is where it says none here, just go ahead and read it in there because we have some of these names already defined for you because some of the asserts later in the project need these names. If you see none, that's where you should be filling things in. And I'll mention them as we go through it as well.       </p>
+      <p>
+And then we're going to have you get dummies on that data. We want you to do it on the day of the week because if you watched the earlier get dummies video, Friday, Saturday, Sunday, Monday, those aren't numbers. So those aren't going to help us with anything really. So we need to convert those into some binary number so that way the model can actually use it. And then also, in this first part, you're going to say what your features and your targets are. And we kind of tell you right here, these are the features. And that's your target. So that's just the beginning part. Nothing too crazy. Just made sure that you have all that setup done so that way the rest of the model goes really smoothly.       </p>
+      <p>
+All right. So now, you actually start with the random forest. And what you're doing here is you're initializing the model. And again, just get rid of this none and do it there. And you can either create variables with like the number of estimators, the max depth, and the random state, or you can just define them in line. It's up to you. If you do it through variables, it's a little easier to read and interpret. But if you do it in [INAUDIBLE] as well.       </p>
+      <p>
+And then what you're going to do is you're going to fit this model on the features and the trained target values. You should already know this-- is you do the train test split here. And one of them is like train target or your target values. And what you might have to do is when you're entering this in, in the training section, you might have to do something like train targets not values dot Latin. That may or may not be needed for you. I know when I did this project, it was needed for me. And it just helps make it so that it's the same size. So if you get some weird error that's saying like a size error or something like that, go ahead and try this flatten thing and it should help you potentially hopefully. Otherwise, just feel free to ask on Piazza to try to get some help.       </p>
+      <p>
+Once you have that all done, run this. And it'll actually show you a good visualization of it. It's a really cool visualization. And it actually saves the PNG file for you. And then we're also trying to plot the importance of all the different cells.       </p>
+      <p>
+So now down here, we're actually going to do some testing. So what you're doing here, again, you see these nones, so you're going to be replacing them. But you're going to be replacing R2 with an R2 score and the EV, which is explained variance, with an explained variance score. We're going to use this further on. And also, we're going to assert them right here because we want both of them to be greater than 0.7. And other than that, there's nothing too much more to this. But you also have to make sure that you predict on the test features I believe in order to get that. So before this right here, you make your predictions. And you do it there. And then go ahead and use that in the R2 and EV part.       </p>
+      <p>
+So now we're onto the API part. And what you have to do here is follow these steps right here. There's quite a few of them. There's already some setup for you here. But you actually need to go in here and fill it in, get a request to the URL, see if it gets a response. If it does get the response, we want the current temps. And that's what the API is going to help us get. And then these asserts here are, again, just making sure that you did it correctly. But make sure the current temp and response are filled in here.       </p>
+      <p>
+And then finally, you just have to use the forest to predict the temperature on this day last year and compare that prediction to the actual prediction that you got. So again, just fill this in. Insert your error. And by insert your error, I mean fill this in, get rid of this none, and make sure you do the predictions and all of that here. And then just enter in the response or the reflection questions. And that should be it. So good luck with the project. And just make sure, again, that Latin values might cause some errors. Other than that, this project should go relatively smoothly. I wish you good luck. And enjoy.       </p>
+      <p>
+[MUSIC PLAYING]       </p>
+      <p>
+      </p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/omml/2004/12/core" xmlns:ve="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o12="http://schemas.microsoft.com/office/2004/7/core" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/3/wordprocessingDrawing" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/3/main" xmlns="http://www.w3.org/TR/REC-html40">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <head>
+    <style>style</style>
+  </head>
+  <body>
+    <div class="Section1">
+      <p>
+        <b>
+          <u>
+            <span style="font-size:20.0pt">CSCI303 | Project 8 - Neural Network Overview</span>
+          </u>
+        </b>
+      </p>
+      <p>
+      </p>
+      <p>
+Hello, everyone. My name is Morgan [INAUDIBLE]. And today I'm giving you a quick overview of project eight, which deals with convolutional neural networks, also known as CNNs. So as I said, this project will be doing with CNNs. And you're going to do some modification of code for CNNs to kind of see how when you change the parameters it affects the outcome.       </p>
+      <p>
+So this project is worth 30 points. And go ahead and read these instructions right here. And there's two different parts to this. There's a part one, which just kind of talks about tensor flow, which is the Python packages that you will be using for this.       </p>
+      <p>
+And what we want you to do is go to this link. Go ahead and read this article, kind of get a better understanding of what tensor flow is, what it's used for, and just a brief overview of how it works. And then, go ahead and answer these questions, that way you kind of understand what you're using and why it works for what we're doing.       </p>
+      <p>
+And then, part two is the really fun part where we actually go through and create a model, and train the model, and then, go ahead and modify some code for it. So this is all just helper code. So I'm going to run it.       </p>
+      <p>
+You have all of this. These are helper functions. The datu is all here to be loaded, unless you don't run the correct packages up here. Just going through and running it. These are all just good examples of it. Here, it is actually training now. So this is going to run for a second.       </p>
+      <p>
+But what this is doing here is it's training 30 epochs, and each of these epochs tells you it's loss, its accuracy, and just some information about it. And this is actually how we're training it. So now, it's done training. And it shows some graphs here. And go and take a look at these graphs. They're actually really cool.       </p>
+      <p>
+And they kind of show you how we get higher in the epoch. We go down in lots and we go up in actual accuracy, which is really good. So it kind of helps. The more that you do to a certain degree can kind of help provide you a better model because we see a big jump from 0 to 5.       </p>
+      <p>
+OK. So now that that's all done and you've done all that code, now as you're going to do is you made four different modifications for this project to the code. So what you are going to do is you're in the copy the code from the cell above that builds and trains a baseline model and plots the results.       </p>
+      <p>
+And what that means is this code. So you're copying this because we want you to take it, copy it, and run it so that way it will actually build, train, and plot the model. And then, you're going to be going through and you're going to be changing stuff within here. So each of the four different modifications has these steps and they tell you what to change and what to do.       </p>
+      <p>
+And then, you're going to go ahead and answer these questions that are associated with each one. You do that four times, and just trying to see what's going on, what you think about it and how changing different components of the model actually changes the output of the model.       </p>
+      <p>
+And it's a really interesting project. And it's unfortunate that we can't teach a whole class on this stuff. But it's really fun and it's really great and I hope you get some good information out of it. But that is a brief overview of project eight. I wish you good luck and enjoy.       </p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,173 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/omml/2004/12/core" xmlns:ve="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o12="http://schemas.microsoft.com/office/2004/7/core" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/3/wordprocessingDrawing" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/3/main" xmlns="http://www.w3.org/TR/REC-html40">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <head>
+    <style>style</style>
+  </head>
+  <body>
+    <div class="Section1">
+      <p>
+        <b>
+          <u>
+            <span style="font-size:20.0pt">CSCI303 | Introduction to Neural Networks</span>
+          </u>
+        </b>
+      </p>
+      <p>
+      </p>
+      <p>
+Throughout the semester we have ran through many different types of algorithms and new concepts. Remember, we're building the tools that you need to have a solid foundation that you can build upon in your future studies. This week we will cover the last new technique, and possibly the most powerful and widely used. Welcome to Introduction to Neural Networks.       </p>
+      <p>
+Many of your devices are loaded with neural network technologies, and all the technologies we've talked about so far are still very important and may get the job done just fine with probably a lot less computational load. But the neural networks provide all sorts of applications that couldn't be done with these other models.       </p>
+      <p>
+Today we'll go through some background and some history, talk about typical applications that utilize the power of the neural network, different architectures, and then go through how to create a neural network, and use the API called Carus. This is used for the popular open source platform called TensorFlow.       </p>
+      <p>
+In your activity just before this, you were asked to watch the first three of 3Blue1Brown videos, and identify some new key terms such as input, hidden, output, MLP, neuron activation, weights, biased, and cost. Now these terms and others will be highlighted throughout today's discussion.       </p>
+      <p>
+Neural networks were originally modeled after or inspired by neuroscience. We mammals are smart. The human brain is extremely powerful. So why not try to mimic it?       </p>
+      <p>
+There's two things to look at as we try to mimic the components of the human brain, starting with the neurons. Then there's the learning algorithm. So just because you have the neurons set up doesn't mean it can do anything.       </p>
+      <p>
+So you have to find a way to connect them and train them to do something practical. We have ways to do that, which we will learn throughout this discussion. And again, this is an artificial neural network, not actually how the human brain works.       </p>
+      <p>
+Now remember, you're not going to be tested on the biology. It's just interesting to get a background of what we're trying to accomplish artificially. Now this image is a cartoon version of a neuron, and this purple part on the left represents the inputs. This green dot in the center is supposed to represent the nucleus. And then this purple part around it would be the cell hardware.       </p>
+      <p>
+And then it can send signals along this yellow part, or this axon. Then the axon breaks up or splits off into these branches in this next neuron-- this next purple part here on the right-- and these axons. These terminals, or the edges, of branches is where we will touch your interface with the other neurons.       </p>
+      <p>
+So these stats up here-- let me go back up here and away from our image a little bit. They're for the human brain, where there's billions of neurons. The areas of the receiving neuron are called dendrites, where they don't actually touch each other, but they're really close. And then that area is called a synapse. And so there's trillions of those, and they run in parallel all at one time.       </p>
+      <p>
+So there's many types of neurons, but in this class, and what we're learning about when we're doing our artificial neural network-- we'll stick with just the one kind. And we'll talk about that soon.       </p>
+      <p>
+Then what we want to think about is, how does it learn? So there's two basic ideas that we've highlighted here of how they learn, is they have new synapses. So it's kind of like how babies learn. You know, they're born with some that are created, and then some are developed. But beyond that, the other kind are how adults learn, so mainly by strengthening or weakening those existing synapses.       </p>
+      <p>
+So if you want to relate this back to when we're working with linear regression, and we had some parameters or weights that were kind of up and down, based on the predictive power of our model. These synapses, or strengthening of the synapses, it's going to be kind of analogous to the weights in our model.       </p>
+      <p>
+The last part of this that talks about the biological signals, this is the information that's traveling through the axon from one neuron to the other, that yellow part. And there's this nonlinearity that comes into play when we're looking at one neuron sending a signal or spike to another neuron. And there's only so much capacity, so it can only received so much. So we'll discuss this more in a few slides when we discuss activation functions. So hang on to that thought.       </p>
+      <p>
+This next one is a simple model of a artificial neuron. So first, looking at the stuff on the left hand side-- so don't think about the activation function just yet. We're almost there.       </p>
+      <p>
+Starting with the stuff on the left, we have our inputs, our feature values. They're represented here with the x's. They go along that line, so they're multiplied by some weights. And then we take the summation. So those products are summed together.       </p>
+      <p>
+And then we add in this bias term at the top. That's going to be just adding in some constant value. In this last part is where we apply our activation function to that weighted sum, and then determine the resultant output.       </p>
+      <p>
+Covering more of the history before we continue on with the modern era and activation functions and some practical applications, this is the most simple explanation and most common diagram of a neural network. So some form of a neural network has been around since the 1940s, and research was on and off a bit between then and in the 80s, when it came back into play. This is when people discovered that if they added this hidden layer in that you could do more interesting things than the simple two layer network that they had used in the past.       </p>
+      <p>
+This link on here explains a little bit more information about how powerful the neural network can be. Simply stated, as there is an increasing number of neurons, you can closely approximate any continuous valued function that you can think of.       </p>
+      <p>
+So where we do train our neural network, we're typically going to use the gradient descent for supervised learning. Neural networks can, of course, be used for unsupervised learning as well. Also something in between that, like semi-supervised learning.       </p>
+      <p>
+This is something we haven't talked about before. But this is, if you think about a special version of the gradient descent called backpropagation, it's designed for this feed-forward layered structure, kind of like in this image where you have a column of neurons. And they're all connected to the next column of neurons and so forth, for all the layers. And those are denoted by these arrows, like in our image here.       </p>
+      <p>
+Now keep in mind that although this diagram shows the input layer, the hidden layer, and the output layer, is a series of neurons. The inputs are just that. They're your inputs. They're not actually neurons. So hopefully this image isn't confusing. But these inputs are just our inputs, our feature data.       </p>
+      <p>
+One thing to notice is how all these neurons are connected to the other neurons. And this would be categorized as a fully connected network. So all of these neurons, or these inputs here, have an arrow going to each neuron in the next layer, and so forth, till we get to our output.       </p>
+      <p>
+So that was a very quick, classic example of a neural network. And they can be used for many applications. However, what really changed the field were these deep neural networks that came into light during the last decade or so.       </p>
+      <p>
+They became really huge. Sometimes many is hundreds of layers. Most will actually have more like tens of layers, but they can have thousands or even millions of neurons, especially the big players in industry that are using them for industrial applications.       </p>
+      <p>
+They use modern activation functions rather than the sigmoid function that we'll define here in a minute. But the sigmoid function was the most common one. What we're going to do though is we're going to think about these more modern activation functions.       </p>
+      <p>
+There's a tradeoff between increased speed for maybe possibly a slight lower decrease in accuracy. This activation function is called the rectified linear unit, or ReLU. Just to make sure that the terminology is making sense, the terms you'll hear interchangeably used are the term neuron, node, and unit, like in rectified linear unit. These all refer to that neuron.       </p>
+      <p>
+Continuing on in, why and how a deep neural network has become so popular. It's not like people haven't tried multiple layers in the past. But modern users have found tricks to accelerate the training process. Bigger data sets are widely available. And there's also been a lot of hardware advances to be able to support these more advanced, or deeper, neural networks.       </p>
+      <p>
+There's a variety of network architectures. And this is a kind of a simplified version of a fully connected deep network. Imagine instead of just three hidden layers like you see here, the blue or the purple dots, that you had hundreds or potentially thousands. These deep networks there are not only always fully connected with these arrows, but imagine how that complexity would grow as you add layers or maybe more neurons per layer than you see here.       </p>
+      <p>
+When it gets this complicated, it almost turns into a black box algorithm where we know what the inputs are. We can see what the outputs are. But all the inner workings here are-- they're kind of hard to trace what's going on in a single neuron. So that's a tradeoff when working with this more complex model.       </p>
+      <p>
+So let's talk about these activation functions. We've mentioned them a couple of times. Let's dig into what those are.       </p>
+      <p>
+You may recall that you watched in the 3Blue1Brown videos the sigmoid and the ReLU functions. They were discussed in there, and I've mentioned them just briefly above.       </p>
+      <p>
+The sigmoid is one of the most commonly used functions to represent the non-linearity of that neuron. And looking at this plot here for this sigmoid, you can see across the x-axis. This would represent the amount of energy or spikes coming into a neuron.       </p>
+      <p>
+And the y-axis is the number of spikes or energy of the output neuron. And so if there's not enough input, then there's no output. And if there is enough input, it goes out, but it'll saturate at some level when you get up here to the top. All these other activation functions are used and artificial, but the sigmoid is the simplest and the closest representation of how real neurons non-linearity activation function looks like.       </p>
+      <p>
+Now the ReLU function which we mentioned above, it's become one of the most popular activation functions in an artificial neural network and used in these deep artificial neural networks. It's this one here on the bottom. It works where if the input is below zero, it just becomes zero.       </p>
+      <p>
+And they took away that saturation point by passing along the positive input values and just allowing them to come through. This helps with the convergence for the gradient descent and can be faster. We will use this activation function in our examples moving forward.       </p>
+      <p>
+Now looking at what neural networks are good for and may be best at, this is working with unstructured data. Now we haven't had that before in our examples. We've worked with very structured data that fits nicely into a table. But unstructured data is data you're going to run into in the real world. It includes images, sound, and some sensor data, data that you can't easily put into that structure or that tabular format. And even if you did, you would lose the underlying meaning.       </p>
+      <p>
+For example, you could put all of the pixel data for an image end to end in a data file. But we wouldn't really recognize that this image-- for example, this one here-- is a container ship. So this example for this image challenge shows us-- this ImageNet challenge here-- it shows us how images can be trained.       </p>
+      <p>
+So for this challenge-- again, this is just an example to show you a great use of a neural network for images. The images are labeled with one term, like this first one is labeled might. Now even though there's other things in the background and the container ship you see, it has a body of water and maybe a distant city there at the top, there can be layers of labels associated with an image.       </p>
+      <p>
+It could have more than one label. This data set it has 1,000 object classes or categories, with over 1 million training images and 100,000 test images that you can use. Each image is the size, I think, 224 by 224 pixels.       </p>
+      <p>
+So if you do that math, this data set is huge. That is more than 50,000 features, if each pixel represents a feature. So this is way more than what we've worked with in the previous examples. But the modern neural network can do well with something like this. And from experiments and our readings we've seen it's had over a 90% accuracy.       </p>
+      <p>
+Another example is natural language processing, like speech recognition. Many of us currently use speech recognition with our smartphone or other device. This technology has come a long way from the first time that I introduced it. And I won't tell you how long ago that was. But I use it now.       </p>
+      <p>
+Also in natural language processing, it's the text translation. This is an example of translating a sentence that may seem natural to us when we're trying to determine the context, or what the blue highlighted, what the "it" stands for, refers to. So in the first sentence, it's obvious to us that "it" refers to the animal, because the street actually can't get tired. And in the second sentence" it's a little bit different, but "it"-- the blue highlighted it-- refers to the street.       </p>
+      <p>
+Now the French translator was able to pick this up. And again, this technology has come a long way, because previous versions would have been kind of hit or miss with these contextual differences.       </p>
+      <p>
+Then there's things like chat bots that are used. And they're still a little constrained, but can handle some basic conversations. And they're coming along.       </p>
+      <p>
+This next example that I wanted to show are really powerful and interesting. Now we've introduced this new term, agent. This is a term used in artificial intelligence, and you can say it refers to some artificial entity in your hardware, or it's an agent. But these competitive AI agents are trained using reinforcement learning that leverages these deep networks that we've discussed.       </p>
+      <p>
+The idea here is similar to how we learn, like when you touch a hot stove, you get burned. Now this would normally give you a negative penalty, of course. But basically, you took this experience and then learned from it.       </p>
+      <p>
+Well, this example here talks about an entity called OpenAI. They're a nonprofit research company out of California, and one of the players who-- they're pushing the boundaries of artificial intelligence, and focus on doing so in a safe and ethical way. I would recommend clicking on this YouTube link, pausing this video, and watching that OpenAI video. It's fascinating, and shows how two teams of multi agents that play hide and seek-- well, it's actually more like tag-- but they develop strategies and counter strategies through their learning. You can definitely get more details about this type of game theory in an artificial intelligence course.       </p>
+      <p>
+OK, so now all of the above shows some practical and fun applications of a neural network. You'll also see them utilized in more scientific application. We're all scientists here. Here's a list of some papers with links if you want to research further.       </p>
+      <p>
+And also, since we're used to working with structured data in this course, I thought I would mention that these deep networks, well, they can work well on structured data as well as unstructured data. Often we can utilize the other learning algorithms though and potentially produce the same or similar results with lower computational cost when we do have that structured data.       </p>
+      <p>
+Let's look at the architecture just briefly. It's good to mention here is a quick overview, definitely outside of the scope of this course. The neural network does not necessarily have to be the traditional layered feed-forward network. There's all different kinds. We will talk about and experiment with the convolutional neural network next time.       </p>
+      <p>
+Now there's the recurrent neural network, and the feedback neural network. This is commonly used with reinforcement learning. Now these larger networks, they can often yield better results, but they're definitely harder train. I'll leave that for your review.       </p>
+      <p>
+Let's get into the gradient descent. Get this picture on there. And we've seen the gradient descent before when we did the project for linear regression. It's used for supervised learning and works in an iterative nature when trying to minimize the error function.       </p>
+      <p>
+This image shows a landscape of these steps. So imagine walking kind of like down a hillside, and your feet or your body will naturally tend to help you know which way is down. So you're taking steps downward, but you could get stuck in a local minimum or low point.       </p>
+      <p>
+So that's a quick review of the gradient descent, but let's talk about what the deep learning methods typically use, as they use what we call this mini-batch. I'll leave that picture on there for you.       </p>
+      <p>
+On the bottom here, that is the words, is this mini-batch gradient descent. This is used to help from getting stuck in these local minimums, or low points. So for each iteration of the gradient descent, the error is computed only for a subset of the training samples. And that determines in which direction you step and by how much.       </p>
+      <p>
+So what this means is that each time you run through the gradient descent algorithm you change the landscape a bit. So here again we're walking downhill, and we end up in sort of a low point, or this local minimum. It's like the ground rumbles or shakes to get you out of that. And then you can continue on.       </p>
+      <p>
+So this is additional information on backpropagation which you went through in detail in that third 3Blue1Brown video, so I'm not going to repeat it here. But basically, as you push samples forward through your network, calculating the error, and then you send it backwards through the network.       </p>
+      <p>
+So I'll leave this information here as a recap for you, because we need to get onto the code. So let's do some code. And this is something that you haven't seen before. A lot of this is new, and it might look like a lot of code. But it's really not too bad.       </p>
+      <p>
+So the first thing we're going to do though is, we're going to show you examples of how to create a multi-layered network that is fully connected using that Carus API and the TensorFlow platform. So this first cell are the libraries that we need. Some might look familiar. Some you've seen before. But they do include the new ones for working with our neural network.       </p>
+      <p>
+Let's do this next one. So that you don't have to learn a brand new data set while we're learning a brand new type of model, we're going to go back to the Iris data set for this. So we're going to load it in.       </p>
+      <p>
+We're going to set up our x matrix and our y vector to hold our targets. We'll do our train test split. Again, setting our test size this time to 0.3. So we're going to hold out 30% of our data for testing.       </p>
+      <p>
+We're going to normalize that data so it all fits within a common range, and that'll typically increase the performance of our model. And then we do this np.unique down here, to grab the number of classes out of that target vector. And then the last one is just taking the length of that. It'll tell us how many observations or how many data samples that we have.       </p>
+      <p>
+This block of code here, a lot of this, again, is very new. It's not something you have to memorize, but I just wanted to provide it so you could dig in a little deeper if you want to do some self learning on neural nets, or maybe utilize it in one of your courses. It's well-documented for every line here.       </p>
+      <p>
+We're going to set up our network and some of the parameters that are needed to create that model object, starting with the number of hidden neurons. So we're going to say we want 10 neurons per hidden layer. The next thing we're going to set up is we're going to set up our model object. And this model object is called sequential, which is the basic feed-forward model that we've discussed today. The next thing we're going to do is we're going to set up two hidden layers and setting that activation function to the ReLU.       </p>
+      <p>
+This last one is setting up our output, which this is going to match our number of classes. This piece down here, I can let you kind of read that, but basically what we have to do is with TensorFlow, we can do this compile. That's going to do some things behind the scenes and some optimizations, so that when we go to train our model, it's much more efficient.       </p>
+      <p>
+These last three lines of code are setting up the training. Something you haven't heard before is an epoch. So let's talk about what that is.       </p>
+      <p>
+So an epoch is not the number of iterations. But what it is, it's the number of iterations of the gradient descent, such that all of your training examples are used within that epoch. Then we're setting up the batch size. That's going to be 150 samples divided by 5, so that's 30. And then we fit our model, just like what we've done in other methods.       </p>
+      <p>
+One thing to note here is-- so I'm going to go ahead and let this run while we're talking-- is that we let the output to be set as verbose. And for each epoch, it's going to output the information about the loss and the accuracy, et cetera, and then what number epoch that you're on. It's going to do this for all 300.       </p>
+      <p>
+So let's scroll all the way to the bottom. So you can scroll down and see that you can get to the 300th one. See if I can do it a little bit slower.       </p>
+      <p>
+So let's look and see if it's all done. Yep, it's all done, and so we're all done. So let's go and plot our results, so that I don't have to keep doing that. That was painful.       </p>
+      <p>
+All right, so let's go ahead and plot the results. And then we're just about done. So we're going to plot the results from our learning. And what this is is, a plot over time for the training and test set. We're looking at the loss as well as the accuracy for each epoch.       </p>
+      <p>
+Looking at this first one on the left for the x-axis, we can see the increasing number for our epochs. The y-axis is our loss. Now unlike accuracy, loss is not looked at like a percentage. It's the sum of the errors introduced for each training sample.       </p>
+      <p>
+You can see that when it starts the loss was very high, and it quickly dropped off and then stabilized as we reached our final number. Notice here for the test set loss, it begins to climb a little bit after we get to epoch 150 or so. So we might have gotten our best result at that point, right around here, when it starts kind of going back up. So maybe at epoch 150. It's not much, but if you reran your experiment you could price stop it after 150 epochs.       </p>
+      <p>
+The second diagram on the right plots the accuracy values. And you see that they go up very quickly and then do stabilize. And they do not diverge. So this is a good thing. We're looking at about 94 to 95% accuracy, so overall, our model performed very well.       </p>
+      <p>
+In summary, we see that the accuracies did not diverge, and-- even after many epochs during our training. And recall it stabilized somewhere around 50 epochs, and kept constant for training and test sets. Our model did not seem to suffer much from overfitting, possibly because we're only dealing with four features and this small data set. Although we did see a slight divergence with the test loss. It was very small though, and most likely would not impact the classification predictions.       </p>
+      <p>
+And this last piece of information here I think is a really good blog and some additional information if you want to do some deeper thinking. This is a blog from 2019 that one of our data science professors who has his PhD in neuroscience, he created this. So hopefully you enjoy that, and next time we'll see you and talk about convolutional neural network.       </p>
+    </div>
+  </body>
+</html>
